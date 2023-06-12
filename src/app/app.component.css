@@ -1,0 +1,11 @@
+.header-spacer {
+  flex: 1 1 auto;
+}
+
+.header-button {
+  margin-left: 1rem;
+}
+
+.header-avatar {
+  margin-right: 1rem;
+}
