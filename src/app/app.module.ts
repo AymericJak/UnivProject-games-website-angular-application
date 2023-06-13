@@ -10,13 +10,15 @@ import { NgOptimizedImage } from "@angular/common";
 import { FooterComponent } from './footer/footer.component';
 import { AProposComponent } from './a-propos/a-propos.component';
 import { ContactComponent } from './contact/contact.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     AProposComponent,
-    ContactComponent
+    ContactComponent,
+    HomeComponent
   ],
     imports: [
         BrowserModule,
