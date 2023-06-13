@@ -10,7 +10,8 @@ import { NgOptimizedImage } from "@angular/common";
 import { FooterComponent } from './components/footer/footer.component';
 import { AProposComponent } from './components/a-propos/a-propos.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { HomeComponent } from './components/home/home.component';
+import { JeuDetailsComponent } from './jeu-details/jeu-details.component';
+import { HomeComponent } from "./components/home/home.component";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatCardModule} from "@angular/material/card";
 
@@ -20,7 +21,8 @@ import {MatCardModule} from "@angular/material/card";
     FooterComponent,
     AProposComponent,
     ContactComponent,
-    HomeComponent
+    JeuDetailsComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,7 @@ import {MatCardModule} from "@angular/material/card";
     MatIconModule,
     NgOptimizedImage,
     MatGridListModule,
-    MatCardModule
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
