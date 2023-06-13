@@ -7,9 +7,9 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { NgOptimizedImage } from "@angular/common";
-import { FooterComponent } from './footer/footer.component';
-import { AProposComponent } from './a-propos/a-propos.component';
-import { ContactComponent } from './contact/contact.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { AProposComponent } from './components/a-propos/a-propos.component';
+import { ContactComponent } from './components/contact/contact.component';
 import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
