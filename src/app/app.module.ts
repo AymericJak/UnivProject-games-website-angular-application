@@ -11,6 +11,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AProposComponent } from './components/a-propos/a-propos.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { HomeComponent } from './components/home/home.component';
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -20,15 +22,17 @@ import { HomeComponent } from './components/home/home.component';
     ContactComponent,
     HomeComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatToolbarModule,
-        MatButtonModule,
-        MatIconModule,
-        NgOptimizedImage
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    NgOptimizedImage,
+    MatGridListModule,
+    MatCardModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
