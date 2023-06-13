@@ -1,6 +1,6 @@
   <div *ngIf="jeu">
 
-  <img [src]="jeu.media" alt="media" class="thumbnail" />
+  <img [src]="jeu.url_media" alt="media" class="thumbnail" />
 
   <h2>{{ jeu.nom }}</h2>
 
@@ -31,10 +31,10 @@
     <span class="value">{{ nbLike }}</span>
   </div>
 
-  <div class="info">
-    <span class="label">Average Price:</span>
-    <span class="value">{{ jeu.prix ? jeu.prix + ' €' : 'N.C.' }}</span>
-  </div>
+<!--  <div class="info">-->
+<!--    <span class="label">Average Price:</span>-->
+<!--    <span class="value">{{ jeu.prix ? jeu.prix + ' €' : 'N.C.' }}</span>-->
+<!--  </div>-->
 
     <div class="info">
       <span class="label">Liked:</span>
