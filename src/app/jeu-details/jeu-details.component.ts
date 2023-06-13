@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-game-details',
@@ -6,11 +7,20 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./jeu-details.component.css']
 })
 export class JeuDetailsComponent {
-  @Input() jeu: Jeu | null | undefined; // decorate the property with @Input()
+  @Input() jeu?: Jeu | null ;
+  nbLike?: number;
+  note?: number;
+  isLiked?: boolean =false;
+  // commentaires?: mettre la définition des commentaires
 
-  constructor() {
+
+  constructor(public gameService: GameService, private route: ActivatedRoute ) {
+
   }
 
   ngOnInit(): void {
+    const id: number = +(this.route.snapshot.paramMap.get('id') || 0);
+    this.nbLike = this.gameService.nbLikes(+id) ;
+    this.note = this.gameService.noteJeu(+id)
   }
 }
