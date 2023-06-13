@@ -42,21 +42,8 @@ export class GameService {
 
 
   noteJeu(id: number): Observable<number> {
-    const url: string = `http://localhost:8000/api/commentaires/`;
-    const httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json'})
-    };
-
-    return this.http.get<Commentaire[]>(url, httpOptions).pipe(
-      map(commentaires => {
-        const filteredCommentaires: Commentaire[] = commentaires.filter(commentaire => commentaire.jeu.id === id);
-        if (filteredCommentaires.length === 0) {
-          return 0; // No comments
-        } else {
-          const sumNotes = filteredCommentaires.reduce((acc, commentaire) => acc + commentaire.note, 0);
-          return sumNotes / filteredCommentaires.length;
-        }
-      }),
+    return this.getJeu(id).pipe(
+      map(jeu => jeu.note_moyenne || 0),
       catchError(err => {
         console.log('Erreur http : ', err);
         throw err;
@@ -74,4 +61,34 @@ export class GameService {
     );
   }
 
+  createJeu(jeuRequest: Jeu): Observable<Jeu> {
+    const url: string = 'http://localhost:8000/api/jeu';
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    };
+
+    return this.http.post<Jeu>(url, jeuRequest, httpOptions).pipe(
+      catchError(err => {
+        console.log('Erreur http : ', err);
+        throw err;
+      })
+    );
+  }
+
+  updateJeu(jeuRequest: Jeu): Observable<Jeu> {
+    const url: string = `http://localhost:8000/api/jeu/${jeuRequest.id}`;
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    };
+
+    return this.http.put<Jeu>(url, jeuRequest, httpOptions).pipe(
+      catchError(err => {
+        console.log('Erreur http : ', err);
+        throw err;
+      })
+    );
+  }
+
+  uploadMedia(id: number) { //TODO
+  }
 }
