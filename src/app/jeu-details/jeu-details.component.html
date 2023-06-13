@@ -1,0 +1,51 @@
+  <div *ngIf="jeu">
+
+  <img [src]="jeu.media" alt="media" class="thumbnail" />
+
+  <h2>{{ jeu.nom }}</h2>
+
+  <div class="description">{{ jeu.description }}</div>
+
+  <div class="info">
+    <span class="label">langue:</span>
+    <span class="value">{{ jeu.langue }}</span>
+  </div>
+
+  <div class="info">
+    <span class="label">Categorie:</span>
+    <span class="value">{{ jeu.categorie }}</span>
+  </div>
+
+  <div class="info">
+    <span class="label">Theme:</span>
+    <span class="value">{{ jeu.theme }}</span>
+  </div>
+
+  <div class="info">
+    <span class="label">Moyenne note:</span>
+    <span class="value">{{ note }}</span>
+  </div>
+
+  <div class="info">
+    <span class="label">Nombre like:</span>
+    <span class="value">{{ nbLike }}</span>
+  </div>
+
+  <div class="info">
+    <span class="label">Average Price:</span>
+    <span class="value">{{ jeu.prix ? jeu.prix + ' €' : 'N.C.' }}</span>
+  </div>
+
+    <div class="info">
+      <span class="label">Liked:</span>
+      <span class="value">{{ isLiked ? 'Yes' : 'No' }}</span>
+    </div>
+
+    <div class="comments">
+      <h3>Comments:</h3>
+      <ul>
+        <li *ngFor="let commentaire of commentaires">{{ commentaire }}</li>
+      </ul>
+    </div>
+
+</div>
