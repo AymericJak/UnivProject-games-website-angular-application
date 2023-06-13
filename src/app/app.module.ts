@@ -10,6 +10,7 @@ import { NgOptimizedImage } from "@angular/common";
 import { FooterComponent } from './footer/footer.component';
 import { AProposComponent } from './a-propos/a-propos.component';
 import { ContactComponent } from './contact/contact.component';
+import { JeuDetailsComponent } from './jeu-details/jeu-details.component';
 import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
@@ -18,17 +19,18 @@ import { HomeComponent } from './components/home/home.component';
     FooterComponent,
     AProposComponent,
     ContactComponent,
-    HomeComponent
+    JeuDetailsComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatToolbarModule,
-        MatButtonModule,
-        MatIconModule,
-        NgOptimizedImage
-    ],
+  imports: [
+      BrowserModule,
+      AppRoutingModule,
+      BrowserAnimationsModule,
+      MatToolbarModule,
+      MatButtonModule,
+      MatIconModule,
+      NgOptimizedImage,
+      HomeComponent
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
