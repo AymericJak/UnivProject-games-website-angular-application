@@ -1,6 +1,7 @@
 import {Categorie} from "./categorie";
 import {Theme} from "./theme";
 import {Editeur} from "./editeur";
+import {Commentaire} from "./commentaire";
 
 export interface Jeu {
   id: number,
@@ -16,6 +17,7 @@ export interface Jeu {
   nb_likes: number,
   note_moyenne: number;
   categorie: Categorie,
+  commentaires: Commentaire[]
   theme: Theme,
   editeur: Editeur
 }
