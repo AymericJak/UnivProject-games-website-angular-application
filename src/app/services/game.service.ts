@@ -64,6 +64,14 @@ export class GameService {
     );
   }
 
-
+  nbLikes(id: number): Observable<number> {
+    return this.getJeu(id).pipe(
+      map(jeu => jeu.nb_likes || 0),
+      catchError(err => {
+        console.log('Erreur http : ', err);
+        throw err;
+      })
+    );
+  }
 
 }

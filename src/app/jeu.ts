@@ -8,5 +8,6 @@ export interface Jeu {
   nombre_joueurs_min: number,
   nombre_joueurs_max: number,
   duree_partie: number,
-  valide: boolean
+  valide: boolean,
+  nb_likes: number
 }
