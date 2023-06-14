@@ -1,33 +1,43 @@
-<div *ngIf="jeuRequest?.jeu">
-<h1>JEU</h1>
-<!--  <h2>{{ jeuRequest.jeu.nom }}</h2>-->
+<div *ngIf="jeu">
+  <h2>Jeu : {{ jeu.nom }}</h2>
 
-<!--  <div class="description">{{ jeuRequest.jeu.description }}</div>-->
+  <div class="description">{{ jeu.description }}</div>
 
-<!--  <div class="info">-->
-<!--    <span class="label">langue:</span>-->
-<!--    <span class="value">{{ jeuRequest.jeu.langue }}</span>-->
-<!--  </div>-->
+  <div class="info">
+    <span class="label">Langue:</span>
+    <span class="value">{{ jeu.langue }}</span>
+  </div>
 
-<!--  <div class="info">-->
-<!--    <span class="label">Categorie:</span>-->
-<!--    <span class="value">{{ jeuRequest.jeu.categorie }}</span>-->
-<!--  </div>-->
+  <div class="info">
+    <span class="label">Categorie:</span>
+    <span class="value">{{ jeu.categorie.nom }}</span>
+  </div>
 
-<!--  <div class="info">-->
-<!--    <span class="label">Theme:</span>-->
-<!--    <span class="value">{{ jeuRequest.jeu.theme }}</span>-->
-<!--  </div>-->
+  <div class="info">
+    <span class="label">Theme:</span>
+    <span class="value">{{ jeu.theme.nom }}</span>
+  </div>
 
-<!--  <div class="info">-->
-<!--    <span class="label">Moyenne note:</span>-->
-<!--    <span class="value">{{ note }}</span>-->
-<!--  </div>-->
+  <div class="info">
+    <span class="label">Moyenne note:</span>
+    <span class="value">{{ noteMoyenne }}</span>
+  </div>
 
-<!--  <div class="info">-->
-<!--    <span class="label">Nombre like:</span>-->
-<!--    <span class="value">{{ nbLike }}</span>-->
-<!--  </div>-->
-<!--  <button (click)="toggleLike()">{{ isLiked ? 'Unlike' : 'Like' }}</button>-->
+  <div class="info">
+    <span class="label">Nombre like:</span>
+    <span class="value">{{ nbLike }}</span>
+  </div>
+  <button (click)="toggleLike()">{{ isLiked ? 'Unlike' : 'Like' }}</button>
 
+  <div class="info">
+    <span class="label">Prix moyen:</span>
+    <span class="value"></span>
+  </div>
+
+  <div class="commentaires">
+    <h2>Liste des commentaires</h2>
+    <div *ngFor="let commentaire of commentaires" class="comment-{{commentaire.id}}">
+      <p>{{ commentaire.commentaire }}</p>
+    </div>
+  </div>
 </div>
