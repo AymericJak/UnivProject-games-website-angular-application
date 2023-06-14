@@ -19,6 +19,9 @@ import {MatCardModule} from "@angular/material/card";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import {ProfilComponent} from "./components/profil/profil.component";
+import {MatTableModule} from "@angular/material/table";
+import {MatListModule} from "@angular/material/list";
 
 @NgModule({
   declarations: [
@@ -31,6 +34,7 @@ import {MatInputModule} from "@angular/material/input";
     ContactComponent,
     JeuDetailsComponent,
     HomeComponent,
+    ProfilComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +49,8 @@ import {MatInputModule} from "@angular/material/input";
     MatGridListModule,
     MatFormFieldModule,
     MatInputModule,
+    MatTableModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
