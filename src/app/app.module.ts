@@ -8,7 +8,7 @@ import { AProposComponent } from './components/a-propos/a-propos.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { JeuDetailsComponent } from './jeu-details/jeu-details.component';
 import { HomeComponent } from "./components/home/home.component";
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import {ReactiveFormsModule} from "@angular/forms";
@@ -19,6 +19,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import {AuthInterceptor} from "./auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -45,7 +46,13 @@ import {MatInputModule} from "@angular/material/input";
     MatFormFieldModule,
     MatInputModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
