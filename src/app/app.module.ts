@@ -14,6 +14,9 @@ import { JeuDetailsComponent } from './jeu-details/jeu-details.component';
 import { HomeComponent } from "./components/home/home.component";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatCardModule} from "@angular/material/card";
+import { JeuxListeComponent } from './jeux-liste/jeux-liste.component';
+import {GameService} from "./services/game.service";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -23,6 +26,7 @@ import {MatCardModule} from "@angular/material/card";
     ContactComponent,
     JeuDetailsComponent,
     HomeComponent,
+    JeuxListeComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,8 +38,11 @@ import {MatCardModule} from "@angular/material/card";
     NgOptimizedImage,
     MatGridListModule,
     MatCardModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    GameService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
