@@ -6,8 +6,7 @@
       <input matInput type="password" placeholder="Password" formControlName="password" class="input-field">
       <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid" class="submit-button">Valider</button>
       <div>
-        <p>Aucun compte? </p>
-        <button routerLink="/register" class="btn">Inscription</button>
+        <p>Aucun compte? <a routerLink="/register" class="">Inscription</a></p>
       </div>
     </div>
   </form>

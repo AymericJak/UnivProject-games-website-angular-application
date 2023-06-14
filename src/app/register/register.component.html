@@ -1,32 +1,17 @@
 <div class="card">
-  <div class="login-form">
-    <h2>Register</h2>
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-      <div class="input-field">
-        <input matInput type="text" placeholder="Login" formControlName="login" required>
-      </div>
-      <div class="input-field">
-        <input matInput type="text" placeholder="Prénom" formControlName="prenom" required>
-      </div>
-      <div class="input-field">
-        <input matInput type="text" placeholder="Nom" formControlName="nom" required>
-      </div>
-      <div class="input-field">
-        <input matInput type="text" placeholder="Pseudo" formControlName="pseudo" required>
-      </div>
-      <div class="input-field">
-        <input matInput type="email" placeholder="Email" formControlName="email" required>
-      </div>
-      <div class="input-field">
-        <input matInput type="password" placeholder="Mot de passe" formControlName="password" required>
-      </div>
-      <button mat-raised-button color="primary" class="submit-button" type="submit" [disabled]="registerForm.invalid">
-        Valider
-      </button>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="login-form">
+    <div class="p-formgroup-inline">
+      <h2>Register</h2>
+      <input matInput type="text" placeholder="Login" formControlName="login" required>
+      <input matInput type="text" placeholder="Prenom" formControlName="prenom" required>
+      <input matInput type="text" placeholder="Nom" formControlName="nom" required>
+      <input matInput type="text" placeholder="Pseudo" formControlName="pseudo" required>
+      <input matInput type="email" placeholder="Email" formControlName="email" class="input-field">
+      <input matInput type="password" placeholder="Password" formControlName="password" class="input-field">
+      <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid" class="submit-button">Valider</button>
       <div>
-        <p>Déjà un compte? </p>
-        <button routerLink="/login" class="btn">Connection</button>
+        <p>Déjà un compte? <a routerLink="/login" class="">Connectez-vous</a></p>
       </div>
-    </form>
-  </div>
+    </div>
+  </form>
 </div>
