@@ -1,9 +1,9 @@
 import {Component, Input} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {Jeu} from "../jeu";
+import {JeuRequest} from "../models/api/jeuRequest";
 import {GameService} from "../services/game.service";
 import {Observable} from "rxjs";
-import {Commentaire} from "../commentaire";
+import {CommentaireRequest} from "../models/api/commentaireRequest";
 
 @Component({
   selector: 'app-game-details',
@@ -11,11 +11,11 @@ import {Commentaire} from "../commentaire";
   styleUrls: ['./jeu-details.component.css']
 })
 export class JeuDetailsComponent {
-  @Input() jeu?: Jeu | null;
+  @Input() jeu?: JeuRequest | null;
   nbLike?: Observable<number>;
   note?: Observable<number>;
   isLiked?: boolean = false;
-  commentaires: Commentaire[] = [];
+  commentaires: CommentaireRequest[] = [];
 
 
   constructor(public gameService: GameService, private route: ActivatedRoute) {

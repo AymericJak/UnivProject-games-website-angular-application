@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, map, Observable, of} from "rxjs";
-import {Jeu} from "../jeu";
-import {Commentaire} from "../commentaire";
+import {JeuRequest} from "../models/api/jeuRequest";
+import {CommentaireRequest} from "../models/api/commentaireRequest";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class GameService {
   constructor(private http: HttpClient) {
   }
 
-  getJeux(): Observable<Jeu[]> {
+  getJeux(): Observable<JeuRequest[]> {
     const url: string = 'http://localhost:8000/api/jeu';
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -26,12 +26,12 @@ export class GameService {
       );
   }
 
-  getJeu(id: number): Observable<Jeu> {
+  getJeu(id: number): Observable<JeuRequest> {
     const url: string = `http://localhost:8000/api/jeu/${id}`;
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     };
-    return this.http.get<Jeu>(url, httpOptions)
+    return this.http.get<JeuRequest>(url, httpOptions)
       .pipe(
         catchError(err => {
           console.log('Erreur http : ', err);
@@ -61,13 +61,13 @@ export class GameService {
     );
   }
 
-  createJeu(jeuRequest: Jeu): Observable<Jeu> {
+  createJeu(jeuRequest: JeuRequest): Observable<JeuRequest> {
     const url: string = 'http://localhost:8000/api/jeu';
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     };
 
-    return this.http.post<Jeu>(url, jeuRequest, httpOptions).pipe(
+    return this.http.post<JeuRequest>(url, jeuRequest, httpOptions).pipe(
       catchError(err => {
         console.log('Erreur http : ', err);
         throw err;
@@ -75,13 +75,13 @@ export class GameService {
     );
   }
 
-  updateJeu(jeuRequest: Jeu): Observable<Jeu> {
+  updateJeu(jeuRequest: JeuRequest): Observable<JeuRequest> {
     const url: string = `http://localhost:8000/api/jeu/${jeuRequest.id}`;
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     };
 
-    return this.http.put<Jeu>(url, jeuRequest, httpOptions).pipe(
+    return this.http.put<JeuRequest>(url, jeuRequest, httpOptions).pipe(
       catchError(err => {
         console.log('Erreur http : ', err);
         throw err;
