@@ -18,7 +18,7 @@ export class JeuDetailsComponent {
   isLiked?: boolean = false;
   commentaires: CommentaireRequest[] = [];
 
-  constructor(public gameService: GameService, private route: ActivatedRoute,private http: HttpClient,private user: UsersService ) {
+  constructor(public gameService: GameService, private route: ActivatedRoute,private http: HttpClient) {
   }
 
   ngOnInit(): void {
