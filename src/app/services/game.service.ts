@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, map, Observable, of} from "rxjs";
 import {JeuRequest} from "../models/api/jeuRequest";
-import {CommentaireRequest} from "../models/api/commentaireRequest";
 import {JeuxRequest} from "../models/api/jeuxRequest";
 
 @Injectable({
