@@ -25,15 +25,13 @@ export class GameService {
 
   getJeu(id: number): Observable<JeuRequest> {
     const url: string = `http://localhost:8000/api/jeu/${id}`;
-    let res = this.http.get<JeuRequest>(url)
+    return this.http.get<JeuRequest>(url)
       .pipe(
         catchError(err => {
           console.log('Erreur http : ', err);
           throw err;
         })
       );
-    console.log(res);
-    return res;
   }
 
 
