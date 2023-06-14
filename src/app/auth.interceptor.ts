@@ -6,26 +6,27 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {AuthentificationService} from "./authentification.service";
+import {environment} from "./environment";
+import {TokenStorageService} from "./token-storage.service";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-   constructor(private authService: AuthService) {
-     }
+  constructor(private authService: AuthentificationService, private tokenStorageService: TokenStorageService) {
+  }
 
-   intercept(request: HttpRequest<unknown>, next: HttpHandler):
+  intercept(request: HttpRequest<unknown>, next: HttpHandler):
     Observable<HttpEvent<unknown>> {
 
-     const user = this.authService.userValue;
-     const isLoggedIn = !!user && user.jwtToken;
-     const isApiUrl = request.url.startsWith(environment.apiUrl);
-     if (isLoggedIn && isApiUrl) {
-       request = request.clone({
-         setHeaders: {Authorization: `Bearer ${user.jwtToken}`}
-       });
-       }
+    const isApiUrl = request.url.startsWith(environment.apiUrl);
+    const jwtToken = this.tokenStorageService.getToken();
+    if (jwtToken && isApiUrl) {
+      request = request.clone({
+        setHeaders: {Authorization: `Bearer ${jwtToken}`}
+      });
+    }
 
-     return next.handle(request);
-     }
-   }
+    return next.handle(request);
+  }
 }
