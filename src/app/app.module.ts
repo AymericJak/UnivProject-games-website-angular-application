@@ -14,10 +14,18 @@ import { JeuDetailsComponent } from './jeu-details/jeu-details.component';
 import { HomeComponent } from "./components/home/home.component";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatCardModule} from "@angular/material/card";
+import {HttpClientModule} from "@angular/common/http";
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import { ShowTokenComponent } from './show-token/show-token.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    ShowTokenComponent,
     FooterComponent,
     AProposComponent,
     ContactComponent,
@@ -34,6 +42,8 @@ import {MatCardModule} from "@angular/material/card";
     NgOptimizedImage,
     MatGridListModule,
     MatCardModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
