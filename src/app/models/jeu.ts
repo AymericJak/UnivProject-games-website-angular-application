@@ -3,6 +3,7 @@ import {ThemeRequest} from "./api/themeRequest";
 import {EditeurRequest} from "./api/editeurRequest";
 
 export interface Jeu {
+  id: number,
   nom: string,
   description: string,
   langue: string,
