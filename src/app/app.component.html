@@ -10,24 +10,13 @@
       Lastname
       <a mat-stroked-button class="header-button" href="">Mon profil</a>
       <a mat-stroked-button class="header-button" href="">Liste des jeux</a>
-      <a mat-stroked-button class="header-button" href="">Se déconnecter</a>
+      <a mat-stroked-button class="header-button" (click)="logout()">Se déconnecter</a>
       <!-- TODO For unconnected users -->
-      <a mat-stroked-button class="header-button" href="">Se connecter</a>
-      <a mat-stroked-button class="header-button" href="">S'enregistrer</a>
+      <a mat-stroked-button class="header-button" routerLink="/login">Se connecter</a>
+      <a mat-stroked-button class="header-button" routerLink="/register">S'enregistrer</a>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
 <router-outlet></router-outlet>
 <app-footer></app-footer>
 
-<!--
-mettre ca dans le jeu.components.ts
-selectJeu(row: Jeu) {
-    if(this.jeuSelectionne !== undefined) {
-      this.jeuSelectionne = row;
-    }
-  }
-et mettre ça dans le jeu.components.
-<app-jeu-details [jeu]="jeuSelectionne"></app-jeu-details>
-
--->

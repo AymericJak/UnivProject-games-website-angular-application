@@ -1,9 +1,10 @@
 import {Component, Input} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {Jeu} from "../jeu";
+import {JeuRequest} from "../models/api/jeuRequest";
 import {GameService} from "../services/game.service";
 import {Observable} from "rxjs";
-import {Commentaire} from "../commentaire";
+import {CommentaireRequest} from "../models/api/commentaireRequest";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-game-details',
@@ -11,31 +12,61 @@ import {Commentaire} from "../commentaire";
   styleUrls: ['./jeu-details.component.css']
 })
 export class JeuDetailsComponent {
-  @Input() jeu?: Jeu | null;
+  jeuRequest?: JeuRequest | null;
   nbLike?: Observable<number>;
   note?: Observable<number>;
   isLiked?: boolean = false;
-  commentaires: Commentaire[] = [];
+  commentaires: CommentaireRequest[] = [];
 
 
-  constructor(public gameService: GameService, private route: ActivatedRoute) {
+  constructor(public gameService: GameService, private route: ActivatedRoute,private http: HttpClient) {
   }
 
   ngOnInit(): void {
     const id: number = +(this.route.snapshot.paramMap.get('id') || 0);
-    this.nbLike = this.gameService.nbLikes(+id);
-    this.note = this.gameService.noteJeu(+id);
+    this.nbLike = this.gameService.nbLikes(id);
+    this.note = this.gameService.noteJeu(id);
+
+    this.gameService.getJeu(id).subscribe({
+      next: (jeuRequest) => {
+        if (jeuRequest.commentaires) {
+          this.commentaires = jeuRequest.commentaires;
+        }
+      },
+      error: (err) => {
+        console.log('Erreur lors de la récupération des commentaires : ', err);
+      }
+    })
+  }
+
+  toggleLike(): void {
+    this.isLiked = !this.isLiked;
+
+    const id: number = +(this.route.snapshot.paramMap.get('id') || 0);
 
     this.gameService.getJeu(+id).subscribe(
-      jeu => {
-        if (jeu.commentaires) {
-          this.commentaires = jeu.commentaires;
+      jeuRequest => {
+        if (jeuRequest.jeu.id) {
+          const id_jeu = jeuRequest.jeu.id;
+          const url: string = `http://localhost:8000/api/jeu/${id_jeu}`;
+          this.http
+            .post(url,{})
+            .subscribe(
+              (response) => {
+                console.log('Ajout du like effectuée avec succès !');
+              },
+              (error) => {
+                console.error(
+                  "Une erreur s'est produite lors de l'ajout du like :",
+                  error
+                );
+              }
+            );
         }
       },
       err => {
         console.log('Erreur lors de la récupération des commentaires : ', err);
       }
     );
-
   }
 }
