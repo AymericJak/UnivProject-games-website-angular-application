@@ -14,6 +14,7 @@ import { JeuDetailsComponent } from './jeu-details/jeu-details.component';
 import { HomeComponent } from "./components/home/home.component";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatCardModule} from "@angular/material/card";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {MatCardModule} from "@angular/material/card";
     NgOptimizedImage,
     MatGridListModule,
     MatCardModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
