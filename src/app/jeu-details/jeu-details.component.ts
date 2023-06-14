@@ -18,14 +18,24 @@ export class JeuDetailsComponent {
   isLiked?: boolean = false;
   commentaires: CommentaireRequest[] = [];
 
-
-  constructor(public gameService: GameService, private route: ActivatedRoute,private http: HttpClient) {
+  constructor(public gameService: GameService, private route: ActivatedRoute,private http: HttpClient,private user: UsersService ) {
   }
 
   ngOnInit(): void {
     const id: number = +(this.route.snapshot.paramMap.get('id') || 0);
     this.nbLike = this.gameService.nbLikes(id);
     this.note = this.gameService.noteJeu(id);
+    const user_id = this.user.getUser();
+
+    this.commentaires.sort((a, b) => {
+      if (a.user_id === user_id && b.user_id !== user_id) {
+        return -1;
+      } else if (a.user_id !== user_id && b.user_id === user_id) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
 
     this.gameService.getJeu(id).subscribe({
       next: (jeuRequest) => {
