@@ -30,8 +30,10 @@
     <span class="label">Nombre like:</span>
     <span class="value">{{ nbLike }}</span>
   </div>
+  <button (click)="toggleLike()">{{ isLiked ? 'Unlike' : 'Like' }}</button>
 
-<!--  <div class="info">-->
+
+    <!--  <div class="info">-->
 <!--    <span class="label">Average Price:</span>-->
 <!--    <span class="value">{{ jeu.prix ? jeu.prix + ' €' : 'N.C.' }}</span>-->
 <!--  </div>-->
