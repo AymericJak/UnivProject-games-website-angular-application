@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, map, Observable, of} from "rxjs";
 import {JeuRequest} from "../models/api/jeuRequest";
 import {CommentaireRequest} from "../models/api/commentaireRequest";
+import {JeuxRequest} from "../models/api/jeuxRequest";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class GameService {
   constructor(private http: HttpClient) {
   }
 
-  getJeux(): Observable<JeuRequest[]> {
+  getJeux(): Observable<JeuxRequest[]> {
     const url: string = 'http://localhost:8000/api/jeu';
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
