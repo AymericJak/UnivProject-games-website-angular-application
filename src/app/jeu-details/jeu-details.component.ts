@@ -26,16 +26,15 @@ export class JeuDetailsComponent {
     this.nbLike = this.gameService.nbLikes(id);
     this.note = this.gameService.noteJeu(id);
 
-    this.gameService.getJeu(id).subscribe(
-      jeuRequest => {
+    this.gameService.getJeu(id).subscribe({
+      next: (jeuRequest) => {
         if (jeuRequest.commentaires) {
           this.commentaires = jeuRequest.commentaires;
         }
       },
-      err => {
+      error: (err) => {
         console.log('Erreur lors de la récupération des commentaires : ', err);
       }
-    );
-
+    })
   }
 }
