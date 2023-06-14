@@ -12,17 +12,16 @@ export class GameService {
   constructor(private http: HttpClient) {
   }
 
-  getJeux(): Observable<JeuxRequest[]> {
+  getJeux(): Observable<JeuxRequest> {
     const url: string = 'http://localhost:8000/api/jeu';
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     };
-    return this.http.get<any>(url, httpOptions)
+    return this.http.get<JeuxRequest>(url, httpOptions)
       .pipe(
-        map(res => res.data.item),
         catchError(err => {
           console.log('Erreur http : ', err);
-          return of([]);
+          return of({ status: "Error", jeux: [] });
         }),
       );
   }

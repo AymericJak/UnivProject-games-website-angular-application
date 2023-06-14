@@ -17,6 +17,7 @@ import {MatCardModule} from "@angular/material/card";
 import { JeuxListeComponent } from './jeux-liste/jeux-liste.component';
 import {GameService} from "./services/game.service";
 import {HttpClientModule} from "@angular/common/http";
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import {HttpClientModule} from "@angular/common/http";
     MatGridListModule,
     MatCardModule,
     HttpClientModule,
+    MatTableModule,
   ],
   providers: [
     GameService,
