@@ -4,6 +4,7 @@ import {Jeu} from "../jeu";
 import {GameService} from "../services/game.service";
 import {Observable} from "rxjs";
 import {Commentaire} from "../commentaire";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-game-details',
@@ -18,7 +19,7 @@ export class JeuDetailsComponent {
   commentaires: Commentaire[] = [];
 
 
-  constructor(public gameService: GameService, private route: ActivatedRoute) {
+  constructor(public gameService: GameService, private route: ActivatedRoute,private http: HttpClient) {
   }
 
   ngOnInit(): void {
@@ -37,5 +38,36 @@ export class JeuDetailsComponent {
       }
     );
 
+  }
+
+  toggleLike(): void {
+    this.isLiked = !this.isLiked;
+
+    const id: number = +(this.route.snapshot.paramMap.get('id') || 0);
+
+    this.gameService.getJeu(+id).subscribe(
+      jeu => {
+        if (jeu.id) {
+          const id_jeu = jeu.id;
+          const url: string = `http://localhost:8000/api/jeu/${id_jeu}`;
+          this.http
+            .post(url,{})
+            .subscribe(
+              (response) => {
+                console.log('Ajout du like effectuée avec succès !');
+              },
+              (error) => {
+                console.error(
+                  "Une erreur s'est produite lors de l'ajout du like :",
+                  error
+                );
+              }
+            );
+        }
+      },
+      err => {
+        console.log('Erreur lors de la récupération des commentaires : ', err);
+      }
+    );
   }
 }
