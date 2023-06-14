@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, map, Observable, of} from "rxjs";
-import {Jeu} from "../jeu";
 import {Commentaire} from "../commentaire";
+import {Jeu} from "../jeu";
 
 @Injectable({
   providedIn: 'root'
