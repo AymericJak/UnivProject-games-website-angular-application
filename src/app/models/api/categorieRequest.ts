@@ -1,4 +1,6 @@
 export interface CategorieRequest {
   id: number,
-  nom: string
+  nom: string,
+  created_at: string,
+  updated_at: string
 }
