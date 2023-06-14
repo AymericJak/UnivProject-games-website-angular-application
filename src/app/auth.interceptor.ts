@@ -21,9 +21,10 @@ export class AuthInterceptor implements HttpInterceptor {
 
     const isApiUrl = request.url.startsWith(environment.apiUrl);
     const jwtToken = this.tokenStorageService.getToken();
-    if (jwtToken && isApiUrl) {
+
+    if (isApiUrl && jwtToken) {
       request = request.clone({
-        setHeaders: {Authorization: `Bearer ${jwtToken}`}
+        setHeaders: { Authorization: `Bearer ${jwtToken}` },
       });
     }
 

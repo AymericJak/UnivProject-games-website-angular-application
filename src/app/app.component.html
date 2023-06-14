@@ -10,10 +10,10 @@
       Lastname
       <a mat-stroked-button class="header-button" href="">Mon profil</a>
       <a mat-stroked-button class="header-button" href="">Liste des jeux</a>
-      <a mat-stroked-button class="header-button" href="">Se déconnecter</a>
+      <a mat-stroked-button class="header-button" (click)="logout()">Se déconnecter</a>
       <!-- TODO For unconnected users -->
-      <a mat-stroked-button class="header-button" href="">Se connecter</a>
-      <a mat-stroked-button class="header-button" href="">S'enregistrer</a>
+      <a mat-stroked-button class="header-button" routerLink="/login">Se connecter</a>
+      <a mat-stroked-button class="header-button" routerLink="/register">S'enregistrer</a>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
