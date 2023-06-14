@@ -11,25 +11,25 @@ import {CommentaireRequest} from "../models/api/commentaireRequest";
   styleUrls: ['./jeu-details.component.css']
 })
 export class JeuDetailsComponent {
-  @Input() jeu?: JeuRequest | null;
+  jeuRequest?: JeuRequest | null;
   nbLike?: Observable<number>;
   note?: Observable<number>;
   isLiked?: boolean = false;
   commentaires: CommentaireRequest[] = [];
 
 
-  constructor(public gameService: GameService, private route: ActivatedRoute) {
+  constructor(private gameService: GameService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
     const id: number = +(this.route.snapshot.paramMap.get('id') || 0);
-    this.nbLike = this.gameService.nbLikes(+id);
-    this.note = this.gameService.noteJeu(+id);
+    this.nbLike = this.gameService.nbLikes(id);
+    this.note = this.gameService.noteJeu(id);
 
-    this.gameService.getJeu(+id).subscribe(
-      jeu => {
-        if (jeu.commentaires) {
-          this.commentaires = jeu.commentaires;
+    this.gameService.getJeu(id).subscribe(
+      jeuRequest => {
+        if (jeuRequest.commentaires) {
+          this.commentaires = jeuRequest.commentaires;
         }
       },
       err => {

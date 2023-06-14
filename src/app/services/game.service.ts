@@ -76,7 +76,7 @@ export class GameService {
   }
 
   updateJeu(jeuRequest: JeuRequest): Observable<JeuRequest> {
-    const url: string = `http://localhost:8000/api/jeu/${jeuRequest.id}`;
+    const url: string = `http://localhost:8000/api/jeu/${jeuRequest.jeu.id}`;
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     };

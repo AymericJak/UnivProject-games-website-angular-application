@@ -1,51 +1,51 @@
-  <div *ngIf="jeu">
+<div *ngIf="jeuRequest?.jeu">
+<h1>JEU</h1>
+<!--  <img [src]="jeuRequest.jeu?.url_media" alt="media" class="thumbnail"/>-->
 
-  <img [src]="jeu.url_media" alt="media" class="thumbnail" />
+<!--  <h2>{{ jeuRequest.jeu?.nom }}</h2>-->
 
-  <h2>{{ jeu.nom }}</h2>
-
-  <div class="description">{{ jeu.description }}</div>
-
-  <div class="info">
-    <span class="label">langue:</span>
-    <span class="value">{{ jeu.langue }}</span>
-  </div>
-
-  <div class="info">
-    <span class="label">CategorieRequest:</span>
-    <span class="value">{{ jeu.categorie }}</span>
-  </div>
-
-  <div class="info">
-    <span class="label">ThemeRequest:</span>
-    <span class="value">{{ jeu.theme }}</span>
-  </div>
-
-  <div class="info">
-    <span class="label">Moyenne note:</span>
-    <span class="value">{{ note }}</span>
-  </div>
-
-  <div class="info">
-    <span class="label">Nombre like:</span>
-    <span class="value">{{ nbLike }}</span>
-  </div>
+<!--  <div class="description">{{ jeuRequest.jeu?.description }}</div>-->
 
 <!--  <div class="info">-->
-<!--    <span class="label">Average Price:</span>-->
-<!--    <span class="value">{{ jeu.prix ? jeu.prix + ' €' : 'N.C.' }}</span>-->
+<!--    <span class="label">langue:</span>-->
+<!--    <span class="value">{{ jeuRequest.jeu?.langue }}</span>-->
 <!--  </div>-->
 
-    <div class="info">
-      <span class="label">Liked:</span>
-      <span class="value">{{ isLiked ? 'Yes' : 'No' }}</span>
-    </div>
+<!--  <div class="info">-->
+<!--    <span class="label">CategorieRequest:</span>-->
+<!--    <span class="value">{{ jeuRequest.jeu?.categorie }}</span>-->
+<!--  </div>-->
 
-    <div class="comments">
-      <h3>Comments:</h3>
-      <ul>
-        <li *ngFor="let commentaire of commentaires">{{ commentaire }}</li>
-      </ul>
-    </div>
+<!--  <div class="info">-->
+<!--    <span class="label">ThemeRequest:</span>-->
+<!--    <span class="value">{{ jeuRequest.jeu?.theme }}</span>-->
+<!--  </div>-->
+
+<!--  <div class="info">-->
+<!--    <span class="label">Moyenne note:</span>-->
+<!--    <span class="value">{{ note }}</span>-->
+<!--  </div>-->
+
+<!--  <div class="info">-->
+<!--    <span class="label">Nombre like:</span>-->
+<!--    <span class="value">{{ nbLike }}</span>-->
+<!--  </div>-->
+
+<!--  &lt;!&ndash;  <div class="info">&ndash;&gt;-->
+<!--  &lt;!&ndash;    <span class="label">Average Price:</span>&ndash;&gt;-->
+<!--  &lt;!&ndash;    <span class="value">{{ jeu.prix ? jeu.prix + ' €' : 'N.C.' }}</span>&ndash;&gt;-->
+<!--  &lt;!&ndash;  </div>&ndash;&gt;-->
+
+<!--  <div class="info">-->
+<!--    <span class="label">Liked:</span>-->
+<!--    <span class="value">{{ isLiked ? 'Yes' : 'No' }}</span>-->
+<!--  </div>-->
+
+<!--  <div class="comments">-->
+<!--    <h3>Comments:</h3>-->
+<!--    <ul>-->
+<!--      <li *ngFor="let commentaire of commentaires">{{ commentaire }}</li>-->
+<!--    </ul>-->
+<!--  </div>-->
 
 </div>

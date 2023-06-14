@@ -4,13 +4,15 @@ import {AProposComponent} from "./components/a-propos/a-propos.component";
 import {ContactComponent} from "./components/contact/contact.component";
 import {JeuDetailsComponent} from "./jeu-details/jeu-details.component";
 import {HomeComponent} from "./components/home/home.component";
+import {JeuxListeComponent} from "./jeux-liste/jeux-liste.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'details/:id', component: JeuDetailsComponent},
-  { path: 'aPropos', component: AProposComponent },
-  { path: 'contacts', component: ContactComponent }
+  { path: 'jeux', component: JeuxListeComponent},
+  { path: 'jeux/:id', component: JeuDetailsComponent},
+  { path: 'a-propos', component: AProposComponent },
+  { path: 'contacts', component: ContactComponent },
 ];
 
 
