@@ -11,3 +11,20 @@
 .profile-card-content {
   margin: 5rem;
 }
+
+.profile-link {
+  color: #666666;
+  text-decoration: none;
+}
+
+.profile-link:hover {
+  text-decoration: underline;
+}
+
+mat-list-item {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
