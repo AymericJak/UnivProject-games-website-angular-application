@@ -1,7 +1,8 @@
-<div *ngIf="jeu">
-  <h2>Jeu : {{ jeu.nom }}</h2>
+<mat-card *ngIf="jeu">
+  <div class="container">
+  <mat-card-title>Jeu : {{ jeu.nom }}</mat-card-title>
 
-  <div class="description">{{ jeu.description }}</div>
+  <mat-card-subtitle>{{ jeu.description }}</mat-card-subtitle>
 
   <div class="info">
     <span class="label">Langue:</span>
@@ -9,12 +10,12 @@
   </div>
 
   <div class="info">
-    <span class="label">Categorie:</span>
+    <span class="label">Catégorie:</span>
     <span class="value">{{ jeu.categorie.nom }}</span>
   </div>
 
   <div class="info">
-    <span class="label">Theme:</span>
+    <span class="label">Thème:</span>
     <span class="value">{{ jeu.theme.nom }}</span>
   </div>
 
@@ -24,21 +25,37 @@
   </div>
 
   <div class="info">
-    <span class="label">Nombre like:</span>
+    <span class="label">Nombre de likes:</span>
     <span class="value">{{ nbLike }}</span>
   </div>
-  <button (click)="toggleLike()">{{ isLiked ? 'Unlike' : 'Like' }}</button>
+
+  <button mat-raised-button color="primary" (click)="toggleLike()">{{ isLiked ? 'Unlike' : 'Like' }}</button>
 
   <div class="info">
     <span class="label">Prix moyen:</span>
     <span class="value"></span>
   </div>
-  <button (click)="toggleSortOldestFirst()" [class.active]="showOldestFirst">Tri du plus ancien au plus récent</button>
-  <button (click)="toggleSortNewestFirst()" [class.active]="showNewestFirst">Tri du plus récent au plus ancien</button>
+
+  <button mat-raised-button (click)="toggleSortOldestFirst()" [ngClass]="{ 'active': showOldestFirst }">
+    Tri du plus ancien au plus récent
+  </button>
+
+  <button mat-raised-button (click)="toggleSortNewestFirst()" [ngClass]="{ 'active': showNewestFirst }">
+    Tri du plus récent au plus ancien
+  </button>
+
   <div class="commentaires">
     <h2>Liste des commentaires</h2>
     <div *ngFor="let commentaire of commentaires" class="comment-{{commentaire.id}}">
       <p>{{ commentaire.commentaire }}</p>
     </div>
   </div>
-</div>
+    <div *ngIf="user_id">
+    <button mat-raised-button color="primary" *ngIf="!isUserBuy()" (click)="openModalBuy()">Buy</button>
+    <button mat-raised-button color="primary" *ngIf="isUserBuy()" (click)="openModalUnBuy()">Cancel buy</button>
+    </div>
+  </div>
+
+<!--  <button mat-raised-button color="primary" (click)="openModalUnike()">Unlike</button>-->
+
+</mat-card>

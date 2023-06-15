@@ -7,6 +7,8 @@ import {Jeu} from "../models/jeu";
 import {CategorieRequest} from "../models/api/categorieRequest";
 import {ThemeRequest} from "../models/api/themeRequest";
 import {EditeurRequest} from "../models/api/editeurRequest";
+import {Achat} from "../models/achat";
+import {AchatRequest} from "../models/api/achat-request";
 
 @Injectable({
   providedIn: 'root'
@@ -62,6 +64,17 @@ export class GameService {
     const url: string = 'http://localhost:8000/api/jeu';
 
     return this.http.post<JeuRequest>(url, jeuRequest).pipe(
+      catchError(err => {
+        console.log('Erreur http : ', err);
+        throw err;
+      })
+    );
+  }
+
+  updateAchat(achat: Achat): Observable<AchatRequest> {
+    const url: string = 'http://localhost:8000/api/jeu/' + achat.jeu_id + '/like';
+
+    return this.http.post<AchatRequest>(url, achat).pipe(
       catchError(err => {
         console.log('Erreur http : ', err);
         throw err;
