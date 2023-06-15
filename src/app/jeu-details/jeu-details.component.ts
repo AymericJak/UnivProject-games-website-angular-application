@@ -29,32 +29,32 @@ export class JeuDetailsComponent {
 
   ngOnInit(): void {
     const id: number = +(this.route.snapshot.paramMap.get('id') || 0);
-    const userObservable: Observable<UserRequest> = this.userService.getUser();
-
-    userObservable.subscribe((user) => {
-      const user_id: number = user.adherent.id;
-      this.gameService.getJeu(id).subscribe({
-        next: (jeuResponse) => {
-          this.jeu = jeuResponse.jeu;
-          this.nbLike = jeuResponse.nb_likes;
-          this.noteMoyenne = jeuResponse.note_moyenne;
-          this.commentaires = jeuResponse.commentaires;
-
-          this.commentaires.sort((a, b) => {
-            if (a.user_id === user_id && b.user_id !== user_id) {
-              return -1;
-            } else if (a.user_id !== user_id && b.user_id === user_id) {
-              return 1;
-            } else {
-              return 0;
-            }
-          });
-        },
-        error: (err) => {
-          console.log('Erreur lors de la récupération des informations du jeu : ', err);
-        }
-      });
-    });
+    // const userObservable: Observable<UserRequest> = this.userService.getUser();
+    //
+    // userObservable.subscribe((user) => {
+    //   const user_id: number = user.adherent.id;
+    //   this.gameService.getJeu(id).subscribe({
+    //     next: (jeuResponse) => {
+    //       this.jeu = jeuResponse.jeu;
+    //       this.nbLike = jeuResponse.nb_likes;
+    //       this.noteMoyenne = jeuResponse.note_moyenne;
+    //       this.commentaires = jeuResponse.commentaires;
+    //
+    //       this.commentaires.sort((a, b) => {
+    //         if (a.user_id === user_id && b.user_id !== user_id) {
+    //           return -1;
+    //         } else if (a.user_id !== user_id && b.user_id === user_id) {
+    //           return 1;
+    //         } else {
+    //           return 0;
+    //         }
+    //       });
+    //     },
+    //     error: (err) => {
+    //       console.log('Erreur lors de la récupération des informations du jeu : ', err);
+    //     }
+    //   });
+    // });
 
   }
 
