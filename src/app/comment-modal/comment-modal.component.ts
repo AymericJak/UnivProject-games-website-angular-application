@@ -22,6 +22,7 @@ export class CommentModalComponent {
   etat:string='' ;
   profilCourant: Observable<UserRequest>;
   user_id: number=0;
+
   constructor(public dialogRef: MatDialogRef<CommentModalComponent>, public gameService: GameService, private route: ActivatedRoute, private http: HttpClient, private formBuilder: FormBuilder,
               @Inject(MAT_DIALOG_DATA) public data: { jeu: Jeu }, public userService: UsersService
   ) {
@@ -73,7 +74,7 @@ export class CommentModalComponent {
     }
   }
 
-  saveComment(): void {
+  createComment(): void {
     const id_jeu = this.jeu?.id;
     const url: string = `http://localhost:8000/api/jeu/${id_jeu}/commentaire`;
     const commentaireData = {
