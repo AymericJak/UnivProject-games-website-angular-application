@@ -7,6 +7,7 @@ export class TokenStorageService {
   token_key: string = "JWT_Token";
   constructor() { }
   signOut() {
+    window.sessionStorage.removeItem(this.token_key);
     window.sessionStorage.clear();
   }
 

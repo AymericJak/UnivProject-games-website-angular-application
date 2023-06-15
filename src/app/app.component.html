@@ -5,15 +5,19 @@
     <div class="example-button-row">
       <!-- TODO Check if the user is connected or not. -->
       <!-- TODO For connected users -->
-      <img class="header-avatar" ngSrc="favicon.ico" height="30" width="28" alt="Avatar">
-      Firstname
-      Lastname
-      <a mat-stroked-button class="header-button" href="">Mon profil</a>
-      <a mat-stroked-button class="header-button" routerLink="/jeux" href="">Liste des jeux</a>
-      <a mat-stroked-button class="header-button" (click)="logout()">Se déconnecter</a>
+      <div *ngIf="userIsConnected()">
+        <img class="header-avatar" ngSrc="favicon.ico" height="30" width="28" alt="Avatar">
+        Firstname
+        Lastname
+        <a mat-stroked-button class="header-button" routerLink="/profil">Mon profil</a>
+        <a mat-stroked-button class="header-button" routerLink="/jeux" href="">Liste des jeux</a>
+        <a mat-stroked-button class="header-button" (click)="logout()">Se déconnecter</a>
+      </div>
       <!-- TODO For unconnected users -->
-      <a mat-stroked-button class="header-button" routerLink="/login">Se connecter</a>
-      <a mat-stroked-button class="header-button" routerLink="/register">S'enregistrer</a>
+      <div *ngIf="!userIsConnected()">
+        <a mat-stroked-button class="header-button" routerLink="/login">Se connecter</a>
+        <a mat-stroked-button class="header-button" routerLink="/register">S'enregistrer</a>
+      </div>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
