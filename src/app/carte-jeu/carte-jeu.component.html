@@ -1,0 +1,36 @@
+<mat-card *ngIf="jeu">
+  <mat-card-header>
+    <mat-card-title>
+      {{ jeu.nom }}
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{ jeu.categorie.nom }} - {{ jeu.theme.nom }} - {{ jeu.langue }}
+    </mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="/assets/images/{{ jeu.url_media }}" alt="{{ jeu.nom }}">
+
+  <mat-card-content>
+    <p>{{ jeu.description }}</p>
+
+
+  </mat-card-content>
+</mat-card>
+
+
+<!--<mat-card class="card" *ngIf="jeuRequest">-->
+<!--  <mat-card-header>-->
+<!--    <mat-card-title>-->
+<!--      {{ jeuRequest.jeu.nom }}-->
+<!--    </mat-card-title>-->
+<!--    <mat-card-subtitle>-->
+<!--      {{ jeuRequest.jeu.categorie.nom }} - {{ jeuRequest.jeu.theme.nom }} - {{ jeuRequest.jeu.langue }}-->
+<!--    </mat-card-subtitle>-->
+<!--  </mat-card-header>-->
+<!--  <img mat-card-image src="/assets/images/{{ jeuRequest.jeu.url_media }}" alt="{{ jeuRequest.jeu.nom }}">-->
+
+<!--  <mat-card-content>-->
+<!--    <p>{{ jeuRequest.jeu.description }}</p>-->
+
+
+<!--  </mat-card-content>-->
+<!--</mat-card>-->

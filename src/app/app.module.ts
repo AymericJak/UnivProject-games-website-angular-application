@@ -25,6 +25,9 @@ import {MatInputModule} from "@angular/material/input";
 import {ProfilComponent} from "./components/profil/profil.component";
 import {MatListModule} from "@angular/material/list";
 import {AuthInterceptor} from "./auth.interceptor";
+import { CarteJeuComponent } from './carte-jeu/carte-jeu.component';
+import {NgOptimizedImage} from "@angular/common";
+import { CarteJeuNoteComponent } from './carte-jeu/carte-jeu-note/carte-jeu-note.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,8 @@ import {AuthInterceptor} from "./auth.interceptor";
     HomeComponent,
     ProfilComponent,
     JeuxListeComponent,
+    CarteJeuComponent,
+    CarteJeuNoteComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +61,7 @@ import {AuthInterceptor} from "./auth.interceptor";
     MatTableModule,
     MatListModule,
     MatTableModule,
+    NgOptimizedImage,
   ],
   providers: [
     GameService,
