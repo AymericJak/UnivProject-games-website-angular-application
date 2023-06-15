@@ -1,0 +1,16 @@
+<h2>Nouveau commentaire</h2>
+<form>
+  <div>
+    <label for="comment">Commentaire:</label>
+    <textarea id="comment" name="comment" [(ngModel)]="commentaire"></textarea>
+
+  </div>
+  <div>
+    <label for="rating">Note:</label>
+    <input id="rating" name="rating" type="number" [(ngModel)]="note">
+  </div>
+  <div class="modal-buttons">
+    <button mat-button (click)="cancel()">Annuler</button>
+    <button mat-raised-button color="primary" (click)="saveComment()">Enregistrer</button>
+  </div>
+</form>

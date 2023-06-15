@@ -8,6 +8,8 @@ import {HttpClient} from "@angular/common/http";
 import {Jeu} from "../models/jeu";
 import {UsersService} from "../services/users/users.service";
 import {UserRequest} from "../models/UserRequest";
+import {MatDialog} from "@angular/material/dialog";
+import {CommentModalComponent} from "../comment-modal/comment-modal.component";
 
 @Component({
   selector: 'app-game-details',
@@ -26,7 +28,7 @@ export class JeuDetailsComponent {
   showOldestFirst: boolean = false;
   showNewestFirst: boolean = false;
 
-  constructor(public gameService: GameService, private route: ActivatedRoute, private http: HttpClient, public userService: UsersService) {
+  constructor(public gameService: GameService, private route: ActivatedRoute, private http: HttpClient, public userService: UsersService,public dialog: MatDialog) {
     this.profilCourant = this.userService.getUser();
   }
 
@@ -120,5 +122,11 @@ export class JeuDetailsComponent {
     } else {
       this.commentaires = this.commentaires.slice();
     }
+  }
+
+  openCommentModal(): void {
+    const dialogRef = this.dialog.open(CommentModalComponent, {
+      width: '400px' // Définir la largeur souhaitée pour la fenêtre modale
+    });
   }
 }

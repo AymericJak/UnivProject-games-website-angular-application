@@ -11,7 +11,7 @@ import {HomeComponent} from "./components/home/home.component";
 import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ShowTokenComponent} from './show-token/show-token.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
@@ -29,6 +29,8 @@ import { JeuCreationComponent } from './components/jeu-creation/jeu-creation.com
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {NgOptimizedImage} from "@angular/common";
+import { CommentModalComponent } from './comment-modal/comment-modal.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import {NgOptimizedImage} from "@angular/common";
     ProfilComponent,
     JeuxListeComponent,
     JeuCreationComponent,
+    CommentModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,7 +67,10 @@ import {NgOptimizedImage} from "@angular/common";
     MatListModule,
     MatTableModule,
     NgOptimizedImage,
-    MatGridListModule
+    MatGridListModule,
+    FormsModule,
+    MatDialogModule,
+
   ],
   providers: [
     GameService,
