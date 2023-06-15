@@ -2,6 +2,8 @@ import {Component} from '@angular/core';
 import {GameService} from "../services/game.service";
 import {HttpClient} from "@angular/common/http";
 import {JeuxRequest} from "../models/api/jeuxRequest";
+import {AuthentificationService} from "../authentification.service";
+import {JeuRequest} from "../models/api/jeuRequest";
 
 @Component({
   selector: 'app-jeux-liste',
@@ -10,8 +12,9 @@ import {JeuxRequest} from "../models/api/jeuxRequest";
 })
 export class JeuxListeComponent {
   dataSource: JeuxRequest = <JeuxRequest>{};
-
-  constructor(private gameService: GameService, private http: HttpClient) {
+  authenticated: boolean = this.authService.userIsConnected();
+  jeuRequests: JeuRequest[] = []
+  constructor(private gameService: GameService, private http: HttpClient, private authService: AuthentificationService) {
   }
 
   ngOnInit(): void {
@@ -22,6 +25,6 @@ export class JeuxListeComponent {
       error: () => {
         console.log('Erreur lors de la récupération des jeux : ');
       }
-    })
+    });
   }
 }

@@ -12,25 +12,10 @@
   <mat-card-content>
     <p>{{ jeu.description }}</p>
 
+    <div *ngIf="authenticated" class="more-informations">
+      <p>NOTE : {{ jeuRequest.note_moyenne }}</p>
+      <p>Nombre de likes : {{ jeuRequest.nb_likes }}</p>
+    </div>
 
   </mat-card-content>
 </mat-card>
-
-
-<!--<mat-card class="card" *ngIf="jeuRequest">-->
-<!--  <mat-card-header>-->
-<!--    <mat-card-title>-->
-<!--      {{ jeuRequest.jeu.nom }}-->
-<!--    </mat-card-title>-->
-<!--    <mat-card-subtitle>-->
-<!--      {{ jeuRequest.jeu.categorie.nom }} - {{ jeuRequest.jeu.theme.nom }} - {{ jeuRequest.jeu.langue }}-->
-<!--    </mat-card-subtitle>-->
-<!--  </mat-card-header>-->
-<!--  <img mat-card-image src="/assets/images/{{ jeuRequest.jeu.url_media }}" alt="{{ jeuRequest.jeu.nom }}">-->
-
-<!--  <mat-card-content>-->
-<!--    <p>{{ jeuRequest.jeu.description }}</p>-->
-
-
-<!--  </mat-card-content>-->
-<!--</mat-card>-->

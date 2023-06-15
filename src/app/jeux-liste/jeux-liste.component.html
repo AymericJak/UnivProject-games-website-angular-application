@@ -3,5 +3,5 @@
 </div>
 
 <div *ngFor="let jeu of dataSource.jeux" class="card-spacing">
-  <app-carte-jeu [jeu]="jeu"></app-carte-jeu>
+  <app-carte-jeu [jeu]="jeu" [authenticated]="authenticated"></app-carte-jeu>
 </div>

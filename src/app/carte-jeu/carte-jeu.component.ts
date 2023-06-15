@@ -1,6 +1,12 @@
 import {Component, Input} from '@angular/core';
 import {JeuRequest} from "../models/api/jeuRequest";
 import {Jeu} from "../models/jeu";
+import {UsersService} from "../services/users/users.service";
+import {Observable} from "rxjs";
+import {UserRequest} from "../models/UserRequest";
+import {JeuxRequest} from "../models/api/jeuxRequest";
+import {GameService} from "../services/game.service";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-carte-jeu',
@@ -9,4 +15,24 @@ import {Jeu} from "../models/jeu";
 })
 export class CarteJeuComponent {
   @Input() jeu?: Jeu;
+  @Input() authenticated?: boolean;
+  jeuRequest: JeuRequest = <JeuRequest>{}
+
+  constructor(private gameService: GameService, private http: HttpClient) {
+  }
+
+  ngOnInit(): void {
+    if (this.jeu) {
+      this.gameService.getJeu(this.jeu?.id).subscribe({
+        next: jeuResponse => {
+          this.jeuRequest = jeuResponse;
+        },
+        error: () => {
+          console.log('Erreur lors de la récupération des jeux : ');
+        }
+      })
+    }
+  }
+
+
 }
