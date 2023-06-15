@@ -22,7 +22,7 @@ export class CarteJeuComponent {
   }
 
   ngOnInit(): void {
-    if (this.jeu) {
+    if (this.authenticated && this.jeu) {
       this.gameService.getJeu(this.jeu?.id).subscribe({
         next: jeuResponse => {
           this.jeuRequest = jeuResponse;
@@ -33,6 +33,4 @@ export class CarteJeuComponent {
       })
     }
   }
-
-
 }
