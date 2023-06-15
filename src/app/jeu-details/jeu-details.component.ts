@@ -22,39 +22,47 @@ export class JeuDetailsComponent {
   noteMoyenne: number = 0;
   nbLike: number = 0;
   commentaires: CommentaireRequest[] = []
-
+  profilCourant: Observable<UserRequest>;
+  showOldestFirst: boolean = false;
+  showNewestFirst: boolean = false;
 
   constructor(public gameService: GameService, private route: ActivatedRoute, private http: HttpClient, public userService: UsersService) {
+    this.profilCourant = this.userService.getUser();
   }
 
   ngOnInit(): void {
     const id: number = +(this.route.snapshot.paramMap.get('id') || 0);
-    // const userObservable: Observable<UserRequest> = this.userService.getUser();
-    //
-    // userObservable.subscribe((user) => {
-    //   const user_id: number = user.adherent.id;
-    //   this.gameService.getJeu(id).subscribe({
-    //     next: (jeuResponse) => {
-    //       this.jeu = jeuResponse.jeu;
-    //       this.nbLike = jeuResponse.nb_likes;
-    //       this.noteMoyenne = jeuResponse.note_moyenne;
-    //       this.commentaires = jeuResponse.commentaires;
-    //
-    //       this.commentaires.sort((a, b) => {
-    //         if (a.user_id === user_id && b.user_id !== user_id) {
-    //           return -1;
-    //         } else if (a.user_id !== user_id && b.user_id === user_id) {
-    //           return 1;
-    //         } else {
-    //           return 0;
-    //         }
-    //       });
-    //     },
-    //     error: (err) => {
-    //       console.log('Erreur lors de la récupération des informations du jeu : ', err);
-    //     }
-    //   });
-    // });
+    const userObservable: Observable<UserRequest> = this.userService.getUser();
+    if (id){
+      this.profilCourant = this.userService.getUser(parseInt(String(id)));
+    }
+    else {
+      this.profilCourant = this.userService.getUser();
+    }
+    this.gameService.getJeu(id).subscribe({
+      next: (jeuResponse) => {
+        this.jeu = jeuResponse.jeu;
+        this.nbLike = jeuResponse.nb_likes;
+        this.noteMoyenne = jeuResponse.note_moyenne;
+        this.commentaires = jeuResponse.commentaires;
+        this.sortCommentaires();
+      },
+      error: (err) => {
+        console.log('Erreur lors de la récupération des informations du jeu : ', err);
+      }
+    });
+    userObservable.subscribe((user) => {
+      const user_id: number = user.adherent.id;
+      this.commentaires.sort((a, b) => {
+        if (a.user_id === user_id && b.user_id !== user_id) {
+          return -1;
+        } else if (a.user_id !== user_id && b.user_id === user_id) {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
+    });
 
   }
 
@@ -67,7 +75,7 @@ export class JeuDetailsComponent {
       jeuRequest => {
         if (jeuRequest.jeu.id) {
           const id_jeu = jeuRequest.jeu.id;
-          const url: string = `http://localhost:8000/api/jeu/${id_jeu}`;
+          const url: string = `http://localhost:8000/api/jeu/${id_jeu}/like`;
           this.http
             .post(url, {})
             .subscribe(
@@ -87,5 +95,30 @@ export class JeuDetailsComponent {
         console.log('Erreur lors de la récupération des commentaires : ', err);
       }
     );
+  }
+  toggleSortOldestFirst(): void {
+    this.showOldestFirst = !this.showOldestFirst;
+    this.showNewestFirst = false;
+    this.sortCommentaires();
+  }
+
+  toggleSortNewestFirst(): void {
+    this.showNewestFirst = !this.showNewestFirst;
+    this.showOldestFirst = false;
+    this.sortCommentaires();
+  }
+
+  sortCommentaires(): void {
+    if (this.showOldestFirst) {
+      this.commentaires = this.commentaires.slice().sort((a, b) => {
+        return new Date(a.date_com).getTime() - new Date(b.date_com).getTime();
+      });
+    } else if (this.showNewestFirst) {
+      this.commentaires = this.commentaires.slice().sort((a, b) => {
+        return new Date(b.date_com).getTime() - new Date(a.date_com).getTime();
+      });
+    } else {
+      this.commentaires = this.commentaires.slice();
+    }
   }
 }
