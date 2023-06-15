@@ -38,9 +38,9 @@ export class AuthentificationService {
   }
 
   logout(): void {
+    this.tokenStorageService.signOut();
     this.http.post<any>(environment.apiUrl + "/logout", {}).subscribe(
       response => {
-        this.tokenStorageService.signOut();
         console.log(response);
       },
       error => {
@@ -51,6 +51,7 @@ export class AuthentificationService {
   }
 
   public userIsConnected(): boolean {
-    return this.tokenStorageService.token_key != '';
+    console.log(this.tokenStorageService.getToken())
+    return this.tokenStorageService.getToken() != '';
   }
 }
