@@ -1,7 +1,10 @@
 <mat-card *ngIf="jeu">
   <mat-card-header>
+
     <mat-card-title>
-      {{ jeu.nom }}
+      <a [routerLink]="['/jeux', jeu.id]">
+        {{ jeu.nom }}
+      </a>
     </mat-card-title>
     <mat-card-subtitle>
       {{ jeu.categorie.nom }} - {{ jeu.theme.nom }} - {{ jeu.langue }}
@@ -18,4 +21,7 @@
     </div>
 
   </mat-card-content>
+  <mat-card-actions align="end">
+    <a mat-button [routerLink]="['/jeux', jeu.id]">VOIR</a>
+  </mat-card-actions>
 </mat-card>
