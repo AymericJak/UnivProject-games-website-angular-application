@@ -32,14 +32,4 @@ export class ProfileComponent implements OnInit {
     }
     this.profilCourant$.subscribe((userRequest: UserRequest) => { });
   }
-
-  public getGameName(id: number) {
-    console.log(this.gameService.getJeu(id));
-    this.gameService.getJeu(+id).subscribe({
-      next: (jeuResponse => {
-        this.gameName = jeuResponse.jeu.nom;
-      })
-    });
-    return this.gameName;
-  }
 }

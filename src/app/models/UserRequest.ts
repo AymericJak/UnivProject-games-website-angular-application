@@ -41,7 +41,7 @@ interface Achat {
 }
 
 interface Like {
-  user_id: number;
   jeu_id: number;
+  jeu_nom: string;
 }
 
