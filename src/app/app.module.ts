@@ -28,6 +28,9 @@ import {AuthInterceptor} from "./auth.interceptor";
 import { CarteJeuComponent } from './carte-jeu/carte-jeu.component';
 import {NgOptimizedImage} from "@angular/common";
 import { CarteJeuNoteComponent } from './carte-jeu/carte-jeu-note/carte-jeu-note.component';
+import { JeuCreationComponent } from './components/jeu-creation/jeu-creation.component';
+import {MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -44,6 +47,7 @@ import { CarteJeuNoteComponent } from './carte-jeu/carte-jeu-note/carte-jeu-note
     JeuxListeComponent,
     CarteJeuComponent,
     CarteJeuNoteComponent,
+    JeuCreationComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,13 +59,16 @@ import { CarteJeuNoteComponent } from './carte-jeu/carte-jeu-note/carte-jeu-note
     MatButtonModule,
     MatCardModule,
     HttpClientModule,
-    MatGridListModule,
+    MatTableModule,
     MatFormFieldModule,
+    MatOptionModule,
+    MatSelectModule,
     MatInputModule,
     MatTableModule,
     MatListModule,
     MatTableModule,
     NgOptimizedImage,
+    MatGridListModule
   ],
   providers: [
     GameService,

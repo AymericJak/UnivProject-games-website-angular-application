@@ -1,3 +1,7 @@
+<div class="button-container">
+  <button mat-raised-button color="primary" routerLink="/jeux/create">Ajouter un jeu</button>
+</div>
+
 <div *ngFor="let jeu of dataSource.jeux" class="card-spacing">
   <app-carte-jeu [jeu]="jeu"></app-carte-jeu>
 </div>

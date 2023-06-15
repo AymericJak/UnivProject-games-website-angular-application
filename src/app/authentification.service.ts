@@ -4,8 +4,6 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "./environment";
 import {Router} from "@angular/router";
 
-const TOKEN_KEY = 'auth-token';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -40,15 +38,20 @@ export class AuthentificationService {
   }
 
   logout(): void {
+    this.tokenStorageService.signOut();
     this.http.post<any>(environment.apiUrl + "/logout", {}).subscribe(
       response => {
-        this.tokenStorageService.signOut();
         console.log(response);
       },
       error => {
         console.log('Logout failed:', error);
       }
     );
-   this.router.navigate(['/']);
-   }
+   this.router.navigate(['/']).then(r => r);
+  }
+
+  public userIsConnected(): boolean {
+    console.log(this.tokenStorageService.getToken())
+    return this.tokenStorageService.getToken() != '';
+  }
 }

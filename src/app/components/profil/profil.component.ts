@@ -18,7 +18,7 @@ export class ProfilComponent implements OnInit {
 
   ngOnInit(): void {
     let id = this.routes.snapshot.paramMap.get('id');
-    if (id){
+    if (id) {
       this.profilCourant$ = this.profilService.getUser(parseInt(id));
     }
     else {
@@ -28,6 +28,5 @@ export class ProfilComponent implements OnInit {
       console.log(userRequest.adherent.id)
       console.log(userRequest.adherent.login);
     });
-     // Remplacez 'id' par l'identifiant de l'adhérent actuel
   }
 }
