@@ -53,6 +53,7 @@ import {MatChipsModule} from "@angular/material/chips";
     CarteJeuComponent,
     CarteJeuNoteComponent,
     JeuCreationComponent,
+    JeuModificationComponent,
     ProfileUpdateFormComponent,
     CommentModalComponent,
   ],
@@ -80,7 +81,9 @@ import {MatChipsModule} from "@angular/material/chips";
     MatChipsModule,
     FormsModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
+    MatGridListModule,
+    MatIconModule,
   ],
   providers: [
     GameService,
