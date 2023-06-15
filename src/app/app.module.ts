@@ -25,6 +25,9 @@ import {MatInputModule} from "@angular/material/input";
 import {ProfilComponent} from "./components/profil/profil.component";
 import {MatListModule} from "@angular/material/list";
 import {AuthInterceptor} from "./auth.interceptor";
+import { JeuCreationComponent } from './components/jeu-creation/jeu-creation.component';
+import {MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
 import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
@@ -40,25 +43,29 @@ import {NgOptimizedImage} from "@angular/common";
     HomeComponent,
     ProfilComponent,
     JeuxListeComponent,
+    JeuCreationComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        HttpClientModule,
-        ReactiveFormsModule,
-        MatToolbarModule,
-        MatButtonModule,
-        MatCardModule,
-        HttpClientModule,
-        MatGridListModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatTableModule,
-        MatListModule,
-        MatTableModule,
-        NgOptimizedImage,
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatCardModule,
+    HttpClientModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatInputModule,
+    MatTableModule,
+    MatListModule,
+    MatTableModule,
+    NgOptimizedImage,
+    MatGridListModule
+  ],
   providers: [
     GameService,
     MatGridListModule,

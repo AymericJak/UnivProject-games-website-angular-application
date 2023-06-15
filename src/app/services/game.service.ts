@@ -3,6 +3,10 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, map, Observable, of} from "rxjs";
 import {JeuRequest} from "../models/api/jeuRequest";
 import {JeuxRequest} from "../models/api/jeuxRequest";
+import {Jeu} from "../models/jeu";
+import {CategorieRequest} from "../models/api/categorieRequest";
+import {ThemeRequest} from "../models/api/themeRequest";
+import {EditeurRequest} from "../models/api/editeurRequest";
 
 @Injectable({
   providedIn: 'root'
@@ -54,13 +58,10 @@ export class GameService {
     );
   }
 
-  createJeu(jeuRequest: JeuRequest): Observable<JeuRequest> {
+  createJeu(jeuRequest: Jeu): Observable<Jeu> {
     const url: string = 'http://localhost:8000/api/jeu';
-    const httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json'})
-    };
 
-    return this.http.post<JeuRequest>(url, jeuRequest, httpOptions).pipe(
+    return this.http.post<Jeu>(url, jeuRequest).pipe(
       catchError(err => {
         console.log('Erreur http : ', err);
         throw err;
@@ -83,5 +84,38 @@ export class GameService {
   }
 
   uploadMedia(id: number) { //TODO
+  }
+
+  getCategories(): Observable<CategorieRequest[]> {
+    const url: string = 'http://localhost:8000/api/categories';
+    return this.http.get<CategorieRequest[]>(url)
+      .pipe(
+        catchError(err => {
+          console.log('Erreur http : ', err);
+          return of([]);
+        })
+      );
+  }
+
+  getThemes(): Observable<ThemeRequest[]> {
+    const url: string = 'http://localhost:8000/api/themes';
+    return this.http.get<ThemeRequest[]>(url)
+      .pipe(
+        catchError(err => {
+          console.log('Erreur http : ', err);
+          return of([]);
+        })
+      );
+  }
+
+  getEditeurs(): Observable<EditeurRequest[]> {
+    const url: string = 'http://localhost:8000/api/editeurs';
+    return this.http.get<EditeurRequest[]>(url)
+      .pipe(
+        catchError(err => {
+          console.log('Erreur http : ', err);
+          return of([]);
+        })
+      );
   }
 }
