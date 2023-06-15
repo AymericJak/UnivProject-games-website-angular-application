@@ -1,0 +1,76 @@
+<div *ngIf="profilCourant$ | async as profile">
+  <mat-card class="profile-card">
+    <div class="profile-card-content">
+      <mat-card-header>
+        <img mat-card-avatar id="profile-avatar" class="profile-header-image" [srcset]="profile.adherent.avatar" alt="Avatar du profil">
+        <mat-card-title>{{ profile.adherent.nom }} {{ profile.adherent.prenom }}</mat-card-title>
+        <mat-card-subtitle>{{ profile.adherent.login }} • {{ profile.adherent.pseudo }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-actions>
+        <button mat-button>MODIFIER MON PROFIL</button>
+        <button mat-button>MODIFIER MON AVATAR</button>
+      </mat-card-actions>
+    </div>
+
+    <mat-card-content class="profile-card-content">
+      <h2 class="mat-title">Commentaires postés</h2>
+      <mat-card *ngFor="let comment of profile.commentaires" class="card-for-comment">
+        <mat-card-header>
+          <mat-card-title>
+            <h3>État : {{ comment.etat }}</h3>
+          </mat-card-title>
+          <mat-card-subtitle>
+            {{ comment.note }} / 5
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            {{ comment.commentaire }}
+          </p>
+        </mat-card-content>
+        <mat-card-footer>
+          <div class="card-footer-date-for-comment">
+            {{ comment.date_com }}
+          </div>
+        </mat-card-footer>
+      </mat-card>
+    </mat-card-content>
+
+    <mat-card-content class="profile-card-content">
+      <h2 class="mat-title">Jeux achetés</h2>
+      <mat-table [dataSource]="profile.achats">
+        <ng-container matColumnDef="jeu_id">
+          <mat-header-cell *matHeaderCellDef>Nom du jeu</mat-header-cell>
+          <mat-cell *matCellDef="let jeuAchete">{{ jeuAchete['jeu_id'] }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="date_achat">
+          <mat-header-cell *matHeaderCellDef>Date d'achat</mat-header-cell>
+          <mat-cell *matCellDef="let jeuAchete">{{ jeuAchete['date_achat'] }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="lieu_achat">
+          <mat-header-cell *matHeaderCellDef>Lieu d'achat</mat-header-cell>
+          <mat-cell *matCellDef="let jeuAchete">{{ jeuAchete['lieu_achat'] }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="prix">
+          <mat-header-cell *matHeaderCellDef>Prix</mat-header-cell>
+          <mat-cell *matCellDef="let jeuAchete">{{ jeuAchete['prix'] }}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="['jeu_id', 'date_achat', 'lieu_achat', 'prix']"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: ['jeu_id', 'date_achat', 'lieu_achat', 'prix']"></mat-row>
+      </mat-table>
+    </mat-card-content>
+
+    <!-- TODO Use game details to do it -->
+    <mat-card-content class="profile-card-content">
+      <h2 class="mat-title">Jeux aimés</h2>
+      <mat-list>
+        <mat-list-item *ngFor="let jeuAime of profile.likes">
+          <p>Nom du jeu: {{ jeuAime.jeu_id }}</p>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+
+  </mat-card>
+</div>
