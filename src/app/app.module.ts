@@ -22,6 +22,8 @@ import {MatTableModule} from "@angular/material/table";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import {ProfilComponent} from "./components/profil/profil.component";
+import {MatListModule} from "@angular/material/list";
 import {AuthInterceptor} from "./auth.interceptor";
 
 @NgModule({
@@ -35,6 +37,7 @@ import {AuthInterceptor} from "./auth.interceptor";
     ContactComponent,
     JeuDetailsComponent,
     HomeComponent,
+    ProfilComponent,
     JeuxListeComponent,
   ],
   imports: [
@@ -47,6 +50,11 @@ import {AuthInterceptor} from "./auth.interceptor";
     MatButtonModule,
     MatCardModule,
     HttpClientModule,
+    MatGridListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    MatListModule,
     MatTableModule,
   ],
   providers: [

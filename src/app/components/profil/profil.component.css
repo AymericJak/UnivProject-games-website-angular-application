@@ -1,0 +1,8 @@
+.commentaires-container {
+  height: 200px; /* Hauteur fixe de la section des commentaires */
+  overflow-y: auto; /* Activer la barre de défilement uniquement lorsque nécessaire */
+}
+
+.commentaires-list {
+  padding-right: 16px; /* Ajouter un peu d'espace pour éviter que les commentaires ne soient coupés par la barre de défilement */
+}
