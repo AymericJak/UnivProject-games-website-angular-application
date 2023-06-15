@@ -25,12 +25,17 @@ import {MatInputModule} from "@angular/material/input";
 import {ProfileComponent} from "./components/profile/profile.component";
 import {MatListModule} from "@angular/material/list";
 import {AuthInterceptor} from "./auth.interceptor";
+import { CarteJeuComponent } from './carte-jeu/carte-jeu.component';
+import {NgOptimizedImage} from "@angular/common";
+import { CarteJeuNoteComponent } from './carte-jeu/carte-jeu-note/carte-jeu-note.component';
 import { JeuCreationComponent } from './components/jeu-creation/jeu-creation.component';
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
+<<<<<<< src/app/app.module.ts
 import {NgOptimizedImage} from "@angular/common";
 import { CommentModalComponent } from './comment-modal/comment-modal.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -45,6 +50,8 @@ import {MatDialogModule} from "@angular/material/dialog";
     HomeComponent,
     ProfileComponent,
     JeuxListeComponent,
+    CarteJeuComponent,
+    CarteJeuNoteComponent,
     JeuCreationComponent,
     CommentModalComponent,
   ],
@@ -70,7 +77,7 @@ import {MatDialogModule} from "@angular/material/dialog";
     MatGridListModule,
     FormsModule,
     MatDialogModule,
-
+    MatIconModule
   ],
   providers: [
     GameService,

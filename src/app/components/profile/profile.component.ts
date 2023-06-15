@@ -3,6 +3,9 @@ import {Observable} from "rxjs";
 import {UserRequest} from "../../models/UserRequest";
 import {UsersService} from "../../services/users/users.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {GameService} from "../../services/game.service";
+import {JeuRequest} from "../../models/api/jeuRequest";
+import {Jeu} from "../../models/jeu";
 
 @Component({
   selector: 'app-profile',
@@ -10,9 +13,12 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  profilCourant$: Observable<UserRequest>;
 
-  constructor(private profilService: UsersService, private routes: ActivatedRoute) {
+  public profilCourant$: Observable<UserRequest>;
+
+  public gameName: string = '';
+
+  constructor(private profilService: UsersService, private routes: ActivatedRoute, private gameService: GameService) {
     this.profilCourant$ = this.profilService.getUser();
   }
 
@@ -24,9 +30,6 @@ export class ProfileComponent implements OnInit {
     else {
       this.profilCourant$ = this.profilService.getUser();
     }
-    this.profilCourant$.subscribe((userRequest: UserRequest) => {
-      console.log(userRequest.adherent.id);
-      console.log(userRequest.adherent.login);
-    });
+    this.profilCourant$.subscribe((userRequest: UserRequest) => { });
   }
 }
