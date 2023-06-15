@@ -38,6 +38,7 @@ export class AuthentificationService {
   }
 
   logout(): void {
+    this.tokenStorageService.signOut();
     this.http.post<any>(environment.apiUrl + "/logout", {}).subscribe(
       response => {
         console.log(response);
