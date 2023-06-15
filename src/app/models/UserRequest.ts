@@ -1,9 +1,3 @@
-/**
- * User model.
- */
-/**
- * User model.
- */
 export interface UserRequest {
 
   status: string;

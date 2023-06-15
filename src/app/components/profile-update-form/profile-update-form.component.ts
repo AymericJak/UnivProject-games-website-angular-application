@@ -1,9 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {UsersService} from "../../services/users/users.service";
 import {Observable} from "rxjs";
 import {UserRequest} from "../../models/UserRequest";
+import {UpdateProfileRequest} from "../../requests/UpdateProfileRequest";
+import {UpdateProfileResponse} from "../../responses/UpdateProfileResponse";
 
 @Component({
   selector: 'app-profile-update-form',
@@ -24,39 +26,59 @@ export class ProfileUpdateFormComponent implements OnInit {
 
   public password: FormControl = new FormControl('', [Validators.required]);
 
-
   public currentProfil$: Observable<UserRequest>;
 
-  public loginValue: string = '';
+  public id: number = 0;
 
-  public emailValue: string = '';
+  public hide: boolean = true;
 
-  public nomValue: string = '';
-
-  public prenomValue: string = '';
-
-  public pseudoValue: string = '';
-
-  public passwordValue: string = '';
-
-  constructor(public route: ActivatedRoute, private profilService: UsersService) {
+  constructor(public route: ActivatedRoute, private profilService: UsersService, private router: Router) {
     this.currentProfil$ = this.profilService.getUser();
   }
 
   ngOnInit(): void {
-    const id: number = +(this.route.snapshot.paramMap.get('id') || 0);
-    this.currentProfil$ = this.profilService.getUser(parseInt(String(id)));
+    this.id = +(this.route.snapshot.paramMap.get('id') || 0);
+    this.currentProfil$ = this.profilService.getUser(parseInt(String(this.id)));
     this.currentProfil$.subscribe((userResponse: UserRequest) => {
-      this.loginValue = userResponse.adherent.login;
-      this.emailValue = userResponse.adherent.email;
-      this.nomValue = userResponse.adherent.nom;
-      this.prenomValue = userResponse.adherent.prenom;
-      this.pseudoValue = userResponse.adherent.pseudo;
+      this.login.setValue(userResponse.adherent.login);
+      this.email.setValue(userResponse.adherent.email);
+      this.nom.setValue(userResponse.adherent.nom);
+      this.prenom.setValue(userResponse.adherent.prenom);
+      this.pseudo.setValue(userResponse.adherent.pseudo);
     });
   }
 
+  /**
+   * Event for edit button.
+   */
   public editButtonEvent(): void {
-    console.log(this.login.value);
+    let valid: boolean = true;
+    for (let formElementValue of [this.login.value, this.email.value, this.nom.value, this.prenom.value, this.pseudo.value, this.password.value]) {
+      if (formElementValue == '') {
+        valid = false;
+        break;
+      }
+    }
+    if (valid) {
+      const newUser: UpdateProfileRequest = {
+        id: this.id,
+        login: this.login.value,
+        email: this.email.value,
+        nom: this.nom.value,
+        prenom: this.prenom.value,
+        password: this.password.value,
+        pseudo: this.pseudo.value,
+      }
+      this.profilService.updateUser(this.id, newUser).subscribe(
+        (updatedUser: UpdateProfileResponse) => {
+          console.log('Updated');
+        },
+        (error) => {
+          console.error('Erreur lors de la mise à jour de l\'utilisateur : ', error);
+        }
+      )
+      this.router.navigate(['/profile']).then(r => r);
+    }
   }
 
   /**
