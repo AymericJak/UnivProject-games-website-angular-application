@@ -16,6 +16,7 @@ export interface UserRequest {
     pseudo: string;
     login: string;
     avatar: string;
+    email: string;
   };
 
   commentaires: Commentaire[];

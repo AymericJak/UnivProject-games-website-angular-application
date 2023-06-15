@@ -32,6 +32,7 @@ import { JeuCreationComponent } from './components/jeu-creation/jeu-creation.com
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {MatIconModule} from "@angular/material/icon";
+import { ProfileUpdateFormComponent } from './components/profile-update-form/profile-update-form.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import {MatIconModule} from "@angular/material/icon";
     CarteJeuComponent,
     CarteJeuNoteComponent,
     JeuCreationComponent,
+    ProfileUpdateFormComponent,
   ],
   imports: [
     BrowserModule,
