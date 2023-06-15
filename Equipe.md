@@ -24,9 +24,9 @@
 
 ## Page d'accueil
 
-### PA01 : Le bandeau de navigation
+### PA01 : Le bandeau de navigation - Sébastien COZE
 
-...
+J'ai d'abord créé le header sans prendre en compte si l'utilisateur était connecté car le service d'authentification n'est pas encore développé.
 
 ### PA02 : Le pied de page
 
@@ -93,9 +93,9 @@
 ## Gestion des utilisateurs
 
 
-### S02 : Service de gestion des adhérents
+### S02 : Service de gestion des adhérents - Sébastien COZE
 
-...
+J'ai dû modifier la requête pour obtenir profil sur l'API pour que, par défaut, on retourne le profil de l'utilisateur.
 
 ### A01 : Composant Profil adhérent
 

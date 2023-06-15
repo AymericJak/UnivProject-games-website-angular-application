@@ -5,30 +5,24 @@
     <div class="example-button-row">
       <!-- TODO Check if the user is connected or not. -->
       <!-- TODO For connected users -->
-      <img class="header-avatar" ngSrc="favicon.ico" height="30" width="28" alt="Avatar">
-      Firstname
-      Lastname
-      <a mat-stroked-button class="header-button" href="">Mon profil</a>
-      <a mat-stroked-button class="header-button" href="">Liste des jeux</a>
-      <a mat-stroked-button class="header-button" href="">Se déconnecter</a>
+      <div *ngIf="userIsConnected()">
+        <img class="header-avatar" ngSrc="favicon.ico" height="30" width="28" alt="Avatar">
+        <span *ngIf="currentProfile$ | async as profil">
+          {{ profil.adherent.nom }}
+          {{ profil.adherent.prenom }}
+        </span>
+        <a mat-stroked-button class="header-button" routerLink="/profile">Mon profil</a>
+        <a mat-stroked-button class="header-button" routerLink="/jeux" href="">Liste des jeux</a>
+        <a mat-stroked-button class="header-button" (click)="logout()">Se déconnecter</a>
+      </div>
       <!-- TODO For unconnected users -->
-      <a mat-stroked-button class="header-button" href="">Se connecter</a>
-      <a mat-stroked-button class="header-button" href="">S'enregistrer</a>
+      <div *ngIf="!userIsConnected()">
+        <a mat-stroked-button class="header-button" routerLink="/login">Se connecter</a>
+        <a mat-stroked-button class="header-button" routerLink="/register">S'enregistrer</a>
+      </div>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
 <router-outlet></router-outlet>
 <app-footer></app-footer>
-
-<!--
-mettre ca dans le jeu.components.ts
-selectJeu(row: Jeu) {
-    if(this.jeuSelectionne !== undefined) {
-      this.jeuSelectionne = row;
-    }
-  }
-et mettre ça dans le jeu.components.
-<app-jeu-details [jeu]="jeuSelectionne"></app-jeu-details>
-
--->
 
