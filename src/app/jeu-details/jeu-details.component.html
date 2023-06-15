@@ -34,16 +34,26 @@
         <span class="value">{{ prixMoyen }}</span>
       </div>
 
-      <button mat-stroked-button (click)="toggleSortOldestFirst()" [class.active]="showOldestFirst">Tri du plus ancien au plus récent
+      <button mat-stroked-button (click)="toggleSortOldestFirst()" [class.active]="showOldestFirst">Tri du plus ancien
+        au plus récent
       </button>
-      <button mat-stroked-button (click)="toggleSortNewestFirst()" [class.active]="showNewestFirst">Tri du plus récent au plus ancien
+      <button mat-stroked-button (click)="toggleSortNewestFirst()" [class.active]="showNewestFirst">Tri du plus récent
+        au plus ancien
       </button>
+
+      <hr>
+
       <div class="commentaires">
         <h2>Liste des commentaires</h2>
+        <button mat-raised-button color="primary" (click)="openCommentModal(jeu)">Ajouter un commentaire</button>
         <div *ngFor="let commentaire of commentaires" class="comment-{{commentaire.id}}">
           <p>{{ commentaire.commentaire }}</p>
+          <button mat-icon-button color="primary" (click)="openEditModal(commentaire.id)">
+            <mat-icon>edit</mat-icon>
+          </button>
         </div>
       </div>
+
     </mat-card-content>
   </mat-card>
 </div>

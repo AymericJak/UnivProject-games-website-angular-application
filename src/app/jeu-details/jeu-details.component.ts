@@ -8,6 +8,8 @@ import {HttpClient} from "@angular/common/http";
 import {Jeu} from "../models/jeu";
 import {UsersService} from "../services/users/users.service";
 import {UserRequest} from "../models/UserRequest";
+import {MatDialog} from "@angular/material/dialog";
+import {CommentModalComponent} from "../comment-modal/comment-modal.component";
 
 @Component({
   selector: 'app-game-details',
@@ -26,21 +28,22 @@ export class JeuDetailsComponent {
   profilCourant: Observable<UserRequest>;
   showOldestFirst: boolean = false;
   showNewestFirst: boolean = false;
+  id_jeu: number | undefined;
 
-  constructor(public gameService: GameService, private route: ActivatedRoute, private http: HttpClient, public userService: UsersService) {
+  constructor(public gameService: GameService, private route: ActivatedRoute, private http: HttpClient, public userService: UsersService,public dialog: MatDialog) {
     this.profilCourant = this.userService.getUser();
   }
 
   ngOnInit(): void {
-    const id: number = +(this.route.snapshot.paramMap.get('id') || 0);
+    this.id_jeu = +(this.route.snapshot.paramMap.get('id') || 0);
     const userObservable: Observable<UserRequest> = this.userService.getUser();
-    if (id){
-      this.profilCourant = this.userService.getUser(parseInt(String(id)));
+    if (this.id_jeu){
+      this.profilCourant = this.userService.getUser(parseInt(String(this.id_jeu)));
     }
     else {
       this.profilCourant = this.userService.getUser();
     }
-    this.gameService.getJeu(id).subscribe({
+    this.gameService.getJeu(this.id_jeu).subscribe({
       next: (jeuResponse) => {
         this.jeu = jeuResponse.jeu;
         this.nbLike = jeuResponse.nb_likes;
@@ -122,5 +125,16 @@ export class JeuDetailsComponent {
     } else {
       this.commentaires = this.commentaires.slice();
     }
+  }
+
+  openCommentModal(jeu:Jeu): void {
+    const dialogRef = this.dialog.open(CommentModalComponent, {
+      width: '400px',
+      data: {jeu} // Passer le jeu en tant que donnée à la fenêtre modale
+    });
+  }
+
+  openEditModal(id: number) {
+
   }
 }

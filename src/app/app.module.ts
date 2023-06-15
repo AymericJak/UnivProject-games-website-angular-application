@@ -11,7 +11,7 @@ import {HomeComponent} from "./components/home/home.component";
 import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ShowTokenComponent} from './show-token/show-token.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
@@ -31,6 +31,8 @@ import { CarteJeuNoteComponent } from './carte-jeu/carte-jeu-note/carte-jeu-note
 import { JeuCreationComponent } from './components/jeu-creation/jeu-creation.component';
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
+import { CommentModalComponent } from './comment-modal/comment-modal.component';
+import {MatDialogModule} from "@angular/material/dialog";
 import {MatIconModule} from "@angular/material/icon";
 import {MatChipsModule} from "@angular/material/chips";
 
@@ -50,6 +52,7 @@ import {MatChipsModule} from "@angular/material/chips";
     CarteJeuComponent,
     CarteJeuNoteComponent,
     JeuCreationComponent,
+    CommentModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,7 +75,10 @@ import {MatChipsModule} from "@angular/material/chips";
     NgOptimizedImage,
     MatGridListModule,
     MatIconModule,
-    MatChipsModule
+    MatChipsModule,
+    FormsModule,
+    MatDialogModule,
+    MatIconModule
   ],
   providers: [
     GameService,
