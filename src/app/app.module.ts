@@ -11,7 +11,7 @@ import {HomeComponent} from "./components/home/home.component";
 import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ShowTokenComponent} from './show-token/show-token.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
@@ -31,6 +31,10 @@ import { CarteJeuNoteComponent } from './carte-jeu/carte-jeu-note/carte-jeu-note
 import { JeuCreationComponent } from './components/jeu-creation/jeu-creation.component';
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
+<<<<<<< src/app/app.module.ts
+import {NgOptimizedImage} from "@angular/common";
+import { CommentModalComponent } from './comment-modal/comment-modal.component';
+import {MatDialogModule} from "@angular/material/dialog";
 import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
@@ -49,6 +53,7 @@ import {MatIconModule} from "@angular/material/icon";
     CarteJeuComponent,
     CarteJeuNoteComponent,
     JeuCreationComponent,
+    CommentModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,6 +75,8 @@ import {MatIconModule} from "@angular/material/icon";
     MatTableModule,
     NgOptimizedImage,
     MatGridListModule,
+    FormsModule,
+    MatDialogModule,
     MatIconModule
   ],
   providers: [

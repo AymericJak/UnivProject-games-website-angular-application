@@ -35,6 +35,8 @@
   </div>
   <button (click)="toggleSortOldestFirst()" [class.active]="showOldestFirst">Tri du plus ancien au plus récent</button>
   <button (click)="toggleSortNewestFirst()" [class.active]="showNewestFirst">Tri du plus récent au plus ancien</button>
+  <br>
+  <button mat-raised-button color="primary" (click)="openCommentModal(jeu)">Ajouter un commentaire</button>
   <div class="commentaires">
     <h2>Liste des commentaires</h2>
     <div *ngFor="let commentaire of commentaires" class="comment-{{commentaire.id}}">
