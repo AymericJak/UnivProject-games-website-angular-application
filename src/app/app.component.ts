@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthentificationService} from "./authentification.service";
 import {Router} from "@angular/router";
+import {UsersService} from "./services/users/users.service";
+import {Observable} from "rxjs";
+import {UserRequest} from "./models/UserRequest";
 
 @Component({
   selector: 'app-root',
@@ -9,10 +12,24 @@ import {Router} from "@angular/router";
 })
 export class AppComponent {
 
+  /**
+   * Title of application.
+   */
   public title: string = 'Ludothèque';
 
-  constructor(private authService: AuthentificationService, private router: Router) { }
+  /**
+   * Profile of the current user.
+   */
+  public currentProfile$: Observable<UserRequest>|null = null;
 
+  constructor(private authService: AuthentificationService, private router: Router, private usersService: UsersService) {
+    if (this.authService.userIsConnected())
+      this.currentProfile$ = this.usersService.getUser();
+  }
+
+  /**
+   * Logout the current user.
+   */
   logout(): void {
     this.authService.logout();
     if (this.router.url === '/home') {
@@ -22,8 +39,11 @@ export class AppComponent {
     }
   }
 
+  /**
+   * Check if the current user is connected.
+   */
   public userIsConnected(): boolean {
-    // TODO Check if user is connected
-    return false;
+    return this.authService.userIsConnected();
   }
+
 }
