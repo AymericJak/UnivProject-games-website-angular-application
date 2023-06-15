@@ -23,6 +23,9 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {AuthInterceptor} from "./auth.interceptor";
+import { JeuCreationComponent } from './components/jeu-creation/jeu-creation.component';
+import {MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -36,6 +39,7 @@ import {AuthInterceptor} from "./auth.interceptor";
     JeuDetailsComponent,
     HomeComponent,
     JeuxListeComponent,
+    JeuCreationComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +52,9 @@ import {AuthInterceptor} from "./auth.interceptor";
     MatCardModule,
     HttpClientModule,
     MatTableModule,
+    MatFormFieldModule,
+    MatOptionModule,
+    MatSelectModule,
   ],
   providers: [
     GameService,
