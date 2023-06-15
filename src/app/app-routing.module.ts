@@ -10,7 +10,6 @@ import {ProfilComponent} from "./components/profil/profil.component";
 import {JeuxListeComponent} from "./jeux-liste/jeux-liste.component";
 import {JeuCreationComponent} from "./components/jeu-creation/jeu-creation.component";
 
-
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
