@@ -131,4 +131,8 @@ export class JeuDetailsComponent {
       data: {jeu} // Passer le jeu en tant que donnée à la fenêtre modale
     });
   }
+
+  openEditModal(id: number) {
+
+  }
 }

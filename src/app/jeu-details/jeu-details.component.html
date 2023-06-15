@@ -41,6 +41,9 @@
     <h2>Liste des commentaires</h2>
     <div *ngFor="let commentaire of commentaires" class="comment-{{commentaire.id}}">
       <p>{{ commentaire.commentaire }}</p>
+      <button mat-icon-button color="primary" (click)="openEditModal(commentaire.id)">
+        <mat-icon>edit</mat-icon>
+      </button>
     </div>
   </div>
 </div>

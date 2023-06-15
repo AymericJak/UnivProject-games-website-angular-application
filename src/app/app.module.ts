@@ -31,8 +31,6 @@ import { CarteJeuNoteComponent } from './carte-jeu/carte-jeu-note/carte-jeu-note
 import { JeuCreationComponent } from './components/jeu-creation/jeu-creation.component';
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
-<<<<<<< src/app/app.module.ts
-import {NgOptimizedImage} from "@angular/common";
 import { CommentModalComponent } from './comment-modal/comment-modal.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatIconModule} from "@angular/material/icon";
