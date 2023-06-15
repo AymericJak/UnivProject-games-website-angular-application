@@ -13,7 +13,7 @@ export class FooterComponent {
   ];
 
   staticPages = [
-    { name: 'À propos', url: '/aPropos' },
+    { name: 'À propos', url: '/a-propos' },
     { name: 'Contacts', url: '/contacts' },
   ];
 
