@@ -31,6 +31,7 @@ import { CarteJeuNoteComponent } from './carte-jeu/carte-jeu-note/carte-jeu-note
 import { JeuCreationComponent } from './components/jeu-creation/jeu-creation.component';
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import {MatSelectModule} from "@angular/material/select";
     MatListModule,
     MatTableModule,
     NgOptimizedImage,
-    MatGridListModule
+    MatGridListModule,
+    MatIconModule
   ],
   providers: [
     GameService,

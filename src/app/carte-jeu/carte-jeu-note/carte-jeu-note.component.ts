@@ -1,11 +1,11 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-carte-jeu-note',
   templateUrl: './carte-jeu-note.component.html',
   styleUrls: ['./carte-jeu-note.component.css']
 })
-export class CarteJeuNoteComponent {
+export class CarteJeuNoteComponent implements OnInit {
   @Input('rating') rating: number = 0;
 
   totalStar: number = 5;
@@ -15,6 +15,7 @@ export class CarteJeuNoteComponent {
   }
 
   ngOnInit() {
+    console.log(this.rating)
     for (let index = 0; index < this.totalStar; index++) {
       this.ratingArray.push(index);
     }
@@ -30,5 +31,4 @@ export class CarteJeuNoteComponent {
       return 'star_border';
     }
   }
-
 }

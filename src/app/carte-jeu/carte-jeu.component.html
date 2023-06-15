@@ -13,7 +13,7 @@
     <p>{{ jeu.description }}</p>
 
     <div *ngIf="authenticated" class="more-informations">
-      <p>NOTE : {{ jeuRequest.note_moyenne }}</p>
+      <app-carte-jeu-note [rating]="jeuRequest.note_moyenne"></app-carte-jeu-note>
       <p>Nombre de likes : {{ jeuRequest.nb_likes }}</p>
     </div>
 
