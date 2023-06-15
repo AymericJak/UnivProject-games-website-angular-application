@@ -25,7 +25,7 @@
       <div class="info">
         <span class="label">Nombre like: </span>
         <span class="value">{{ nbLike }}</span>
-        <button (click)="toggleLike()">{{ isLiked ? 'Unlike' : 'Like' }}</button>
+        <button mat-flat-button color="warn" (click)="toggleLike()">{{ isLiked ? 'Unlike' : 'Like' }}</button>
       </div>
 
 
@@ -34,9 +34,9 @@
         <span class="value">{{ prixMoyen }}</span>
       </div>
 
-      <button (click)="toggleSortOldestFirst()" [class.active]="showOldestFirst">Tri du plus ancien au plus récent
+      <button mat-stroked-button (click)="toggleSortOldestFirst()" [class.active]="showOldestFirst">Tri du plus ancien au plus récent
       </button>
-      <button (click)="toggleSortNewestFirst()" [class.active]="showNewestFirst">Tri du plus récent au plus ancien
+      <button mat-stroked-button (click)="toggleSortNewestFirst()" [class.active]="showNewestFirst">Tri du plus récent au plus ancien
       </button>
       <div class="commentaires">
         <h2>Liste des commentaires</h2>
