@@ -29,6 +29,8 @@ import { JeuCreationComponent } from './components/jeu-creation/jeu-creation.com
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {NgOptimizedImage} from "@angular/common";
+import {JeuModificationComponent} from "./components/jeu-modification/jeu-modification.component";
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import {NgOptimizedImage} from "@angular/common";
     ProfileComponent,
     JeuxListeComponent,
     JeuCreationComponent,
+    JeuModificationComponent
   ],
   imports: [
     BrowserModule,
@@ -63,8 +66,8 @@ import {NgOptimizedImage} from "@angular/common";
     MatTableModule,
     MatListModule,
     MatTableModule,
-    NgOptimizedImage,
-    MatGridListModule
+    MatGridListModule,
+    MatIconModule,
   ],
   providers: [
     GameService,

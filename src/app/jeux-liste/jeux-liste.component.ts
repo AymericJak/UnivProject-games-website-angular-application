@@ -10,7 +10,7 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./jeux-liste.component.css']
 })
 export class JeuxListeComponent {
-  lesColonnes: string[] = ['nom', 'description', 'langue', "Catégorie", "Thème"];
+  lesColonnes: string[] = ['nom', 'description', 'langue', "Catégorie", "Thème","update"];
   dataSource: Jeu[] = [];
 
   constructor(private gameService: GameService, private http: HttpClient) {
