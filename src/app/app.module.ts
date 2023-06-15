@@ -22,7 +22,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
-import {ProfilComponent} from "./components/profil/profil.component";
+import {ProfileComponent} from "./components/profile/profile.component";
 import {MatListModule} from "@angular/material/list";
 import {AuthInterceptor} from "./auth.interceptor";
 import {NgOptimizedImage} from "@angular/common";
@@ -38,7 +38,7 @@ import {NgOptimizedImage} from "@angular/common";
     ContactComponent,
     JeuDetailsComponent,
     HomeComponent,
-    ProfilComponent,
+    ProfileComponent,
     JeuxListeComponent,
   ],
     imports: [

@@ -6,7 +6,7 @@ import {AProposComponent} from "./components/a-propos/a-propos.component";
 import {ContactComponent} from "./components/contact/contact.component";
 import {JeuDetailsComponent} from "./jeu-details/jeu-details.component";
 import {HomeComponent} from "./components/home/home.component";
-import {ProfilComponent} from "./components/profil/profil.component";
+import {ProfileComponent} from "./components/profile/profile.component";
 import {JeuxListeComponent} from "./jeux-liste/jeux-liste.component";
 
 
@@ -19,7 +19,7 @@ const routes: Routes = [
   {path: 'jeux/:id', component: JeuDetailsComponent},
   {path: 'a-propos', component: AProposComponent},
   {path: 'contacts', component: ContactComponent},
-  {path: 'profil', component: ProfilComponent},
+  {path: 'profile', component: ProfileComponent},
 ];
 
 
