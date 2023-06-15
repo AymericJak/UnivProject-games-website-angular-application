@@ -51,7 +51,6 @@ export class AuthentificationService {
   }
 
   public userIsConnected(): boolean {
-    console.log(this.tokenStorageService.getToken())
     return this.tokenStorageService.getToken() != '';
   }
 }
