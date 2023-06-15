@@ -14,7 +14,7 @@
     <h3>Liens vers les pages statiques :</h3>
     <ul>
       <li *ngFor="let page of staticPages">
-        <a v[routerLink]="page.url">{{ page.name }}</a>
+        <a [routerLink]="page.url">{{ page.name }}</a>
       </li>
     </ul>
   </div>
