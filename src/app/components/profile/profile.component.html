@@ -42,7 +42,8 @@
       <mat-table [dataSource]="profile.achats">
         <ng-container matColumnDef="jeu_id">
           <mat-header-cell *matHeaderCellDef>Nom du jeu</mat-header-cell>
-          <mat-cell *matCellDef="let jeuAchete">{{ jeuAchete['jeu_id'] }}</mat-cell>
+          <!-- TODO  -->
+          <mat-cell *matCellDef="let jeuAchete">{{ getGameName(jeuAchete['jeu_id']) }}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="date_achat">
           <mat-header-cell *matHeaderCellDef>Date d'achat</mat-header-cell>
