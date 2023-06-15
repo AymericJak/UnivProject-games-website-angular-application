@@ -58,10 +58,10 @@ export class GameService {
     );
   }
 
-  createJeu(jeuRequest: Jeu): Observable<Jeu> {
+  createJeu(jeuRequest: Jeu): Observable<JeuRequest> {
     const url: string = 'http://localhost:8000/api/jeu';
 
-    return this.http.post<Jeu>(url, jeuRequest).pipe(
+    return this.http.post<JeuRequest>(url, jeuRequest).pipe(
       catchError(err => {
         console.log('Erreur http : ', err);
         throw err;
