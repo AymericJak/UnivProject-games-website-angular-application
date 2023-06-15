@@ -23,6 +23,7 @@ export class JeuDetailsComponent {
   jeu: Jeu | undefined;
   noteMoyenne: number = 0;
   nbLike: number = 0;
+  prixMoyen: number = 0;
   commentaires: CommentaireRequest[] = []
   profilCourant: Observable<UserRequest>;
   showOldestFirst: boolean = false;
@@ -48,6 +49,7 @@ export class JeuDetailsComponent {
         this.nbLike = jeuResponse.nb_likes;
         this.noteMoyenne = jeuResponse.note_moyenne;
         this.commentaires = jeuResponse.commentaires;
+        this.prixMoyen = jeuResponse.prix_moyen
         this.sortCommentaires();
       },
       error: (err) => {

@@ -34,6 +34,7 @@ import {MatSelectModule} from "@angular/material/select";
 import { CommentModalComponent } from './comment-modal/comment-modal.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatIconModule} from "@angular/material/icon";
+import {MatChipsModule} from "@angular/material/chips";
 
 @NgModule({
   declarations: [
@@ -73,6 +74,8 @@ import {MatIconModule} from "@angular/material/icon";
     MatTableModule,
     NgOptimizedImage,
     MatGridListModule,
+    MatIconModule,
+    MatChipsModule,
     FormsModule,
     MatDialogModule,
     MatIconModule
