@@ -20,7 +20,6 @@ export class CommentModalComponent {
   commentaireForm!: FormGroup;
   jeu: Jeu | undefined;
   etat:string='' ;
-  profilCourant: Observable<UserRequest>;
   user_id: number=0;
 
   constructor(public dialogRef: MatDialogRef<CommentModalComponent>, public gameService: GameService, private route: ActivatedRoute, private http: HttpClient, private formBuilder: FormBuilder,
@@ -29,18 +28,10 @@ export class CommentModalComponent {
     this.jeu = data.jeu;
     this.initCommentaireForm();
     this.fetchData();
-    this.profilCourant = this.userService.getUser();
 
   }
   ngOnInit(): void {
-    const id_jeu = this.jeu?.id;
     const userObservable: Observable<UserRequest> = this.userService.getUser();
-    if (id_jeu){
-      this.profilCourant = this.userService.getUser(parseInt(String(id_jeu)));
-    }
-    else {
-      this.profilCourant = this.userService.getUser();
-    }
     userObservable.subscribe((user) => {
       this.user_id = user.adherent.id;
     });
