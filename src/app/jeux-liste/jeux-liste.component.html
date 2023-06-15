@@ -1,41 +1,7 @@
-
 <div class="button-container">
   <button mat-raised-button color="primary" routerLink="/jeux/create">Ajouter un jeu</button>
 </div>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-  <!-- id Column -->
-  <ng-container matColumnDef="nom">
-    <th mat-header-cell *matHeaderCellDef> nom</th>
-    <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
-  </ng-container>
-
-  <!-- nom Column -->
-  <ng-container matColumnDef="description">
-    <th mat-header-cell *matHeaderCellDef> description</th>
-    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
-  </ng-container>
-
-  <!-- prenom Column -->
-  <ng-container matColumnDef="langue">
-    <th mat-header-cell *matHeaderCellDef> langue</th>
-    <td mat-cell *matCellDef="let element"> {{element.langue}} </td>
-  </ng-container>
-
-  <!-- plafond Column -->
-  <ng-container matColumnDef="Catégorie">
-    <th mat-header-cell *matHeaderCellDef> Catégorie</th>
-    <td mat-cell *matCellDef="let element"> {{ element.categorie.nom }} </td>
-  </ng-container>
-
-  <!-- plafond Column -->
-  <ng-container matColumnDef="Thème">
-    <th mat-header-cell *matHeaderCellDef> Thème</th>
-    <td mat-cell *matCellDef="let element"> {{ element.theme.nom }} </td>
-  </ng-container>
-
-  <!-- La ligne -->
-  <tr mat-header-row *matHeaderRowDef="lesColonnes"></tr>
-  <tr mat-row *matRowDef="let row; columns: lesColonnes;"></tr>
-</table>
+<div *ngFor="let jeu of dataSource.jeux" class="card-spacing">
+  <app-carte-jeu [jeu]="jeu" [authenticated]="authenticated"></app-carte-jeu>
+</div>
