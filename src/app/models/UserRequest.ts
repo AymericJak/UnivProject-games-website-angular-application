@@ -9,7 +9,7 @@ export interface UserRequest {
     prenom: string;
     pseudo: string;
     login: string;
-    avatar: string;
+    avatar: any;
     email: string;
   };
 

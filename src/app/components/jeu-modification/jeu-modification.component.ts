@@ -47,7 +47,7 @@ export class JeuModificationComponent implements OnInit {
     });
 
     this.jeuForm = this.formBuilder.group({
-      nom: [this.currentJeu.nom, Validators.required],
+      nom: ['', Validators.required],
       description: ['', Validators.required],
       langue: ['', Validators.required],
       age_min: ['', Validators.required],
