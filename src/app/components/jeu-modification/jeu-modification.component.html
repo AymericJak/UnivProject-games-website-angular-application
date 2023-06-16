@@ -1,4 +1,12 @@
 <mat-card>
+  <div class="text-left">
+    <button mat-icon-button color="primary"  *ngIf="currentJeu" [routerLink]="'/jeux/' + currentJeu.id">
+      <mat-icon>arrow_back</mat-icon>
+      Retour
+    </button>
+  </div>
+
+
   <mat-card-content>
     <div class="container">
       <h2>Modification d'un jeu</h2>

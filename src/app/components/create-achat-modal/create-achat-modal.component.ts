@@ -23,7 +23,8 @@ export class CreateAchatModalComponent implements OnInit {
   ngOnInit(): void {
     this.achatForm = this.formBuilder.group({
       prix: ['', Validators.required],
-      lieu_achat: ['', Validators.required]
+      lieu_achat: ['', Validators.required],
+      date: ['', Validators.required]
     });
   }
 
