@@ -46,15 +46,19 @@ export class JeuDetailsComponent implements OnInit {
 
     this.gameService.getJeu(this.id_jeu).subscribe({
       next: (jeuResponse) => {
-        if (jeuResponse.jeu) { // Check if the `jeu` object exists
+        console.log('jeuResponse:', jeuResponse); // Debugging statement
+
+        if (jeuResponse && jeuResponse.jeu && jeuResponse.jeu.id) {
           this.jeu = jeuResponse.jeu;
           this.nbLike = jeuResponse.nb_likes;
           this.noteMoyenne = jeuResponse.note_moyenne;
           this.commentaires = jeuResponse.commentaires;
           this.prixMoyen = jeuResponse.prix_moyen;
           this.achats = jeuResponse.achats;
-          this.isPurchased = this.achats.some((achatRequest) =>achatRequest.achat.jeu_id == jeuResponse.jeu.id )
+          this.isPurchased = this.achats.some((achatRequest) => achatRequest.jeu?.id === this.jeu?.id);
           this.sortCommentaires();
+        } else {
+          console.log('Invalid jeuResponse:', jeuResponse); // Debugging statement
         }
       },
       error: (err) => {
@@ -153,9 +157,10 @@ export class JeuDetailsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if (result === 'success') {
-        this.isPurchased = true;
-      }
+      console.log("Resultat ici")
+      console.log(result)
+      this.isPurchased = true
+
     });
   }
 
@@ -167,29 +172,62 @@ export class JeuDetailsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if (result === 'success') {
-        this.isPurchased = false;
-      }
+      console.log("Resultat ici")
+      console.log(result)
+      this.isPurchased = false
     });
   }
 
   openCommentModal(jeu: Jeu): void {
-    this.dialog.open(CommentModalComponent, {
+    const dialogRef = this.dialog.open(CommentModalComponent, {
       width: '400px',
       data: {jeu}
     });
-
-  }
-
-  editCommentaire(commentaire: CommentaireRequest, jeu: Jeu): void {
-    this.dialog.open(CommentaireEditComponent, {
-      data: {commentaire, jeu}
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log("Resultat ici")
+      console.log(result)
+      this.fetchCommentaires(jeu.id);
     });
   }
 
-  deleteCommentaire(id: number) {
-    this.dialog.open(DeleteCommentaireComponent, {
-      data: {id}
+  private fetchCommentaires(id: number) {
+    this.gameService.getJeu(id).subscribe({
+      next: (jeuResponse) => {
+        console.log('jeuResponse:', jeuResponse); // Debugging statement
+        if (jeuResponse && jeuResponse.jeu && jeuResponse.jeu.id) {
+          this.noteMoyenne = jeuResponse.note_moyenne;
+          this.commentaires = jeuResponse.commentaires;
+          this.sortCommentaires();
+        } else {
+          console.log('Invalid jeuResponse:', jeuResponse); // Debugging statement
+        }
+      },
+      error: (err) => {
+        console.log('Erreur lors de la récupération des informations du jeu : ', err);
+      }
+    });
+  }
+
+  editCommentaire(commentaire: CommentaireRequest, jeu: Jeu): void {
+    const dialogRef = this.dialog.open(CommentaireEditComponent, {
+      data: {commentaire, jeu}
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log("Resultat ici")
+      console.log(result)
+      this.fetchCommentaires(jeu.id);
+    });
+  }
+
+  deleteCommentaire(id_jeu:number, id_com: number) {
+    console.log("idcom", id_com)
+    const dialogRef = this.dialog.open(DeleteCommentaireComponent, {
+      data: id_com
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log("Resultat ici")
+      console.log(result)
+      this.fetchCommentaires(id_jeu);
     });
   }
 }

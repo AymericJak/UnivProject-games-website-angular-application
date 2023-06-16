@@ -23,8 +23,9 @@ export class AppComponent {
   public currentProfile$: Observable<UserRequest>|null = null;
 
   constructor(private authService: AuthentificationService, private router: Router, private usersService: UsersService) {
-    if (this.authService.userIsConnected())
+    if (this.authService.userIsConnected()) {
       this.currentProfile$ = this.usersService.getUser();
+    }
   }
 
   /**
