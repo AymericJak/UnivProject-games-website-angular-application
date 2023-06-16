@@ -1,4 +1,4 @@
-<mat-card *ngIf="jeu">
+<mat-card-actions *ngIf="jeu">
   <mat-card-header>
 
     <mat-card-title>
@@ -23,5 +23,11 @@
   </mat-card-content>
   <mat-card-actions align="end">
     <a mat-button [routerLink]="['/jeux', jeu.id]">VOIR</a>
+
   </mat-card-actions>
-</mat-card>
+  <mat-card-actions>
+      <a mat-icon-button [routerLink]="['/jeux', jeu.id, 'update']">
+        <mat-icon>create</mat-icon>
+      </a>
+  </mat-card-actions>
+</mat-card-actions>
