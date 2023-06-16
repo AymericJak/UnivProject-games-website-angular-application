@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable} from "rxjs";
 import {TokenStorageService} from "../../token-storage.service";
-import {UserRequest} from "../../models/UserRequest";
+import {UserRequest} from "../../requests/UserRequest";
 import {environment} from "../../environment";
 import {UpdateProfileResponse} from "../../responses/UpdateProfileResponse";
 import {UpdateProfileRequest} from "../../requests/UpdateProfileRequest";
@@ -26,17 +26,18 @@ export class UsersService {
    *
    * @private
    */
-  private static readonly  API_URL_DICT: {[key: string]: string} = {
+  private static readonly API_URL_DICT: { [key: string]: string } = {
     'profile': UsersService.API_URL + 'profil',
     'update': UsersService.API_URL + 'update',
     'update-profile': UsersService.API_URL + 'updateAvatar',
   };
 
-  constructor(private http: HttpClient, private tokenStorageService: TokenStorageService) { }
+  constructor(private http: HttpClient, private tokenStorageService: TokenStorageService) {
+  }
 
-  public getUser(id: number = -1): Observable<UserRequest> {
+  public getUser(id = -1): Observable<UserRequest> {
     const token: string = this.tokenStorageService.getToken();
-    const httpOptions: {} = {
+    const httpOptions = {
       headers: new HttpHeaders(
         {
           'Content-Type': 'application/json',
@@ -63,7 +64,7 @@ export class UsersService {
 
   public updateUser(id: number, data: UpdateProfileRequest): Observable<UpdateProfileResponse> {
     const token: string = this.tokenStorageService.getToken();
-    const httpOptions: {} = {
+    const httpOptions = {
       headers: new HttpHeaders(
         {
           'Content-Type': 'application/json',
@@ -82,7 +83,7 @@ export class UsersService {
 
   public updateAvatarUser(id: number, data: UpdateAvatarProfileRequest): Observable<UpdateAvatarProfileResponse> {
     const token: string = this.tokenStorageService.getToken();
-    const httpOptions: {} = {
+    const httpOptions = {
       headers: new HttpHeaders(
         {
           'Content-Type': 'application/json',

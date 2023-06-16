@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { GameService } from '../../services/game.service';
-import { JeuRequest } from '../../models/api/jeuRequest';
+import { GameService } from '../../services/games/game.service';
+import { JeuRequest } from '../../requests/jeuRequest';
 import { Jeu } from '../../models/jeu';
-import { EditeurRequest } from '../../models/api/editeurRequest';
-import { ThemeRequest } from '../../models/api/themeRequest';
-import { CategorieRequest } from '../../models/api/categorieRequest';
 import {Router} from "@angular/router";
 
 @Component({

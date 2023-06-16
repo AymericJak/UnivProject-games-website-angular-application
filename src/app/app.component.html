@@ -7,7 +7,8 @@
       <!-- TODO For connected users -->
       <div *ngIf="userIsConnected()">
         <span *ngIf="currentProfile$ | async as profile">
-          <img class="header-avatar" [srcset]="profile.adherent.avatar" height="30" alt="Avatar de l'utilisateur">
+          <img class="header-avatar" src="data:image/png;base64,{{ profile.adherent.avatar }}" height="30" alt="Avatar de l'utilisateur">
+
           <span>
             {{ profile.adherent.nom }}
             {{ profile.adherent.prenom }}

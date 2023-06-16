@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {AuthentificationService} from "./authentification.service";
 import {Router} from "@angular/router";
 import {UsersService} from "./services/users/users.service";
 import {Observable} from "rxjs";
-import {UserRequest} from "./models/UserRequest";
+import {UserRequest} from "./requests/UserRequest";
 
 @Component({
   selector: 'app-root',
@@ -15,7 +15,7 @@ export class AppComponent {
   /**
    * Title of application.
    */
-  public title: string = 'Ludothèque';
+  public title = 'Ludothèque';
 
   /**
    * Profile of the current user.

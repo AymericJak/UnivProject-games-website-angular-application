@@ -1,6 +1,6 @@
-import {CategorieRequest} from "./api/categorieRequest";
-import {ThemeRequest} from "./api/themeRequest";
-import {EditeurRequest} from "./api/editeurRequest";
+import {CategorieRequest} from "../requests/categorieRequest";
+import {ThemeRequest} from "../requests/themeRequest";
+import {EditeurRequest} from "../requests/editeurRequest";
 
 export interface Jeu {
   id: number,
@@ -17,5 +17,6 @@ export interface Jeu {
   theme: ThemeRequest,
   editeur: EditeurRequest,
   created_at: string,
-  updated_at: string
+  updated_at: string,
+  image: any,
 }
