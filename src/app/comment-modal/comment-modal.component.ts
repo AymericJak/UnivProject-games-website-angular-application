@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {GameService} from "../services/game.service";
 import {ActivatedRoute} from "@angular/router";
@@ -14,7 +14,7 @@ import {UserRequest} from "../models/UserRequest";
   templateUrl: './comment-modal.component.html',
   styleUrls: ['./comment-modal.component.css']
 })
-export class CommentModalComponent {
+export class CommentModalComponent implements OnInit {
   commentaire = '';
   note = 0;
   commentaireForm!: FormGroup;
@@ -67,7 +67,7 @@ export class CommentModalComponent {
 
   createComment(): void {
     const id_jeu = this.jeu?.id;
-    const url: string = `http://localhost:8000/api/jeu/${id_jeu}/commentaire`;
+    const url = `http://localhost:8000/api/jeu/${id_jeu}/commentaire`;
     const commentaireData = {
       commentaire: this.commentaireForm.value.commentaire,
       date_com: new Date(),
@@ -78,7 +78,7 @@ export class CommentModalComponent {
     };
     this.http.post(url, commentaireData)
       .subscribe(
-        (response) => {
+        () => {
           console.log('Commentaire ajouté avec succès !');
           this.dialogRef.close();
         },

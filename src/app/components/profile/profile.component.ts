@@ -2,8 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {UserRequest} from "../../models/UserRequest";
 import {UsersService} from "../../services/users/users.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {GameService} from "../../services/game.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-profile',
@@ -16,7 +15,7 @@ export class ProfileComponent implements OnInit {
 
   public personalProfile: boolean;
 
-  constructor(private profilService: UsersService, private routes: ActivatedRoute, private gameService: GameService) {
+  constructor(private profilService: UsersService, private routes: ActivatedRoute) {
     this.profilCourant$ = this.profilService.getUser();
     this.personalProfile = true;
   }
@@ -29,7 +28,6 @@ export class ProfileComponent implements OnInit {
     } else {
       this.profilCourant$ = this.profilService.getUser();
     }
-    this.profilCourant$.subscribe(() => {
-    });
+    this.profilCourant$.subscribe();
   }
 }

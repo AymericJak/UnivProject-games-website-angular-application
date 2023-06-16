@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {JeuRequest} from "../models/api/jeuRequest";
 import {Jeu} from "../models/jeu";
 import {GameService} from "../services/game.service";
@@ -9,7 +9,7 @@ import {HttpClient} from "@angular/common/http";
   templateUrl: './carte-jeu.component.html',
   styleUrls: ['./carte-jeu.component.css']
 })
-export class CarteJeuComponent {
+export class CarteJeuComponent implements OnInit {
   @Input() jeu?: Jeu;
   @Input() authenticated?: boolean;
   jeuRequest: JeuRequest = <JeuRequest>{}

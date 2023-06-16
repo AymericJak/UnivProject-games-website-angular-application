@@ -1,5 +1,3 @@
-import {JeuRequest} from "./jeuRequest";
-
 export interface CommentaireRequest {
   id: number,
   commentaire: string,

@@ -17,9 +17,6 @@ export class DeleteAchatModalComponent {
   ) {
   }
 
-  ngOnInit(): void {
-  }
-
   onSave(): void {
     console.log('Achat jeu id :', this.data.id);
 

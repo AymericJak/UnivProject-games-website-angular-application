@@ -27,11 +27,11 @@ export class ProfileUpdateFormComponent implements OnInit {
 
   public currentProfil$: Observable<UserRequest>;
 
-  public id: number = 0;
+  public id = 0;
 
-  public hide: boolean = true;
+  public hide = true;
 
-  public personalProfile: boolean = true;
+  public personalProfile = true;
 
   constructor(public route: ActivatedRoute, private profilService: UsersService, private router: Router) {
     this.currentProfil$ = this.profilService.getUser();
@@ -55,8 +55,8 @@ export class ProfileUpdateFormComponent implements OnInit {
    * Event for edit button.
    */
   public editButtonEvent(): void {
-    let valid: boolean = true;
-    for (let formElementValue of [this.login.value, this.email.value, this.nom.value, this.prenom.value, this.pseudo.value, this.password.value]) {
+    let valid = true;
+    for (const formElementValue of [this.login.value, this.email.value, this.nom.value, this.prenom.value, this.pseudo.value, this.password.value]) {
       if (formElementValue == '') {
         valid = false;
         break;

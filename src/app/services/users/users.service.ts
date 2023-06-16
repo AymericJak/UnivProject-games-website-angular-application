@@ -37,7 +37,7 @@ export class UsersService {
 
   public getUser(id = -1): Observable<UserRequest> {
     const token: string = this.tokenStorageService.getToken();
-    const httpOptions: {} = {
+    const httpOptions = {
       headers: new HttpHeaders(
         {
           'Content-Type': 'application/json',
@@ -64,7 +64,7 @@ export class UsersService {
 
   public updateUser(id: number, data: UpdateProfileRequest): Observable<UpdateProfileResponse> {
     const token: string = this.tokenStorageService.getToken();
-    const httpOptions: {} = {
+    const httpOptions = {
       headers: new HttpHeaders(
         {
           'Content-Type': 'application/json',
@@ -83,7 +83,7 @@ export class UsersService {
 
   public updateAvatarUser(id: number, data: UpdateAvatarProfileRequest): Observable<UpdateAvatarProfileResponse> {
     const token: string = this.tokenStorageService.getToken();
-    const httpOptions: {} = {
+    const httpOptions = {
       headers: new HttpHeaders(
         {
           'Content-Type': 'application/json',

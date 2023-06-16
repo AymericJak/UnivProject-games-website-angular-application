@@ -6,7 +6,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./carte-jeu-note.component.css']
 })
 export class CarteJeuNoteComponent implements OnInit {
-  @Input('rating') rating = 0;
+  @Input() rating = 0;
 
   totalStar = 5;
   ratingArray: number[] = [];

@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CommentaireRequest} from "../models/api/commentaireRequest";
@@ -14,7 +14,7 @@ import {UserRequest} from "../models/UserRequest";
   templateUrl: './commentaire-edit.component.html',
   styleUrls: ['./commentaire-edit.component.css']
 })
-export class CommentaireEditComponent {
+export class CommentaireEditComponent implements OnInit {
   commentaireForm: FormGroup;
   user_id = 0;
   commentaire: CommentaireRequest;

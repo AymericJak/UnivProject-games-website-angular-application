@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {GameService} from "../services/game.service";
-import {Observable, of} from "rxjs";
+import {Observable} from "rxjs";
 import {CommentaireRequest} from "../models/api/commentaireRequest";
 import {HttpClient} from "@angular/common/http";
 import {Jeu} from "../models/jeu";
@@ -20,18 +20,18 @@ import {DeleteCommentaireComponent} from "../delete-commentaire/delete-commentai
   templateUrl: './jeu-details.component.html',
   styleUrls: ['./jeu-details.component.css']
 })
-export class JeuDetailsComponent {
-  isLiked: boolean = false;
+export class JeuDetailsComponent implements OnInit {
+  isLiked = false;
   jeu: Jeu | undefined;
-  noteMoyenne: number = 0;
-  nbLike: number = 0;
-  prixMoyen: number = 0;
+  noteMoyenne = 0;
+  nbLike = 0;
+  prixMoyen = 0;
   commentaires: CommentaireRequest[] = []
   profilCourant: Observable<UserRequest>;
-  showOldestFirst: boolean = false;
-  showNewestFirst: boolean = false;
+  showOldestFirst = false;
+  showNewestFirst = false;
   id_jeu: number | undefined;
-  user_id: number = -1;
+  user_id = -1;
   achats: AchatRequest[] = [];
 
   constructor(public gameService: GameService, private route: ActivatedRoute, private http: HttpClient, public userService: UsersService, public dialog: MatDialog) {
@@ -91,11 +91,11 @@ export class JeuDetailsComponent {
       jeuRequest => {
         if (jeuRequest.jeu.id) {
           const id_jeu = jeuRequest.jeu.id;
-          const url: string = `http://localhost:8000/api/jeu/${id_jeu}/like`;
+          const url = `http://localhost:8000/api/jeu/${id_jeu}/like`;
           this.http
             .post(url, {})
             .subscribe(
-              (response) => {
+              () => {
                 this.isLiked = !this.isLiked;
                 this.nbLike = this.isLiked ? this.nbLike + 1 : this.nbLike - 1;
                 console.log('Ajout du like effectuée avec succès !');
@@ -159,20 +159,20 @@ export class JeuDetailsComponent {
   }
 
   openCommentModal(jeu: Jeu): void {
-    const dialogRef = this.dialog.open(CommentModalComponent, {
+    this.dialog.open(CommentModalComponent, {
       width: '400px',
       data: {jeu}
     });
   }
 
   editCommentaire(commentaire: CommentaireRequest, jeu: Jeu): void {
-    const dialogRef = this.dialog.open(CommentaireEditComponent, {
+    this.dialog.open(CommentaireEditComponent, {
       data: {commentaire, jeu}
     });
   }
 
   deleteCommentaire(id: number) {
-    const dialogRef = this.dialog.open(DeleteCommentaireComponent, {
+    this.dialog.open(DeleteCommentaireComponent, {
       data: {id}
     });
   }

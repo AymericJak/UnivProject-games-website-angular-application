@@ -5,7 +5,6 @@ import {UsersService} from "../../services/users/users.service";
 import {Observable} from "rxjs";
 import {UserRequest} from "../../models/UserRequest";
 import {UpdateAvatarProfileRequest} from "../../requests/UpdateAvatarProfileRequest";
-import {UpdateAvatarProfileResponse} from "../../responses/UpdateAvatarProfileResponse";
 
 @Component({
   selector: 'app-profile-avatar-update-form',
@@ -18,9 +17,9 @@ export class ProfileAvatarUpdateFormComponent implements OnInit {
 
   public currentProfile$: Observable<UserRequest>;
 
-  public id: number = 0;
+  public id = 0;
 
-  public personalProfile: boolean = true;
+  public personalProfile = true;
 
   constructor(public route: ActivatedRoute, private profileService: UsersService, private router: Router) {
     this.currentProfile$ = this.profileService.getUser();

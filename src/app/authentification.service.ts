@@ -38,8 +38,6 @@ export class AuthentificationService {
 
   logout(): void {
     this.http.post<any>(environment.apiUrl + "/logout", {}).subscribe(
-      response => {
-      },
       error => {
         console.log('Logout failed:', error);
       }
