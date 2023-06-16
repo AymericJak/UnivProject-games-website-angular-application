@@ -32,11 +32,13 @@ import { JeuCreationComponent } from './components/jeu-creation/jeu-creation.com
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import { CommentModalComponent } from './comment-modal/comment-modal.component';
-import {MatDialogModule} from "@angular/material/dialog";
 import {MatIconModule} from "@angular/material/icon";
 import { ProfileUpdateFormComponent } from './components/profile-update-form/profile-update-form.component';
 import {MatChipsModule} from "@angular/material/chips";
 import {JeuModificationComponent} from "./components/jeu-modification/jeu-modification.component";
+import { CreateAchatModalComponent } from './create-achat-modal/create-achat-modal.component';
+import { DeleteAchatModalComponent } from './delete-achat-modal/delete-achat-modal.component';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -57,6 +59,8 @@ import {JeuModificationComponent} from "./components/jeu-modification/jeu-modifi
     JeuModificationComponent,
     ProfileUpdateFormComponent,
     CommentModalComponent,
+    CreateAchatModalComponent,
+    DeleteAchatModalComponent
   ],
   imports: [
     BrowserModule,
@@ -95,6 +99,8 @@ import {JeuModificationComponent} from "./components/jeu-modification/jeu-modifi
       useClass: AuthInterceptor,
       multi: true
     },
+    { provide: MAT_DIALOG_DATA, useValue: {} },
+    { provide: MatDialogRef, useValue: {} }
   ],
   bootstrap: [AppComponent]
 })

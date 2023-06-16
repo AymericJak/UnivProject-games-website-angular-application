@@ -1,67 +1,95 @@
-<p>jeu-creation works!</p>
+<mat-card>
+  <mat-card-content>
+    <div class="container">
+      <h2>Création d'un jeu</h2>
+      <form [formGroup]="jeuForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <mat-form-field class="full-width">
+            <mat-label>Nom du jeu:</mat-label>
+            <input matInput type="text" formControlName="nom" required>
+          </mat-form-field>
+        </div>
 
-<div class="container">
-  <h2>Création d'un jeu</h2>
-  <form [formGroup]="jeuForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="nom">Nom du jeu:</label>
-      <input type="text" id="nom" class="form-control" formControlName="nom" required>
+        <div class="form-group">
+          <mat-form-field class="full-width">
+            <mat-label>Description du jeu:</mat-label>
+            <textarea matInput formControlName="description" required></textarea>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field class="full-width">
+            <mat-label>Langue du jeu:</mat-label>
+            <input matInput type="text" formControlName="langue" required>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field class="full-width">
+            <mat-label>Âge minimum:</mat-label>
+            <input matInput type="number" formControlName="age_min" required>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field class="full-width">
+            <mat-label>Nombre de joueurs minimum:</mat-label>
+            <input matInput type="number" formControlName="nombre_joueurs_min" required>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field class="full-width">
+            <mat-label>Nombre de joueurs maximum:</mat-label>
+            <input matInput type="number" formControlName="nombre_joueurs_max" required>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field class="full-width">
+            <mat-label>Durée d'une partie:</mat-label>
+            <input matInput type="number" formControlName="duree_partie" required>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field class="full-width">
+            <mat-label>Catégorie:</mat-label>
+            <mat-select formControlName="categorie" required>
+              <mat-option value="" disabled selected>Choisir une catégorie</mat-option>
+              <mat-option *ngFor="let categorie of categories" [value]="categorie">
+                {{ categorie }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field class="full-width">
+            <mat-label>Thème:</mat-label>
+            <mat-select formControlName="theme" required>
+              <mat-option value="" disabled selected>Choisir un thème</mat-option>
+              <mat-option *ngFor="let theme of themes" [value]="theme">
+                {{ theme }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field class="full-width">
+            <mat-label>Éditeur:</mat-label>
+            <mat-select formControlName="editeur" required>
+              <mat-option value="" disabled selected>Choisir un éditeur</mat-option>
+              <mat-option *ngFor="let editeur of editeurs" [value]="editeur">
+                {{ editeur }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <button mat-raised-button type="submit" color="primary" [disabled]="!jeuForm.valid">Créer le jeu</button>
+      </form>
     </div>
-
-    <div class="form-group">
-      <label for="description">Description du jeu:</label>
-      <textarea id="description" class="form-control" formControlName="description" required></textarea>
-    </div>
-
-    <div class="form-group">
-      <label for="langue">Langue du jeu:</label>
-      <input type="text" id="langue" class="form-control" formControlName="langue" required>
-    </div>
-
-    <div class="form-group">
-      <label for="ageMinimum">Âge minimum:</label>
-      <input type="number" id="ageMinimum" class="form-control" formControlName="age_min" required>
-    </div>
-
-    <div class="form-group">
-      <label for="joueursMinimum">Nombre de joueurs minimum:</label>
-      <input type="number" id="joueursMinimum" class="form-control" formControlName="nombre_joueurs_min" required>
-    </div>
-
-    <div class="form-group">
-      <label for="joueursMaximum">Nombre de joueurs maximum:</label>
-      <input type="number" id="joueursMaximum" class="form-control" formControlName="nombre_joueurs_max" required>
-    </div>
-
-    <div class="form-group">
-      <label for="dureePartie">Durée d'une partie:</label>
-      <input type="number" id="dureePartie" class="form-control" formControlName="duree_partie" required>
-    </div>
-
-    <div class="form-group">
-      <label for="categorie">Catégorie:</label>
-      <select id="categorie" class="form-control" formControlName="categorie" required>
-        <option value="" disabled selected>Choisir une catégorie</option>
-        <option *ngFor="let categorie of categories" [value]="categorie">{{ categorie }}</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="theme">Thème:</label>
-      <select id="theme" class="form-control" formControlName="theme" required>
-        <option value="" disabled selected>Choisir un thème</option>
-        <option *ngFor="let theme of themes" [value]="theme">{{ theme }}</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="editeur">Éditeur:</label>
-      <select id="editeur" class="form-control" formControlName="editeur" required>
-        <option value="" disabled selected>Choisir un éditeur</option>
-        <option *ngFor="let editeur of editeurs" [value]="editeur">{{ editeur }}</option>
-      </select>
-    </div>
-
-    <button type="submit" class="btn btn-primary" [disabled]="!jeuForm.valid">Créer le jeu</button>
-  </form>
-</div>
+  </mat-card-content>
+</mat-card>
