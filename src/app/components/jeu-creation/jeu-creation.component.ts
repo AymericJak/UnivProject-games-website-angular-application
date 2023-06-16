@@ -6,6 +6,7 @@ import { Jeu } from '../../models/jeu';
 import { EditeurRequest } from '../../models/api/editeurRequest';
 import { ThemeRequest } from '../../models/api/themeRequest';
 import { CategorieRequest } from '../../models/api/categorieRequest';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-jeu-creation',
@@ -18,7 +19,7 @@ export class JeuCreationComponent implements OnInit {
   themes: any[] = [];
   editeurs: any[] = [];
 
-  constructor(private formBuilder: FormBuilder, private jeuService: GameService) { }
+  constructor(private formBuilder: FormBuilder, private jeuService: GameService, private router: Router) { }
 
   ngOnInit(): void {
     this.initJeuForm();
@@ -83,10 +84,9 @@ export class JeuCreationComponent implements OnInit {
     if (this.jeuForm.valid) {
       const jeuData: Jeu = this.jeuForm.value;
       this.jeuService.createJeu(jeuData).subscribe(
-        (createdJeu: Jeu) => {
+        (createdJeu: JeuRequest) => {
           console.log('Jeu créé avec succès', createdJeu);
-          this.jeuForm.reset();
-        },
+          this.router.navigate(["/jeux/" + createdJeu.jeu.id]);        },
         (error) => {
           console.error('Erreur lors de la création du jeu', error);
         }

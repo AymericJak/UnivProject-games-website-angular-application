@@ -34,7 +34,7 @@ export class UsersService {
 
   constructor(private http: HttpClient, private tokenStorageService: TokenStorageService) { }
 
-  public getUser(id: number = 0): Observable<UserRequest> {
+  public getUser(id: number = -1): Observable<UserRequest> {
     const token: string = this.tokenStorageService.getToken();
     const httpOptions: {} = {
       headers: new HttpHeaders(
@@ -45,7 +45,7 @@ export class UsersService {
         }
       ),
     };
-    if (id === 0)
+    if (id === -1)
       return this.http.get<any>(`${UsersService.API_URL_DICT['profile']}`, httpOptions).pipe(
         catchError(err => {
           console.error('HTTP ERROR:', err);

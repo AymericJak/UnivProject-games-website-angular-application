@@ -1,9 +1,12 @@
+import {CommentaireRequest} from "./commentaireRequest";
+import {Jeu} from "../jeu";
+import {Achat} from "../achat";
+import {UserRequest} from "../UserRequest";
+
 export interface AchatRequest {
-  user_id: number,
-  jeu_id: number,
-  date_achat: string,
-  lieu_achat: string,
-  prix: number,
-  created_at: string,
-  updated_at: string
+  status: string,
+  message: string,
+  achat: Achat,
+  adherant: UserRequest,
+  jeu: Jeu,
 }
