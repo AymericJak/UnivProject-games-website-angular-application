@@ -1,15 +1,15 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, map, Observable, of} from "rxjs";
-import {JeuRequest} from "../models/api/jeuRequest";
-import {JeuxRequest} from "../models/api/jeuxRequest";
-import {Jeu} from "../models/jeu";
-import {CategorieRequest} from "../models/api/categorieRequest";
-import {ThemeRequest} from "../models/api/themeRequest";
-import {EditeurRequest} from "../models/api/editeurRequest";
-import {Achat} from "../models/achat";
-import {AchatRequest} from "../models/api/achat-request";
-import {GameIsLikedRequest} from "../models/api/game-is-liked-request";
+import {JeuRequest} from "../../requests/jeuRequest";
+import {JeuxRequest} from "../../requests/jeuxRequest";
+import {Jeu} from "../../models/jeu";
+import {CategorieRequest} from "../../requests/categorieRequest";
+import {ThemeRequest} from "../../requests/themeRequest";
+import {EditeurRequest} from "../../requests/editeurRequest";
+import {Achat} from "../../models/achat";
+import {AchatRequest} from "../../requests/achat-request";
+import {GameIsLikedRequest} from "../../requests/game-is-liked-request";
 
 @Injectable({
   providedIn: 'root'

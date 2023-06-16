@@ -1,5 +1,5 @@
 import {CommentaireRequest} from "./commentaireRequest";
-import {Jeu} from "../jeu";
+import {Jeu} from "../models/jeu";
 import {AchatRequest} from "./achat-request";
 
 export interface JeuRequest {

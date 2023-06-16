@@ -1,6 +1,6 @@
-import {Jeu} from "../jeu";
-import {Achat} from "../achat";
-import {UserRequest} from "../UserRequest";
+import {Jeu} from "../models/jeu";
+import {Achat} from "../models/achat";
+import {UserRequest} from "./UserRequest";
 
 export interface AchatRequest {
   status: string,

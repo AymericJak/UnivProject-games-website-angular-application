@@ -1,13 +1,13 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {GameService} from "../services/game.service";
+import {GameService} from "../../services/games/game.service";
 import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Jeu} from "../models/jeu";
-import {UsersService} from "../services/users/users.service";
+import {Jeu} from "../../models/jeu";
+import {UsersService} from "../../services/users/users.service";
 import {Observable} from "rxjs";
-import {UserRequest} from "../models/UserRequest";
+import {UserRequest} from "../../requests/UserRequest";
 
 @Component({
   selector: 'app-comment-modal',

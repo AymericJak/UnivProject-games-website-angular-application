@@ -1,5 +1,5 @@
-import {UserRequest} from "./UserRequest";
-import {JeuRequest} from "./api/jeuRequest";
+import {UserRequest} from "../requests/UserRequest";
+import {JeuRequest} from "../requests/jeuRequest";
 
 export interface Commentaire {
   id: number,

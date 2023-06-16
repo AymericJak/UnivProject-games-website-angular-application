@@ -3,9 +3,9 @@ import {FormBuilder} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
-import {UsersService} from "../services/users/users.service";
+import {UsersService} from "../../services/users/users.service";
 import {Observable} from "rxjs";
-import {UserRequest} from "../models/UserRequest";
+import {UserRequest} from "../../requests/UserRequest";
 
 @Component({
   selector: 'app-delete-commentaire',

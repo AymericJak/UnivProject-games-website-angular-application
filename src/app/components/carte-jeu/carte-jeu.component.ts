@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {JeuRequest} from "../models/api/jeuRequest";
-import {Jeu} from "../models/jeu";
-import {GameService} from "../services/game.service";
+import {JeuRequest} from "../../requests/jeuRequest";
+import {Jeu} from "../../models/jeu";
+import {GameService} from "../../services/games/game.service";
 import {HttpClient} from "@angular/common/http";
 
 @Component({

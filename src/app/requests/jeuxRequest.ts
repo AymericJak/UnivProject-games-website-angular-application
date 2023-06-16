@@ -1,4 +1,4 @@
-import {Jeu} from "../jeu";
+import {Jeu} from "../models/jeu";
 
 export interface JeuxRequest {
   status: string,

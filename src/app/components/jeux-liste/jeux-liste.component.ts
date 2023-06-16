@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {GameService} from "../services/game.service";
+import {GameService} from "../../services/games/game.service";
 import {HttpClient} from "@angular/common/http";
-import {JeuxRequest} from "../models/api/jeuxRequest";
-import {AuthentificationService} from "../authentification.service";
+import {JeuxRequest} from "../../requests/jeuxRequest";
+import {AuthentificationService} from "../../authentification.service";
 
 @Component({
   selector: 'app-jeux-liste',

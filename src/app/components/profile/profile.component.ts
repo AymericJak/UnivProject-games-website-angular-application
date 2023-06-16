@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
-import {UserRequest} from "../../models/UserRequest";
+import {UserRequest} from "../../requests/UserRequest";
 import {UsersService} from "../../services/users/users.service";
 import {ActivatedRoute} from "@angular/router";
 
