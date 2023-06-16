@@ -1,0 +1,27 @@
+<div>
+  <div class="form-container">
+    <h2 *ngIf="personalProfile">Modifier l'avatar de votre profil</h2>
+    <h2 *ngIf="!personalProfile">Modifier l'avatar de ce profil</h2>
+  </div>
+  <div class="form-container">
+    <mat-form-field>
+      <mat-label>Entrer le lien de votre nouvelle image de profil</mat-label>
+      <input matInput placeholder="https://cours-informatique-gratuit.fr/wp-content/uploads/2017/10/avatar.png" [formControl]="avatar" required>
+      <mat-error *ngIf="avatar.invalid">{{ getErrorMessage() }}</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="form-button-row">
+    <button [routerLink]="['/profile', id]" mat-fab extended color="warn" *ngIf="!personalProfile">
+      <mat-icon>cancel</mat-icon>
+      Annuler
+    </button>
+    <button [routerLink]="['/profile']" mat-fab extended color="warn" *ngIf="personalProfile">
+      <mat-icon>cancel</mat-icon>
+      Annuler
+    </button>
+    <button (click)="editButtonEvent()" mat-fab extended color="primary">
+      <mat-icon>edit</mat-icon>
+      Modifier
+    </button>
+  </div>
+</div>

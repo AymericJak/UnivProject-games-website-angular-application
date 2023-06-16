@@ -26,19 +26,21 @@ import {ProfileComponent} from "./components/profile/profile.component";
 import {MatListModule} from "@angular/material/list";
 import {AuthInterceptor} from "./auth.interceptor";
 import { CarteJeuComponent } from './carte-jeu/carte-jeu.component';
-import {NgOptimizedImage} from "@angular/common";
 import { CarteJeuNoteComponent } from './carte-jeu/carte-jeu-note/carte-jeu-note.component';
 import { JeuCreationComponent } from './components/jeu-creation/jeu-creation.component';
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import { CommentModalComponent } from './comment-modal/comment-modal.component';
-import {MatDialogModule} from "@angular/material/dialog";
 import {MatIconModule} from "@angular/material/icon";
 import { CommentaireEditComponent } from './commentaire-edit/commentaire-edit.component';
 import { ProfileUpdateFormComponent } from './components/profile-update-form/profile-update-form.component';
 import {MatChipsModule} from "@angular/material/chips";
 import {JeuModificationComponent} from "./components/jeu-modification/jeu-modification.component";
 import { DeleteCommentaireComponent } from './delete-commentaire/delete-commentaire.component';
+import { ProfileAvatarUpdateFormComponent } from './components/profile-avatar-update-form/profile-avatar-update-form.component';
+import { CreateAchatModalComponent } from './create-achat-modal/create-achat-modal.component';
+import { DeleteAchatModalComponent } from './delete-achat-modal/delete-achat-modal.component';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -61,6 +63,9 @@ import { DeleteCommentaireComponent } from './delete-commentaire/delete-commenta
     CommentModalComponent,
     CommentaireEditComponent,
     DeleteCommentaireComponent,
+    ProfileAvatarUpdateFormComponent,
+    CreateAchatModalComponent,
+    DeleteAchatModalComponent
   ],
   imports: [
     BrowserModule,
@@ -99,6 +104,8 @@ import { DeleteCommentaireComponent } from './delete-commentaire/delete-commenta
       useClass: AuthInterceptor,
       multi: true
     },
+    { provide: MAT_DIALOG_DATA, useValue: {} },
+    { provide: MatDialogRef, useValue: {} }
   ],
   bootstrap: [AppComponent]
 })

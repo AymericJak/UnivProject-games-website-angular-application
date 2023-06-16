@@ -42,7 +42,6 @@ export class ProfileUpdateFormComponent implements OnInit {
     this.id = +(this.route.snapshot.paramMap.get('id') || 0);
     const personalProfileString: string|null = this.route.snapshot.paramMap.get('personal-profile' || 'false');
     if (personalProfileString == 'false' || personalProfileString == null) this.personalProfile = false;
-    console.log(this.personalProfile);
     this.currentProfil$ = this.profilService.getUser(parseInt(String(this.id)));
     this.currentProfil$.subscribe((userResponse: UserRequest) => {
       this.login.setValue(userResponse.adherent.login);
@@ -82,7 +81,11 @@ export class ProfileUpdateFormComponent implements OnInit {
           console.error('Erreur lors de la mise à jour de l\'utilisateur : ', error);
         }
       )
-      this.router.navigate(['/profile']).then(r => r);
+      if (this.personalProfile) {
+        this.router.navigate(['/profile']).then(r => r);
+      } else {
+        this.router.navigate(['/profile', this.id]).then(r => r);
+      }
     }
   }
 
@@ -91,6 +94,21 @@ export class ProfileUpdateFormComponent implements OnInit {
    */
   getErrorMessage(): string {
     if (this.email.hasError('required')) {
+      return 'Ce champs ne peut pas être vide';
+    }
+    if (this.login.hasError('required')) {
+      return 'Ce champs ne peut pas être vide';
+    }
+    if (this.nom.hasError('required')) {
+      return 'Ce champs ne peut pas être vide';
+    }
+    if (this.prenom.hasError('required')) {
+      return 'Ce champs ne peut pas être vide';
+    }
+    if (this.password.hasError('required')) {
+      return 'Ce champs ne peut pas être vide';
+    }
+    if (this.pseudo.hasError('required')) {
       return 'Ce champs ne peut pas être vide';
     }
     return this.email.hasError('email') ? 'Ce n\'est pas une adresse mail valide' : '';
