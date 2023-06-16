@@ -2,9 +2,10 @@
   <mat-card class="profile-card">
     <div class="profile-card-content">
       <mat-card-header>
-        <img mat-card-avatar id="profile-avatar" class="profile-header-image" [srcset]="profile.adherent.avatar" alt="Avatar du profil">
+        <img mat-card-avatar id="profile-avatar" class="profile-header-image" src="data:image/png;base64,{{ profile.adherent.avatar }}" alt="Avatar du profil">
         <mat-card-title>{{ profile.adherent.nom }} {{ profile.adherent.prenom }}</mat-card-title>
         <mat-card-subtitle>{{ profile.adherent.login }} • {{ profile.adherent.pseudo }} • {{ profile.adherent.email }}</mat-card-subtitle>
+
       </mat-card-header>
 
       <mat-card-actions *ngIf="personalProfile">
