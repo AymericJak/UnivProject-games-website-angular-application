@@ -11,6 +11,9 @@ import {JeuxListeComponent} from "./jeux-liste/jeux-liste.component";
 import {JeuCreationComponent} from "./components/jeu-creation/jeu-creation.component";
 import {ProfileUpdateFormComponent} from "./components/profile-update-form/profile-update-form.component";
 import {JeuModificationComponent} from "./components/jeu-modification/jeu-modification.component";
+import {
+  ProfileAvatarUpdateFormComponent
+} from "./components/profile-avatar-update-form/profile-avatar-update-form.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -26,6 +29,7 @@ const routes: Routes = [
   {path: 'profile/:id', component: ProfileComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'update-profile/:id/:personal-profile', component: ProfileUpdateFormComponent},
+  {path: 'update-avatar/:id/:personal-profile', component: ProfileAvatarUpdateFormComponent},
 ];
 
 

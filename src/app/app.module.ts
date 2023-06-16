@@ -26,7 +26,6 @@ import {ProfileComponent} from "./components/profile/profile.component";
 import {MatListModule} from "@angular/material/list";
 import {AuthInterceptor} from "./auth.interceptor";
 import { CarteJeuComponent } from './carte-jeu/carte-jeu.component';
-import {NgOptimizedImage} from "@angular/common";
 import { CarteJeuNoteComponent } from './carte-jeu/carte-jeu-note/carte-jeu-note.component';
 import { JeuCreationComponent } from './components/jeu-creation/jeu-creation.component';
 import {MatOptionModule} from "@angular/material/core";
@@ -36,6 +35,7 @@ import {MatIconModule} from "@angular/material/icon";
 import { ProfileUpdateFormComponent } from './components/profile-update-form/profile-update-form.component';
 import {MatChipsModule} from "@angular/material/chips";
 import {JeuModificationComponent} from "./components/jeu-modification/jeu-modification.component";
+import { ProfileAvatarUpdateFormComponent } from './components/profile-avatar-update-form/profile-avatar-update-form.component';
 import { CreateAchatModalComponent } from './create-achat-modal/create-achat-modal.component';
 import { DeleteAchatModalComponent } from './delete-achat-modal/delete-achat-modal.component';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/material/dialog";
@@ -59,6 +59,7 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/materia
     JeuModificationComponent,
     ProfileUpdateFormComponent,
     CommentModalComponent,
+    ProfileAvatarUpdateFormComponent,
     CreateAchatModalComponent,
     DeleteAchatModalComponent
   ],
