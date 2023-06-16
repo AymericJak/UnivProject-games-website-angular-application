@@ -4,12 +4,20 @@
       <mat-card-header>
         <img mat-card-avatar id="profile-avatar" class="profile-header-image" [srcset]="profile.adherent.avatar" alt="Avatar du profil">
         <mat-card-title>{{ profile.adherent.nom }} {{ profile.adherent.prenom }}</mat-card-title>
-        <mat-card-subtitle>{{ profile.adherent.login }} • {{ profile.adherent.pseudo }}</mat-card-subtitle>
+        <mat-card-subtitle>{{ profile.adherent.login }} • {{ profile.adherent.pseudo }} • {{ profile.adherent.email }}</mat-card-subtitle>
       </mat-card-header>
 
-      <mat-card-actions>
-        <button mat-button [routerLink]="['/update-profile', profile.adherent.id]" class="profile-link">MODIFIER MON PROFIL</button>
+      <mat-card-actions *ngIf="personalProfile">
+        <button mat-button [routerLink]="['/update-profile', profile.adherent.id, personalProfile]" class="profile-link">
+          MODIFIER MON PROFIL
+        </button>
         <button mat-button>MODIFIER MON AVATAR</button>
+      </mat-card-actions>
+      <mat-card-actions *ngIf="!personalProfile">
+        <button mat-button [routerLink]="['/update-profile', profile.adherent.id, personalProfile]" class="profile-link">
+          MODIFIER SON PROFIL
+        </button>
+        <button mat-button>MODIFIER SON AVATAR</button>
       </mat-card-actions>
     </div>
 
