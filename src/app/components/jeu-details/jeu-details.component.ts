@@ -45,17 +45,12 @@ export class JeuDetailsComponent implements OnInit {
     this.profilCourant = this.userService.getUser();
     this.gameService.getJeu(this.id_jeu).subscribe({
       next: (jeuResponse) => {
-        console.log(jeuResponse)
         this.jeu = jeuResponse.jeu;
         this.nbLike = jeuResponse.nb_likes;
         this.noteMoyenne = jeuResponse.note_moyenne;
         this.commentaires = jeuResponse.commentaires;
         this.prixMoyen = jeuResponse.prix_moyen;
         this.achats = jeuResponse.achats;
-        this.image = new Image();
-        this.image.src = "data:image/png;base64," + jeuResponse.image_enc;
-        console.log(this.jeu.url_media)
-
         this.sortCommentaires();
       },
       error: (err) => {

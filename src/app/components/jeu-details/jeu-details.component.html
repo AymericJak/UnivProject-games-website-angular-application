@@ -4,7 +4,7 @@
       <h1>{{ jeu.nom }}</h1>
 
       <div>
-        <img [src]="image.src" alt="Uploaded Image" [height]="80" [width]="80">
+        <img [src]="jeu.url_media" alt="Uploaded Image" [height]="80" [width]="80">
       </div>
 
       <mat-card-title-group>
@@ -34,6 +34,9 @@
         <button *ngIf="!isLiked" mat-stroked-button color="warn" (click)="toggleLike()">Like</button>
       </div>
 
+      <button mat-icon-button color="primary" routerLink="/jeux/{{jeu.id}}/update">
+        <mat-icon>edit</mat-icon>
+      </button>
 
       <div class="info">
         <span class="label">Prix moyen: </span>

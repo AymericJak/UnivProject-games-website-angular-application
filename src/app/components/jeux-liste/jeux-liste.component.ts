@@ -19,11 +19,11 @@ export class JeuxListeComponent implements OnInit {
   ngOnInit(): void {
     this.gameService.getJeux().subscribe({
       next: (jeuxResponse) => {
-        for (let jeu of jeuxResponse.jeux){
-          jeu.image = new Image();
-          console.log(jeu.image.src)
-          jeu.image.src = "data:image/png;base64," + jeu.url_media;
-        }
+        // for (let jeu of jeuxResponse.jeux){
+        //   jeu.image = new Image();
+        //   console.log(jeu.image.src)
+        //   jeu.url_media = "data:image/png;base64," + jeu.url_media;
+        // }
         this.dataSource = jeuxResponse;
         console.log(jeuxResponse)
       },
