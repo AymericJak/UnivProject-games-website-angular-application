@@ -32,9 +32,11 @@ import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import { CommentModalComponent } from './comment-modal/comment-modal.component';
 import {MatIconModule} from "@angular/material/icon";
+import { CommentaireEditComponent } from './commentaire-edit/commentaire-edit.component';
 import { ProfileUpdateFormComponent } from './components/profile-update-form/profile-update-form.component';
 import {MatChipsModule} from "@angular/material/chips";
 import {JeuModificationComponent} from "./components/jeu-modification/jeu-modification.component";
+import { DeleteCommentaireComponent } from './delete-commentaire/delete-commentaire.component';
 import { ProfileAvatarUpdateFormComponent } from './components/profile-avatar-update-form/profile-avatar-update-form.component';
 import { CreateAchatModalComponent } from './create-achat-modal/create-achat-modal.component';
 import { DeleteAchatModalComponent } from './delete-achat-modal/delete-achat-modal.component';
@@ -60,6 +62,8 @@ import { UploadJeuImageComponent } from './components/upload-jeu-image/upload-je
     JeuModificationComponent,
     ProfileUpdateFormComponent,
     CommentModalComponent,
+    CommentaireEditComponent,
+    DeleteCommentaireComponent,
     ProfileAvatarUpdateFormComponent,
     CreateAchatModalComponent,
     DeleteAchatModalComponent,

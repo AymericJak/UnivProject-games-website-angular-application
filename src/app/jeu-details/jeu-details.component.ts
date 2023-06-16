@@ -14,6 +14,8 @@ import {Achat} from "../models/achat";
 import {AchatRequest} from "../models/api/achat-request";
 import {DeleteAchatModalComponent} from "../delete-achat-modal/delete-achat-modal.component";
 import {CommentModalComponent} from "../comment-modal/comment-modal.component";
+import {CommentaireEditComponent} from "../commentaire-edit/commentaire-edit.component";
+import {DeleteCommentaireComponent} from "../delete-commentaire/delete-commentaire.component";
 
 @Component({
   selector: 'app-game-details',
@@ -167,11 +169,19 @@ export class JeuDetailsComponent {
   openCommentModal(jeu:Jeu): void {
     const dialogRef = this.dialog.open(CommentModalComponent, {
       width: '400px',
-      data: {jeu} // Passer le jeu en tant que donnée à la fenêtre modale
+      data: {jeu}
     });
   }
 
-  openEditModal(id: number) {
+  editCommentaire(commentaire: CommentaireRequest,jeu:Jeu): void {
+    const dialogRef = this.dialog.open(CommentaireEditComponent, {
+      data: {commentaire,jeu}
+    });
+  }
 
+  deleteCommentaire(id: number) {
+    const dialogRef = this.dialog.open(DeleteCommentaireComponent, {
+      data: {id}
+    });
   }
 }
