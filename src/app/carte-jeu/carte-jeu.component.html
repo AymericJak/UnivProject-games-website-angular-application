@@ -2,9 +2,16 @@
   <mat-card-header>
 
     <mat-card-title>
-      <a [routerLink]="['/jeux', jeu.id]">
-        {{ jeu.nom }}
-      </a>
+      <ng-container *ngIf="authenticated; else loginLink">
+        <a mat-button [routerLink]="['/jeux', jeu.id]">
+          {{ jeu.nom }}
+        </a>
+      </ng-container>
+      <ng-template #loginLink>
+        <a mat-button routerLink="/login">
+          {{ jeu.nom }}
+        </a>
+      </ng-template>
     </mat-card-title>
     <mat-card-subtitle>
       {{ jeu.categorie.nom }} - {{ jeu.theme.nom }} - {{ jeu.langue }}
@@ -22,6 +29,11 @@
 
   </mat-card-content>
   <mat-card-actions align="end">
-    <a mat-button [routerLink]="['/jeux', jeu.id]">VOIR</a>
+    <ng-container *ngIf="authenticated; else loginLink">
+      <a mat-button [routerLink]="['/jeux', jeu.id]">VOIR</a>
+    </ng-container>
+    <ng-template #loginLink>
+      <a mat-button routerLink="/login">VOIR</a>
+    </ng-template>
   </mat-card-actions>
 </mat-card>
