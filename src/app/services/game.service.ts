@@ -69,13 +69,13 @@ export class GameService {
     );
   }
 
-  updateJeu(jeuRequest: JeuRequest): Observable<JeuRequest> {
-    const url: string = `http://localhost:8000/api/jeu/${jeuRequest.jeu.id}`;
+  updateJeu(jeu: Jeu): Observable<Jeu> {
+    const url: string = `http://localhost:8000/api/jeu/${jeu.id}/edit`;
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     };
 
-    return this.http.put<JeuRequest>(url, jeuRequest, httpOptions).pipe(
+    return this.http.patch<Jeu>(url, jeu, httpOptions).pipe(
       catchError(err => {
         console.log('Erreur http : ', err);
         throw err;

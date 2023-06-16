@@ -34,7 +34,13 @@ import {MatSelectModule} from "@angular/material/select";
 import { CommentModalComponent } from './comment-modal/comment-modal.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatIconModule} from "@angular/material/icon";
+<<<<<<< HEAD
 import { CommentaireEditComponent } from './commentaire-edit/commentaire-edit.component';
+=======
+import { ProfileUpdateFormComponent } from './components/profile-update-form/profile-update-form.component';
+import {MatChipsModule} from "@angular/material/chips";
+import {JeuModificationComponent} from "./components/jeu-modification/jeu-modification.component";
+>>>>>>> 7e3f98725d78150883463ec10ce0aeb3b2f7265a
 
 @NgModule({
   declarations: [
@@ -52,6 +58,8 @@ import { CommentaireEditComponent } from './commentaire-edit/commentaire-edit.co
     CarteJeuComponent,
     CarteJeuNoteComponent,
     JeuCreationComponent,
+    JeuModificationComponent,
+    ProfileUpdateFormComponent,
     CommentModalComponent,
     CommentaireEditComponent,
   ],
@@ -73,11 +81,14 @@ import { CommentaireEditComponent } from './commentaire-edit/commentaire-edit.co
     MatTableModule,
     MatListModule,
     MatTableModule,
-    NgOptimizedImage,
     MatGridListModule,
+    MatIconModule,
+    MatChipsModule,
     FormsModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
+    MatGridListModule,
+    MatIconModule,
   ],
   providers: [
     GameService,

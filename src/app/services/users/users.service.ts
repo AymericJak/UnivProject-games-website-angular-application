@@ -4,6 +4,8 @@ import {catchError, Observable} from "rxjs";
 import {TokenStorageService} from "../../token-storage.service";
 import {UserRequest} from "../../models/UserRequest";
 import {environment} from "../../environment";
+import {UpdateProfileResponse} from "../../responses/UpdateProfileResponse";
+import {UpdateProfileRequest} from "../../requests/UpdateProfileRequest";
 
 @Injectable({
   providedIn: 'root'
@@ -55,5 +57,24 @@ export class UsersService {
           throw err;
         })
       );
+  }
+
+  public updateUser(id: number, data: UpdateProfileRequest): Observable<UpdateProfileResponse> {
+    const token: string = this.tokenStorageService.getToken();
+    const httpOptions: {} = {
+      headers: new HttpHeaders(
+        {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'bearer ' + token,
+        },
+      ),
+    };
+    return this.http.put<UpdateProfileResponse>(`${UsersService.API_URL_DICT['update']}/${id}`, data, httpOptions).pipe(
+      catchError(err => {
+        console.log('HTTP ERROR : ', err);
+        throw err;
+      })
+    );
   }
 }
