@@ -5,7 +5,7 @@
       <form [formGroup]="jeuForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <mat-form-field>
-            <mat-label>Nom du jeu:</mat-label>
+            <mat-label>Nom du jeu ici:</mat-label>
             <input matInput type="text" formControlName="nom" required>
           </mat-form-field>
         </div>
@@ -13,7 +13,7 @@
         <div class="form-group">
           <mat-form-field>
             <mat-label>Description du jeu:</mat-label>
-            <textarea matInput formControlName="description" required>{{ currentJeu.description }}</textarea>
+            <textarea matInput formControlName="description" required></textarea>
           </mat-form-field>
         </div>
 
@@ -57,7 +57,7 @@
             <mat-label>Catégorie:</mat-label>
             <mat-select formControlName="categorie" required>
               <mat-option value="" disabled selected>Choisir une catégorie</mat-option>
-              <mat-option *ngFor="let categorie of categories">
+              <mat-option *ngFor="let categorie of categories" [value]="categorie">
                 {{ categorie }}
               </mat-option>
             </mat-select>
@@ -67,9 +67,9 @@
         <div class="form-group">
           <mat-form-field>
             <mat-label>Thème:</mat-label>
-            <mat-select formControlName="theme" required >
+            <mat-select formControlName="theme" required>
               <mat-option value="" disabled selected>Choisir un thème</mat-option>
-              <mat-option *ngFor="let theme of themes">
+              <mat-option *ngFor="let theme of themes" [value]="theme">
                 {{ theme }}
               </mat-option>
             </mat-select>
@@ -81,7 +81,7 @@
             <mat-label>Éditeur:</mat-label>
             <mat-select formControlName="editeur" required>
               <mat-option value="" disabled selected>Choisir un éditeur</mat-option>
-              <mat-option *ngFor="let editeur of editeurs">
+              <mat-option *ngFor="let editeur of editeurs" [value]="editeur">
                 {{ editeur }}
               </mat-option>
             </mat-select>
