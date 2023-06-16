@@ -12,5 +12,6 @@ export interface JeuRequest {
   commentaires: CommentaireRequest[],
   jeu: Jeu,
   nb_likes: number,
-  note_moyenne: number
+  note_moyenne: number,
+  prix_moyen: number
 }

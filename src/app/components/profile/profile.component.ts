@@ -16,16 +16,18 @@ export class ProfileComponent implements OnInit {
 
   public profilCourant$: Observable<UserRequest>;
 
-  public gameName: string = '';
+  public personalProfile: boolean;
 
   constructor(private profilService: UsersService, private routes: ActivatedRoute, private gameService: GameService) {
     this.profilCourant$ = this.profilService.getUser();
+    this.personalProfile = true;
   }
 
   ngOnInit(): void {
-    let id = this.routes.snapshot.paramMap.get('id');
+    const id = this.routes.snapshot.paramMap.get('id');
     if (id) {
       this.profilCourant$ = this.profilService.getUser(parseInt(id));
+      this.personalProfile = false;
     }
     else {
       this.profilCourant$ = this.profilService.getUser();

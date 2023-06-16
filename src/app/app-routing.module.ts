@@ -9,6 +9,7 @@ import {HomeComponent} from "./components/home/home.component";
 import {ProfileComponent} from "./components/profile/profile.component";
 import {JeuxListeComponent} from "./jeux-liste/jeux-liste.component";
 import {JeuCreationComponent} from "./components/jeu-creation/jeu-creation.component";
+import {ProfileUpdateFormComponent} from "./components/profile-update-form/profile-update-form.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -20,7 +21,9 @@ const routes: Routes = [
   {path: 'jeux/:id', component: JeuDetailsComponent},
   {path: 'a-propos', component: AProposComponent},
   {path: 'contacts', component: ContactComponent},
+  {path: 'profile/:id', component: ProfileComponent},
   {path: 'profile', component: ProfileComponent},
+  {path: 'update-profile/:id/:personal-profile', component: ProfileUpdateFormComponent},
 ];
 
 
