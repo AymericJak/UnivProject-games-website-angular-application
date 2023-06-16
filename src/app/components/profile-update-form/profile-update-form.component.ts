@@ -5,7 +5,6 @@ import {UsersService} from "../../services/users/users.service";
 import {Observable} from "rxjs";
 import {UserRequest} from "../../models/UserRequest";
 import {UpdateProfileRequest} from "../../requests/UpdateProfileRequest";
-import {UpdateProfileResponse} from "../../responses/UpdateProfileResponse";
 
 @Component({
   selector: 'app-profile-update-form',
@@ -40,7 +39,7 @@ export class ProfileUpdateFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = +(this.route.snapshot.paramMap.get('id') || 0);
-    const personalProfileString: string|null = this.route.snapshot.paramMap.get('personal-profile' || 'false');
+    const personalProfileString: string | null = this.route.snapshot.paramMap.get('personal-profile' || 'false');
     if (personalProfileString == 'false' || personalProfileString == null) this.personalProfile = false;
     this.currentProfil$ = this.profilService.getUser(parseInt(String(this.id)));
     this.currentProfil$.subscribe((userResponse: UserRequest) => {
@@ -74,7 +73,7 @@ export class ProfileUpdateFormComponent implements OnInit {
         pseudo: this.pseudo.value,
       }
       this.profilService.updateUser(this.id, newUser).subscribe(
-        (updatedUser: UpdateProfileResponse) => {
+        () => {
           console.log('Updated');
         },
         (error) => {

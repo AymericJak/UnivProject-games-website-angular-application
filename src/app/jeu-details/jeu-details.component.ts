@@ -1,8 +1,7 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {JeuRequest} from "../models/api/jeuRequest";
 import {GameService} from "../services/game.service";
-import {map, Observable, of, take} from "rxjs";
+import {Observable, of} from "rxjs";
 import {CommentaireRequest} from "../models/api/commentaireRequest";
 import {HttpClient} from "@angular/common/http";
 import {Jeu} from "../models/jeu";
@@ -10,7 +9,6 @@ import {UsersService} from "../services/users/users.service";
 import {UserRequest} from "../models/UserRequest";
 import {CreateAchatModalComponent} from "../create-achat-modal/create-achat-modal.component";
 import {MatDialog} from "@angular/material/dialog";
-import {Achat} from "../models/achat";
 import {AchatRequest} from "../models/api/achat-request";
 import {DeleteAchatModalComponent} from "../delete-achat-modal/delete-achat-modal.component";
 import {CommentModalComponent} from "../comment-modal/comment-modal.component";
@@ -35,7 +33,6 @@ export class JeuDetailsComponent {
   id_jeu: number | undefined;
   user_id: number = -1;
   achats: AchatRequest[] = [];
-  isBuy: Observable<boolean> = of(false)
 
   constructor(public gameService: GameService, private route: ActivatedRoute, private http: HttpClient, public userService: UsersService, public dialog: MatDialog) {
     this.profilCourant = this.userService.getUser();
@@ -161,16 +158,16 @@ export class JeuDetailsComponent {
     });
   }
 
-  openCommentModal(jeu:Jeu): void {
+  openCommentModal(jeu: Jeu): void {
     const dialogRef = this.dialog.open(CommentModalComponent, {
       width: '400px',
       data: {jeu}
     });
   }
 
-  editCommentaire(commentaire: CommentaireRequest,jeu:Jeu): void {
+  editCommentaire(commentaire: CommentaireRequest, jeu: Jeu): void {
     const dialogRef = this.dialog.open(CommentaireEditComponent, {
-      data: {commentaire,jeu}
+      data: {commentaire, jeu}
     });
   }
 

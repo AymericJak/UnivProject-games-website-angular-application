@@ -13,7 +13,7 @@ import {JeuRequest} from "../models/api/jeuRequest";
 export class JeuxListeComponent {
   dataSource: JeuxRequest = <JeuxRequest>{};
   authenticated: boolean = this.authService.userIsConnected();
-  jeuRequests: JeuRequest[] = []
+
   constructor(private gameService: GameService, private http: HttpClient, private authService: AuthentificationService) {
   }
 

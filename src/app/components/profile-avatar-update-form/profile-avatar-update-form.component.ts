@@ -4,8 +4,6 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {UsersService} from "../../services/users/users.service";
 import {Observable} from "rxjs";
 import {UserRequest} from "../../models/UserRequest";
-import {UpdateProfileRequest} from "../../requests/UpdateProfileRequest";
-import {UpdateProfileResponse} from "../../responses/UpdateProfileResponse";
 import {UpdateAvatarProfileRequest} from "../../requests/UpdateAvatarProfileRequest";
 import {UpdateAvatarProfileResponse} from "../../responses/UpdateAvatarProfileResponse";
 
@@ -30,7 +28,7 @@ export class ProfileAvatarUpdateFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = +(this.route.snapshot.paramMap.get('id') || 0);
-    const personalProfileString: string|null = this.route.snapshot.paramMap.get('personal-profile' || 'false');
+    const personalProfileString: string | null = this.route.snapshot.paramMap.get('personal-profile' || 'false');
     if (personalProfileString == 'false' || personalProfileString == null) this.personalProfile = false;
     this.currentProfile$ = this.profileService.getUser(parseInt(String(this.id)));
     this.currentProfile$.subscribe((userResponse: UserRequest) => {
@@ -47,7 +45,7 @@ export class ProfileAvatarUpdateFormComponent implements OnInit {
         avatar: this.avatar.value,
       }
       this.profileService.updateAvatarUser(this.id, newUser).subscribe(
-        (updatedUser: UpdateAvatarProfileResponse) => {
+        () => {
           console.log('Updated');
         },
         (error) => {

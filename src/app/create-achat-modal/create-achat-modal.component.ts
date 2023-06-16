@@ -2,8 +2,6 @@ import {Component, Inject} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {GameService} from "../services/game.service";
-import {Jeu} from "../models/jeu";
-import {JeuRequest} from "../models/api/jeuRequest";
 import {AchatRequest} from "../models/api/achat-request";
 
 @Component({
@@ -19,7 +17,6 @@ export class CreateAchatModalComponent {
     private formBuilder: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private jeuService: GameService
-
   ) {
   }
 

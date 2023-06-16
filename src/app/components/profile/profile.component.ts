@@ -1,11 +1,9 @@
-import {AfterContentInit, AfterViewInit, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {UserRequest} from "../../models/UserRequest";
 import {UsersService} from "../../services/users/users.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {GameService} from "../../services/game.service";
-import {JeuRequest} from "../../models/api/jeuRequest";
-import {Jeu} from "../../models/jeu";
 
 @Component({
   selector: 'app-profile',
@@ -28,10 +26,10 @@ export class ProfileComponent implements OnInit {
     if (id) {
       this.profilCourant$ = this.profilService.getUser(parseInt(id));
       this.personalProfile = false;
-    }
-    else {
+    } else {
       this.profilCourant$ = this.profilService.getUser();
     }
-    this.profilCourant$.subscribe((userRequest: UserRequest) => { });
+    this.profilCourant$.subscribe(() => {
+    });
   }
 }

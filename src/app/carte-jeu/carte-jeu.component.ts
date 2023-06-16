@@ -1,10 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {JeuRequest} from "../models/api/jeuRequest";
 import {Jeu} from "../models/jeu";
-import {UsersService} from "../services/users/users.service";
-import {Observable} from "rxjs";
-import {UserRequest} from "../models/UserRequest";
-import {JeuxRequest} from "../models/api/jeuxRequest";
 import {GameService} from "../services/game.service";
 import {HttpClient} from "@angular/common/http";
 

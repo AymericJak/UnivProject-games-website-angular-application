@@ -24,7 +24,7 @@ export class GameService {
       .pipe(
         catchError(err => {
           console.log('Erreur http : ', err);
-          return of({ status: "Error", jeux: [] });
+          return of({status: "Error", jeux: []});
         }),
       );
   }
@@ -82,6 +82,7 @@ export class GameService {
       })
     );
   }
+
   deleteAchat(id: number): Observable<any> {
     const url: string = 'http://localhost:8000/api/jeu/' + id + '/achat';
 
@@ -153,7 +154,7 @@ export class GameService {
     return this.http.get<JeuxRequest>(url).pipe(
       catchError(err => {
         console.log('Erreur http : ', err);
-        return of({ status: "Error", jeux: [] });
+        return of({status: "Error", jeux: []});
       })
     );
   }
@@ -163,7 +164,7 @@ export class GameService {
     return this.http.get<JeuxRequest>(url).pipe(
       catchError(err => {
         console.log('Erreur http : ', err);
-        return of({ status: "Error", jeux: [] });
+        return of({status: "Error", jeux: []});
       })
     );
   }
@@ -173,7 +174,7 @@ export class GameService {
     return this.http.get<JeuxRequest>(url).pipe(
       catchError(err => {
         console.log('Erreur http : ', err);
-        return of({ status: "Error", jeux: [] });
+        return of({status: "Error", jeux: []});
       })
     );
   }
@@ -183,7 +184,7 @@ export class GameService {
     return this.http.get<JeuxRequest>(url).pipe(
       catchError(err => {
         console.log('Erreur http : ', err);
-        return of({ status: "Error", jeux: [] });
+        return of({status: "Error", jeux: []});
       })
     );
   }
@@ -193,7 +194,7 @@ export class GameService {
     return this.http.get<JeuxRequest>(url).pipe(
       catchError(err => {
         console.log('Erreur http : ', err);
-        return of({ status: "Error", jeux: [] });
+        return of({status: "Error", jeux: []});
       })
     );
   }
@@ -203,7 +204,7 @@ export class GameService {
     return this.http.get<JeuxRequest>(url).pipe(
       catchError(err => {
         console.log('Erreur http : ', err);
-        return of({ status: "Error", jeux: [] });
+        return of({status: "Error", jeux: []});
       })
     );
   }

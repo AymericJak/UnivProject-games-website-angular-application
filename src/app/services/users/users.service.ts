@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable} from "rxjs";
 import {TokenStorageService} from "../../token-storage.service";
@@ -26,15 +26,16 @@ export class UsersService {
    *
    * @private
    */
-  private static readonly  API_URL_DICT: {[key: string]: string} = {
+  private static readonly API_URL_DICT: { [key: string]: string } = {
     'profile': UsersService.API_URL + 'profil',
     'update': UsersService.API_URL + 'update',
     'update-profile': UsersService.API_URL + 'updateAvatar',
   };
 
-  constructor(private http: HttpClient, private tokenStorageService: TokenStorageService) { }
+  constructor(private http: HttpClient, private tokenStorageService: TokenStorageService) {
+  }
 
-  public getUser(id: number = -1): Observable<UserRequest> {
+  public getUser(id = -1): Observable<UserRequest> {
     const token: string = this.tokenStorageService.getToken();
     const httpOptions: {} = {
       headers: new HttpHeaders(

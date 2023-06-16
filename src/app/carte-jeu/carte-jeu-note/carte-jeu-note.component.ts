@@ -6,23 +6,19 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./carte-jeu-note.component.css']
 })
 export class CarteJeuNoteComponent implements OnInit {
-  @Input('rating') rating: number = 0;
+  @Input('rating') rating = 0;
 
-  totalStar: number = 5;
+  totalStar = 5;
   ratingArray: number[] = [];
 
-  constructor() {
-  }
-
   ngOnInit() {
-    console.log(this.rating)
     for (let index = 0; index < this.totalStar; index++) {
       this.ratingArray.push(index);
     }
   }
 
   iconStatus(index: number) {
-    let val = Math.floor(this.rating * 100) / 10 - ((index) * 10);
+    const val = Math.floor(this.rating * 100) / 10 - ((index) * 10);
     if (val >= 7.5) {
       return 'star';
     } else if (val >= 2.5 && val < 7.5) {

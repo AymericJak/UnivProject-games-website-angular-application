@@ -1,6 +1,6 @@
-import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Component, Inject} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CommentaireRequest} from "../models/api/commentaireRequest";
 import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
@@ -16,11 +16,12 @@ import {UserRequest} from "../models/UserRequest";
 })
 export class CommentaireEditComponent {
   commentaireForm: FormGroup;
-  user_id: number=0;
-  commentaire : CommentaireRequest;
+  user_id = 0;
+  commentaire: CommentaireRequest;
+
   constructor(
     public dialogRef: MatDialogRef<CommentaireEditComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { commentaire: CommentaireRequest ,jeu:Jeu},
+    @Inject(MAT_DIALOG_DATA) public data: { commentaire: CommentaireRequest, jeu: Jeu },
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private http: HttpClient,
@@ -32,12 +33,14 @@ export class CommentaireEditComponent {
     });
     this.commentaire = data.commentaire;
   }
+
   ngOnInit(): void {
     const userObservable: Observable<UserRequest> = this.userService.getUser();
     userObservable.subscribe((user) => {
       this.user_id = user.adherent.id;
     });
   }
+
   cancel(): void {
     this.dialogRef.close();
   }
@@ -46,7 +49,7 @@ export class CommentaireEditComponent {
   onSubmit(): void {
     if (this.commentaireForm.valid) {
       const id_commentaire = this?.commentaire.id;
-      const url: string = `http://localhost:8000/api/commentaire/${id_commentaire}`;
+      const url = `http://localhost:8000/api/commentaire/${id_commentaire}`;
       const commentaireData = {
         ...this.data.commentaire,
         commentaire: this.commentaireForm.value.commentaire,
@@ -54,7 +57,7 @@ export class CommentaireEditComponent {
       };
       this.http.patch(url, commentaireData)
         .subscribe(
-          (response) => {
+          () => {
             console.log('Commentaire modifié avec succès !');
             this.dialogRef.close();
           },
