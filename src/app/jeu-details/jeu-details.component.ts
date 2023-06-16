@@ -17,9 +17,7 @@ import {CommentModalComponent} from "../comment-modal/comment-modal.component";
   styleUrls: ['./jeu-details.component.css']
 })
 export class JeuDetailsComponent {
-  // note: number = 0;
   isLiked: boolean = false;
-  jeuRequest: JeuRequest | undefined;
   jeu: Jeu | undefined;
   noteMoyenne: number = 0;
   nbLike: number = 0;
@@ -30,17 +28,16 @@ export class JeuDetailsComponent {
   showNewestFirst: boolean = false;
   id_jeu: number | undefined;
 
-  constructor(public gameService: GameService, private route: ActivatedRoute, private http: HttpClient, public userService: UsersService,public dialog: MatDialog) {
+  constructor(public gameService: GameService, private route: ActivatedRoute, private http: HttpClient, public userService: UsersService, public dialog: MatDialog) {
     this.profilCourant = this.userService.getUser();
   }
 
   ngOnInit(): void {
     this.id_jeu = +(this.route.snapshot.paramMap.get('id') || 0);
     const userObservable: Observable<UserRequest> = this.userService.getUser();
-    if (this.id_jeu){
+    if (this.id_jeu) {
       this.profilCourant = this.userService.getUser(parseInt(String(this.id_jeu)));
-    }
-    else {
+    } else {
       this.profilCourant = this.userService.getUser();
     }
     this.gameService.getJeu(this.id_jeu).subscribe({
@@ -69,11 +66,18 @@ export class JeuDetailsComponent {
       });
     });
 
+    this.gameService.checkUserLike(this.id_jeu).subscribe({
+      next: (gameIsLikedResponse) => {
+        this.isLiked = gameIsLikedResponse.is_liked;
+      },
+      error: (err) => {
+        console.log('Erreur lors de la vérification du like : ', err);
+      }
+    })
+
   }
 
   toggleLike(): void {
-
-
     const id: number = +(this.route.snapshot.paramMap.get('id') || 0);
 
     this.gameService.getJeu(+id).subscribe(
@@ -86,6 +90,7 @@ export class JeuDetailsComponent {
             .subscribe(
               (response) => {
                 this.isLiked = !this.isLiked;
+                this.nbLike = this.isLiked ? this.nbLike + 1 : this.nbLike - 1;
                 console.log('Ajout du like effectuée avec succès !');
               },
               (error) => {
@@ -102,6 +107,7 @@ export class JeuDetailsComponent {
       }
     );
   }
+
   toggleSortOldestFirst(): void {
     this.showOldestFirst = !this.showOldestFirst;
     this.showNewestFirst = false;
@@ -128,7 +134,7 @@ export class JeuDetailsComponent {
     }
   }
 
-  openCommentModal(jeu:Jeu): void {
+  openCommentModal(jeu: Jeu): void {
     const dialogRef = this.dialog.open(CommentModalComponent, {
       width: '400px',
       data: {jeu} // Passer le jeu en tant que donnée à la fenêtre modale

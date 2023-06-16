@@ -26,7 +26,8 @@
       <div class="info">
         <span class="label">Nombre like: </span>
         <span class="value">{{ nbLike }}</span>
-        <button mat-flat-button color="warn" (click)="toggleLike()">{{ isLiked ? 'Unlike' : 'Like' }}</button>
+        <button *ngIf="isLiked" mat-flat-button color="warn" (click)="toggleLike()">Unlike</button>
+        <button *ngIf="!isLiked" mat-stroked-button color="warn" (click)="toggleLike()">Like</button>
       </div>
 
 

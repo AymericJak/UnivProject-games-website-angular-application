@@ -7,6 +7,7 @@ import {Jeu} from "../models/jeu";
 import {CategorieRequest} from "../models/api/categorieRequest";
 import {ThemeRequest} from "../models/api/themeRequest";
 import {EditeurRequest} from "../models/api/editeurRequest";
+import {GameIsLikedRequest} from "../models/api/game-is-liked-request";
 
 @Injectable({
   providedIn: 'root'
@@ -118,4 +119,10 @@ export class GameService {
         })
       );
   }
+
+  checkUserLike(jeuId: number): Observable<GameIsLikedRequest> {
+    const url: string = `http://localhost:8000/api/jeu/${jeuId}/like/check`;
+    return this.http.get<GameIsLikedRequest>(url);
+  }
+
 }
