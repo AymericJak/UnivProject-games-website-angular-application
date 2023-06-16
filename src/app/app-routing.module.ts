@@ -23,8 +23,9 @@ const routes: Routes = [
   {path: 'jeux/:id', component: JeuDetailsComponent},
   {path: 'a-propos', component: AProposComponent},
   {path: 'contacts', component: ContactComponent},
+  {path: 'profile/:id', component: ProfileComponent},
   {path: 'profile', component: ProfileComponent},
-  {path: 'update-profile/:id', component: ProfileUpdateFormComponent},
+  {path: 'update-profile/:id/:personal-profile', component: ProfileUpdateFormComponent},
 ];
 
 
