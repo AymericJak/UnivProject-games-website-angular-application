@@ -32,11 +32,6 @@ export class AppComponent {
    */
   logout(): void {
     this.authService.logout();
-    // if (this.router.url === '/home') {
-    //   window.location.reload();
-    // } else {
-    //   this.router.navigate(['/home']).then(r => r);
-    // }
   }
 
   /**
