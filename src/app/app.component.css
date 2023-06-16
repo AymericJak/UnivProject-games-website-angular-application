@@ -13,3 +13,7 @@
 .content {
   margin: 5rem 9rem;
 }
+
+.pointer {
+  cursor: pointer;
+}
