@@ -38,6 +38,7 @@ import { CommentaireEditComponent } from './commentaire-edit/commentaire-edit.co
 import { ProfileUpdateFormComponent } from './components/profile-update-form/profile-update-form.component';
 import {MatChipsModule} from "@angular/material/chips";
 import {JeuModificationComponent} from "./components/jeu-modification/jeu-modification.component";
+import { DeleteCommentaireComponent } from './delete-commentaire/delete-commentaire.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import {JeuModificationComponent} from "./components/jeu-modification/jeu-modifi
     ProfileUpdateFormComponent,
     CommentModalComponent,
     CommentaireEditComponent,
+    DeleteCommentaireComponent,
   ],
   imports: [
     BrowserModule,

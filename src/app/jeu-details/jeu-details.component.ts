@@ -11,6 +11,7 @@ import {UserRequest} from "../models/UserRequest";
 import {MatDialog} from "@angular/material/dialog";
 import {CommentModalComponent} from "../comment-modal/comment-modal.component";
 import {CommentaireEditComponent} from "../commentaire-edit/commentaire-edit.component";
+import {DeleteCommentaireComponent} from "../delete-commentaire/delete-commentaire.component";
 
 @Component({
   selector: 'app-game-details',
@@ -138,6 +139,12 @@ export class JeuDetailsComponent {
   editCommentaire(commentaire: CommentaireRequest,jeu:Jeu): void {
     const dialogRef = this.dialog.open(CommentaireEditComponent, {
       data: {commentaire,jeu}
+    });
+  }
+
+  deleteCommentaire(id: number) {
+    const dialogRef = this.dialog.open(DeleteCommentaireComponent, {
+      data: {id}
     });
   }
 }
