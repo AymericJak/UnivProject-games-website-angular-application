@@ -14,6 +14,7 @@ import {DeleteAchatModalComponent} from "../delete-achat-modal/delete-achat-moda
 import {CommentModalComponent} from "../comment-modal/comment-modal.component";
 import {CommentaireEditComponent} from "../commentaire-edit/commentaire-edit.component";
 import {DeleteCommentaireComponent} from "../delete-commentaire/delete-commentaire.component";
+import {Achat} from "../../models/achat";
 
 @Component({
   selector: 'app-game-details',
@@ -30,7 +31,7 @@ export class JeuDetailsComponent implements OnInit {
   prixMoyen = 0;
   isLiked = false;
   commentaires: CommentaireRequest[] = []
-  achats: AchatRequest[] = [];
+  achats: Achat[] = [];
   showOldestFirst = false;
   showNewestFirst = false;
   isPurchased = false;
@@ -55,7 +56,8 @@ export class JeuDetailsComponent implements OnInit {
           this.commentaires = jeuResponse.commentaires;
           this.prixMoyen = jeuResponse.prix_moyen;
           this.achats = jeuResponse.achats;
-          this.isPurchased = this.achats.some((achatRequest) => achatRequest.jeu?.id === this.jeu?.id);
+          this.isPurchased = false
+          this.isPurchased = this.achats.some((achat:Achat) => achat.jeu_id === this.jeu?.id);
           this.sortCommentaires();
         } else {
           console.log('Invalid jeuResponse:', jeuResponse); // Debugging statement
@@ -150,8 +152,8 @@ export class JeuDetailsComponent implements OnInit {
 
   openModalBuy(): void {
     const dialogRef  = this.dialog.open(CreateAchatModalComponent, {
-      width: '400px',
-      height: '260px',
+      width: '300px',
+      height: '320px',
       disableClose: true,
       data: this.jeu
     });
@@ -159,7 +161,9 @@ export class JeuDetailsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       console.log("Resultat ici")
       console.log(result)
-      this.isPurchased = true
+      // if (result == 'success'){
+        this.isPurchased = true
+      // }
 
     });
   }
@@ -167,6 +171,7 @@ export class JeuDetailsComponent implements OnInit {
   openModalUnBuy(): void {
     const dialogRef = this.dialog.open(DeleteAchatModalComponent, {
       width: '400px',
+      height: '200px',
       disableClose: true,
       data: this.jeu
     });
@@ -174,7 +179,9 @@ export class JeuDetailsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       console.log("Resultat ici")
       console.log(result)
-      this.isPurchased = false
+      if (result == 'success'){
+        this.isPurchased = false
+      }
     });
   }
 
