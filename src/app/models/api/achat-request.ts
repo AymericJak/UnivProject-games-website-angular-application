@@ -1,4 +1,3 @@
-import {CommentaireRequest} from "./commentaireRequest";
 import {Jeu} from "../jeu";
 import {Achat} from "../achat";
 import {UserRequest} from "../UserRequest";

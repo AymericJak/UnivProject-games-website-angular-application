@@ -4,11 +4,9 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {UsersService} from "../../services/users/users.service";
 import {Observable} from "rxjs";
 import {UserRequest} from "../../models/UserRequest";
-import {UpdateProfileRequest} from "../../requests/UpdateProfileRequest";
-import {UpdateProfileResponse} from "../../responses/UpdateProfileResponse";
 import {UpdateAvatarProfileRequest} from "../../requests/UpdateAvatarProfileRequest";
-import {UpdateAvatarProfileResponse} from "../../responses/UpdateAvatarProfileResponse";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+
 
 @Component({
   selector: 'app-profile-avatar-update-form',
@@ -21,19 +19,19 @@ export class ProfileAvatarUpdateFormComponent implements OnInit {
 
   public currentProfile$: Observable<UserRequest>;
 
-  public id: number = 0;
+  public id = 0;
 
-  public personalProfile: boolean = true;
+  public personalProfile = true;
   fileForm!: FormGroup;
 
-  constructor(public route: ActivatedRoute, private profileService: UsersService, private router: Router,    private formBuilder: FormBuilder,
+  constructor(public route: ActivatedRoute, private profileService: UsersService, private router: Router, private formBuilder: FormBuilder,
               private http: HttpClient) {
     this.currentProfile$ = this.profileService.getUser();
   }
 
   ngOnInit(): void {
     this.id = +(this.route.snapshot.paramMap.get('id') || 0);
-    const personalProfileString: string|null = this.route.snapshot.paramMap.get('personal-profile' || 'false');
+    const personalProfileString: string | null = this.route.snapshot.paramMap.get('personal-profile' || 'false');
     if (personalProfileString == 'false' || personalProfileString == null) this.personalProfile = false;
     this.fileForm = this.formBuilder.group({
       file: ['', Validators.required]
@@ -49,7 +47,7 @@ export class ProfileAvatarUpdateFormComponent implements OnInit {
         avatar: this.avatar.value,
       }
       this.profileService.updateAvatarUser(this.id, newUser).subscribe(
-        (updatedUser: UpdateAvatarProfileResponse) => {
+        () => {
           console.log('Updated');
         },
         (error) => {
@@ -82,7 +80,7 @@ export class ProfileAvatarUpdateFormComponent implements OnInit {
       const headers = new HttpHeaders(); // Create headers object
       headers.append('enctype', 'multipart/form-data'); // Set content type header
       console.log("ici")
-      this.http.post('http://localhost:8000/api/updateAvatar/' + this.id, formData, { headers }).subscribe(
+      this.http.post('http://localhost:8000/api/updateAvatar/' + this.id, formData, {headers}).subscribe(
         (response) => {
           console.log(response);
           console.log('File uploaded successfully');
@@ -95,5 +93,4 @@ export class ProfileAvatarUpdateFormComponent implements OnInit {
       );
     }
   }
-
 }

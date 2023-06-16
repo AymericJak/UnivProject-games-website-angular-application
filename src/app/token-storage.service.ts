@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenStorageService {
-  token_key: string = "JWT_Token";
-  constructor() { }
+  token_key = "JWT_Token";
+
+
   signOut() {
     window.sessionStorage.removeItem(this.token_key);
     window.sessionStorage.clear();
@@ -20,8 +21,9 @@ export class TokenStorageService {
 
   public getToken(): string {
     const token = sessionStorage.getItem(this.token_key);
-    if (token){
+    if (token) {
       return token
-    } return ''
+    }
+    return ''
   }
 }

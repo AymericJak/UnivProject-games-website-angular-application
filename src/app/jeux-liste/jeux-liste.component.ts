@@ -1,19 +1,18 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {GameService} from "../services/game.service";
 import {HttpClient} from "@angular/common/http";
 import {JeuxRequest} from "../models/api/jeuxRequest";
 import {AuthentificationService} from "../authentification.service";
-import {JeuRequest} from "../models/api/jeuRequest";
 
 @Component({
   selector: 'app-jeux-liste',
   templateUrl: './jeux-liste.component.html',
   styleUrls: ['./jeux-liste.component.css']
 })
-export class JeuxListeComponent {
+export class JeuxListeComponent implements OnInit {
   dataSource: JeuxRequest = <JeuxRequest>{};
   authenticated: boolean = this.authService.userIsConnected();
-  jeuRequests: JeuRequest[] = []
+
   constructor(private gameService: GameService, private http: HttpClient, private authService: AuthentificationService) {
   }
 

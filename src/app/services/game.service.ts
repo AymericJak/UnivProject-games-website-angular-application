@@ -19,18 +19,18 @@ export class GameService {
   }
 
   getJeux(): Observable<JeuxRequest> {
-    const url: string = 'http://localhost:8000/api/jeu';
+    const url = 'http://localhost:8000/api/jeu';
     return this.http.get<JeuxRequest>(url)
       .pipe(
         catchError(err => {
           console.log('Erreur http : ', err);
-          return of({ status: "Error", jeux: [] });
+          return of({status: "Error", jeux: []});
         }),
       );
   }
 
   getJeu(id: number): Observable<JeuRequest> {
-    const url: string = `http://localhost:8000/api/jeu/${id}`;
+    const url = `http://localhost:8000/api/jeu/${id}`;
     return this.http.get<JeuRequest>(url)
       .pipe(
         catchError(err => {
@@ -62,7 +62,7 @@ export class GameService {
   }
 
   createJeu(jeuRequest: Jeu): Observable<JeuRequest> {
-    const url: string = 'http://localhost:8000/api/jeu';
+    const url = 'http://localhost:8000/api/jeu';
 
     return this.http.post<JeuRequest>(url, jeuRequest).pipe(
       catchError(err => {
@@ -82,8 +82,9 @@ export class GameService {
       })
     );
   }
+
   deleteAchat(id: number): Observable<any> {
-    const url: string = 'http://localhost:8000/api/jeu/' + id + '/achat';
+    const url = 'http://localhost:8000/api/jeu/' + id + '/achat';
 
     return this.http.delete<any>(url).pipe(
       catchError(err => {
@@ -94,7 +95,7 @@ export class GameService {
   }
 
   updateJeu(jeu: Jeu): Observable<Jeu> {
-    const url: string = `http://localhost:8000/api/jeu/${jeu.id}/edit`;
+    const url = `http://localhost:8000/api/jeu/${jeu.id}/edit`;
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     };
@@ -107,11 +108,8 @@ export class GameService {
     );
   }
 
-  uploadMedia(id: number) { //TODO
-  }
-
   getCategories(): Observable<CategorieRequest[]> {
-    const url: string = 'http://localhost:8000/api/categories';
+    const url = 'http://localhost:8000/api/categories';
     return this.http.get<CategorieRequest[]>(url)
       .pipe(
         catchError(err => {
@@ -122,7 +120,7 @@ export class GameService {
   }
 
   getThemes(): Observable<ThemeRequest[]> {
-    const url: string = 'http://localhost:8000/api/themes';
+    const url = 'http://localhost:8000/api/themes';
     return this.http.get<ThemeRequest[]>(url)
       .pipe(
         catchError(err => {
@@ -133,7 +131,7 @@ export class GameService {
   }
 
   getEditeurs(): Observable<EditeurRequest[]> {
-    const url: string = 'http://localhost:8000/api/editeurs';
+    const url = 'http://localhost:8000/api/editeurs';
     return this.http.get<EditeurRequest[]>(url)
       .pipe(
         catchError(err => {
@@ -144,66 +142,66 @@ export class GameService {
   }
 
   checkUserLike(jeuId: number): Observable<GameIsLikedRequest> {
-    const url: string = `http://localhost:8000/api/jeu/${jeuId}/like/check`;
+    const url = `http://localhost:8000/api/jeu/${jeuId}/like/check`;
     return this.http.get<GameIsLikedRequest>(url);
   }
 
   filtrerParAgeMin(): Observable<JeuxRequest> {
-    const url: string = 'http://localhost:8000/api/jeu/FiltrageAgeMin';
+    const url = 'http://localhost:8000/api/jeu/FiltrageAgeMin';
     return this.http.get<JeuxRequest>(url).pipe(
       catchError(err => {
         console.log('Erreur http : ', err);
-        return of({ status: "Error", jeux: [] });
+        return of({status: "Error", jeux: []});
       })
     );
   }
 
   filtrerParDuree(): Observable<JeuxRequest> {
-    const url: string = 'http://localhost:8000/api/jeu/FiltrageDuree';
+    const url = 'http://localhost:8000/api/jeu/FiltrageDuree';
     return this.http.get<JeuxRequest>(url).pipe(
       catchError(err => {
         console.log('Erreur http : ', err);
-        return of({ status: "Error", jeux: [] });
+        return of({status: "Error", jeux: []});
       })
     );
   }
 
   filtrerParJoueursMin(): Observable<JeuxRequest> {
-    const url: string = 'http://localhost:8000/api/jeu/FiltrageJoueursMin';
+    const url = 'http://localhost:8000/api/jeu/FiltrageJoueursMin';
     return this.http.get<JeuxRequest>(url).pipe(
       catchError(err => {
         console.log('Erreur http : ', err);
-        return of({ status: "Error", jeux: [] });
+        return of({status: "Error", jeux: []});
       })
     );
   }
 
   filtrerParJoueursMax(): Observable<JeuxRequest> {
-    const url: string = 'http://localhost:8000/api/jeu/FiltrageJoueursMax';
+    const url = 'http://localhost:8000/api/jeu/FiltrageJoueursMax';
     return this.http.get<JeuxRequest>(url).pipe(
       catchError(err => {
         console.log('Erreur http : ', err);
-        return of({ status: "Error", jeux: [] });
+        return of({status: "Error", jeux: []});
       })
     );
   }
 
   filtrerParMostLiked(): Observable<JeuxRequest> {
-    const url: string = 'http://localhost:8000/api/jeu/FiltrageMostLiked';
+    const url = 'http://localhost:8000/api/jeu/FiltrageMostLiked';
     return this.http.get<JeuxRequest>(url).pipe(
       catchError(err => {
         console.log('Erreur http : ', err);
-        return of({ status: "Error", jeux: [] });
+        return of({status: "Error", jeux: []});
       })
     );
   }
 
   filtrerParBestRated(): Observable<JeuxRequest> {
-    const url: string = 'http://localhost:8000/api/jeu/FiltrageBestRated';
+    const url = 'http://localhost:8000/api/jeu/FiltrageBestRated';
     return this.http.get<JeuxRequest>(url).pipe(
       catchError(err => {
         console.log('Erreur http : ', err);
-        return of({ status: "Error", jeux: [] });
+        return of({status: "Error", jeux: []});
       })
     );
   }

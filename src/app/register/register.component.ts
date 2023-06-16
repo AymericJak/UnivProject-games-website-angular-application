@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthentificationService} from "../authentification.service";
 
@@ -7,10 +7,11 @@ import {AuthentificationService} from "../authentification.service";
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
 
-  constructor(private authService: AuthentificationService) { }
+  constructor(private authService: AuthentificationService) {
+  }
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({
@@ -39,7 +40,7 @@ export class RegisterComponent {
         const pseudo = pseudoControl.value;
         const email = emailControl.value;
         const password = passwordControl.value;
-        this.authService.register(login, prenom, nom, pseudo,email, password);
+        this.authService.register(login, prenom, nom, pseudo, email, password);
       }
     }
   }
