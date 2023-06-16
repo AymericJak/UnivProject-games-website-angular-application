@@ -3,6 +3,7 @@ import {Jeu} from "../jeu";
 import {AchatRequest} from "./achat-request";
 
 export interface JeuRequest {
+  image_enc: string;
   status: string,
   message: string,
   achats: AchatRequest[],

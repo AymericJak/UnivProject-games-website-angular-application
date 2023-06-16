@@ -24,21 +24,6 @@ export class JeuModificationComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.jeuForm = this.formBuilder.group({
-      nom: ['', Validators.required],
-      description: ['', Validators.required],
-      langue: ['', Validators.required],
-      age_min: ['', Validators.required],
-      nombre_joueurs_min: ['', Validators.required],
-      nombre_joueurs_max: ['', Validators.required],
-      duree_partie: ['', Validators.required],
-      categorie: ['', Validators.required],
-      theme: ['', Validators.required],
-      editeur: ['', Validators.required]
-    });
-
-    this.fetchData();
-
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
       if (id) {
@@ -56,6 +41,21 @@ export class JeuModificationComponent implements OnInit {
         this.router.navigate(['/']);
       }
     });
+
+    this.jeuForm = this.formBuilder.group({
+      nom: ['', Validators.required],
+      description: ['', Validators.required],
+      langue: ['', Validators.required],
+      age_min: ['', Validators.required],
+      nombre_joueurs_min: ['', Validators.required],
+      nombre_joueurs_max: ['', Validators.required],
+      duree_partie: ['', Validators.required],
+      categorie: ['', Validators.required],
+      theme: ['', Validators.required],
+      editeur: ['', Validators.required]
+    });
+
+    this.fetchData();
   }
 
   fetchData(): void {

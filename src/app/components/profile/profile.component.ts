@@ -28,6 +28,5 @@ export class ProfileComponent implements OnInit {
     } else {
       this.profilCourant$ = this.profilService.getUser();
     }
-    this.profilCourant$.subscribe();
   }
 }

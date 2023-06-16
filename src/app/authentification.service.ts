@@ -15,6 +15,7 @@ export class AuthentificationService {
   login(email: string, password: string): void {
     this.http.post<any>(environment.apiUrl + "/login", {email, password}).subscribe(
       response => {
+        console.log(response)
         const token = response.authorisation.token;
         this.tokenStorageService.saveToken(token);
       },
@@ -43,7 +44,6 @@ export class AuthentificationService {
       }
     );
     this.tokenStorageService.signOut();
-    this.router.navigate(['/']).then(r => r);
   }
 
   public userIsConnected(): boolean {

@@ -41,6 +41,7 @@ import { ProfileAvatarUpdateFormComponent } from './components/profile-avatar-up
 import { CreateAchatModalComponent } from './create-achat-modal/create-achat-modal.component';
 import { DeleteAchatModalComponent } from './delete-achat-modal/delete-achat-modal.component';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/material/dialog";
+import { UploadJeuImageComponent } from './components/upload-jeu-image/upload-jeu-image.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/materia
     DeleteCommentaireComponent,
     ProfileAvatarUpdateFormComponent,
     CreateAchatModalComponent,
-    DeleteAchatModalComponent
+    DeleteAchatModalComponent,
+    UploadJeuImageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {UsersService} from "../../services/users/users.service";
 import {Observable} from "rxjs";
 import {UserRequest} from "../../models/UserRequest";
 import {UpdateAvatarProfileRequest} from "../../requests/UpdateAvatarProfileRequest";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+
 
 @Component({
   selector: 'app-profile-avatar-update-form',
@@ -20,8 +22,10 @@ export class ProfileAvatarUpdateFormComponent implements OnInit {
   public id = 0;
 
   public personalProfile = true;
+  fileForm!: FormGroup;
 
-  constructor(public route: ActivatedRoute, private profileService: UsersService, private router: Router) {
+  constructor(public route: ActivatedRoute, private profileService: UsersService, private router: Router, private formBuilder: FormBuilder,
+              private http: HttpClient) {
     this.currentProfile$ = this.profileService.getUser();
   }
 
@@ -29,9 +33,8 @@ export class ProfileAvatarUpdateFormComponent implements OnInit {
     this.id = +(this.route.snapshot.paramMap.get('id') || 0);
     const personalProfileString: string | null = this.route.snapshot.paramMap.get('personal-profile' || 'false');
     if (personalProfileString == 'false' || personalProfileString == null) this.personalProfile = false;
-    this.currentProfile$ = this.profileService.getUser(parseInt(String(this.id)));
-    this.currentProfile$.subscribe((userResponse: UserRequest) => {
-      this.avatar.setValue(userResponse.adherent.avatar);
+    this.fileForm = this.formBuilder.group({
+      file: ['', Validators.required]
     });
   }
 
@@ -69,4 +72,25 @@ export class ProfileAvatarUpdateFormComponent implements OnInit {
     return '';
   }
 
+  uploadFile(): void {
+    const formData = new FormData();
+    const fileInput = document.querySelector('#filepicker') as HTMLInputElement;
+    if (fileInput?.files && fileInput.files.length > 0) {
+      formData.append('image', fileInput.files[0]);
+      const headers = new HttpHeaders(); // Create headers object
+      headers.append('enctype', 'multipart/form-data'); // Set content type header
+      console.log("ici")
+      this.http.post('http://localhost:8000/api/updateAvatar/' + this.id, formData, {headers}).subscribe(
+        (response) => {
+          console.log(response);
+          console.log('File uploaded successfully');
+          // Handle the response as needed
+        },
+        (error) => {
+          console.error('An error occurred while uploading the file:', error);
+          // Handle the error as needed
+        }
+      );
+    }
+  }
 }

@@ -17,5 +17,6 @@ export interface Jeu {
   theme: ThemeRequest,
   editeur: EditeurRequest,
   created_at: string,
-  updated_at: string
+  updated_at: string,
+  image: any,
 }
