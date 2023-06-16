@@ -48,7 +48,11 @@
     </mat-form-field>
   </div>
   <div class="form-button-row">
-    <button [routerLink]="['/profile']" mat-fab extended color="warn">
+    <button [routerLink]="['/profile', id]" mat-fab extended color="warn" *ngIf="!personalProfile">
+      <mat-icon>cancel</mat-icon>
+      Annuler
+    </button>
+    <button [routerLink]="['/profile']" mat-fab extended color="warn" *ngIf="personalProfile">
       <mat-icon>cancel</mat-icon>
       Annuler
     </button>
