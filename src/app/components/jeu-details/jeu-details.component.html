@@ -52,8 +52,8 @@
 
       <hr>
 
-      <button mat-raised-button color="primary" (click)="openModalBuy()">Buy</button>
-      <button mat-raised-button color="primary" (click)="openModalUnBuy()">Cancel buy</button>
+      <button mat-raised-button color="primary" *ngIf="!isPurchased" (click)="openModalBuy()">Buy</button>
+      <button mat-raised-button color="primary" *ngIf="isPurchased" (click)="openModalUnBuy()">Cancel buy</button>
 
       <div class="commentaires">
         <h2>Liste des commentaires</h2>

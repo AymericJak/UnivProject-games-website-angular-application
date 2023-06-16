@@ -21,19 +21,19 @@ import {DeleteCommentaireComponent} from "../delete-commentaire/delete-commentai
   styleUrls: ['./jeu-details.component.css']
 })
 export class JeuDetailsComponent implements OnInit {
-  isLiked = false;
+  profilCourant: Observable<UserRequest>;
+  user_id = -1;
+  id_jeu: number | undefined;
   jeu: Jeu | undefined;
   noteMoyenne = 0;
   nbLike = 0;
   prixMoyen = 0;
+  isLiked = false;
   commentaires: CommentaireRequest[] = []
-  profilCourant: Observable<UserRequest>;
+  achats: AchatRequest[] = [];
   showOldestFirst = false;
   showNewestFirst = false;
-  id_jeu: number | undefined;
-  user_id = -1;
-  achats: AchatRequest[] = [];
-  image: any;
+  isPurchased = false;
 
   constructor(public gameService: GameService, private route: ActivatedRoute, private http: HttpClient, public userService: UsersService, public dialog: MatDialog) {
     this.profilCourant = this.userService.getUser();
@@ -43,15 +43,19 @@ export class JeuDetailsComponent implements OnInit {
     this.id_jeu = +(this.route.snapshot.paramMap.get('id') || 0);
     const userObservable: Observable<UserRequest> = this.userService.getUser();
     this.profilCourant = this.userService.getUser();
+
     this.gameService.getJeu(this.id_jeu).subscribe({
       next: (jeuResponse) => {
-        this.jeu = jeuResponse.jeu;
-        this.nbLike = jeuResponse.nb_likes;
-        this.noteMoyenne = jeuResponse.note_moyenne;
-        this.commentaires = jeuResponse.commentaires;
-        this.prixMoyen = jeuResponse.prix_moyen;
-        this.achats = jeuResponse.achats;
-        this.sortCommentaires();
+        if (jeuResponse.jeu) { // Check if the `jeu` object exists
+          this.jeu = jeuResponse.jeu;
+          this.nbLike = jeuResponse.nb_likes;
+          this.noteMoyenne = jeuResponse.note_moyenne;
+          this.commentaires = jeuResponse.commentaires;
+          this.prixMoyen = jeuResponse.prix_moyen;
+          this.achats = jeuResponse.achats;
+          this.isPurchased = this.achats.some((achatRequest) =>achatRequest.achat.jeu_id == jeuResponse.jeu.id )
+          this.sortCommentaires();
+        }
       },
       error: (err) => {
         console.log('Erreur lors de la récupération des informations du jeu : ', err);
@@ -61,7 +65,6 @@ export class JeuDetailsComponent implements OnInit {
       if (user && user.adherent && user.adherent.id) {
         const user_id: number = user.adherent.id;
         this.user_id = user.adherent.id;
-        console.log("user id:" + this.user_id);
         this.commentaires.sort((a, b) => {
           if (a.user_id === user_id && b.user_id !== user_id) {
             return -1;
@@ -142,19 +145,31 @@ export class JeuDetailsComponent implements OnInit {
   }
 
   openModalBuy(): void {
-    this.dialog.open(CreateAchatModalComponent, {
+    const dialogRef  = this.dialog.open(CreateAchatModalComponent, {
       width: '400px',
       height: '260px',
       disableClose: true,
       data: this.jeu
     });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'success') {
+        this.isPurchased = true;
+      }
+    });
   }
 
   openModalUnBuy(): void {
-    this.dialog.open(DeleteAchatModalComponent, {
+    const dialogRef = this.dialog.open(DeleteAchatModalComponent, {
       width: '400px',
       disableClose: true,
       data: this.jeu
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'success') {
+        this.isPurchased = false;
+      }
     });
   }
 
@@ -163,6 +178,7 @@ export class JeuDetailsComponent implements OnInit {
       width: '400px',
       data: {jeu}
     });
+
   }
 
   editCommentaire(commentaire: CommentaireRequest, jeu: Jeu): void {
