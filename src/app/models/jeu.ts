@@ -18,5 +18,4 @@ export interface Jeu {
   editeur: EditeurRequest,
   created_at: string,
   updated_at: string,
-  image: any,
 }

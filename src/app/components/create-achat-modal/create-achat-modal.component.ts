@@ -36,18 +36,21 @@ export class CreateAchatModalComponent implements OnInit {
       this.jeuService.createAchat(achatData).subscribe(
         (createdAchat: AchatRequest) => {
           console.log(createdAchat.message, createdAchat);
+          this.dialogRef.close("success");
+
         },
         (error) => {
           console.error('Erreur lors de la création de l\'achat', error);
+          this.dialogRef.close("error");
+
         }
       );
 
-      this.dialogRef.close();
     }
   }
 
   onCancel(): void {
-    this.dialogRef.close();
+    this.dialogRef.close("error");
   }
 
 }

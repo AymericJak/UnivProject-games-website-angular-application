@@ -4,7 +4,7 @@
       <h1>{{ jeu.nom }}</h1>
 
       <div>
-        <img [src]="image.src" alt="Uploaded Image" [height]="80" [width]="80">
+        <img [src]="jeu.url_media" alt="Uploaded Image" [height]="80" [width]="80">
       </div>
 
       <mat-card-title-group>
@@ -34,6 +34,9 @@
         <button *ngIf="!isLiked" mat-stroked-button color="warn" (click)="toggleLike()">Like</button>
       </div>
 
+      <button mat-icon-button color="primary" routerLink="/jeux/{{jeu.id}}/update">
+        <mat-icon>edit</mat-icon>
+      </button>
 
       <div class="info">
         <span class="label">Prix moyen: </span>
@@ -49,8 +52,8 @@
 
       <hr>
 
-      <button mat-raised-button color="primary" (click)="openModalBuy()">Buy</button>
-      <button mat-raised-button color="primary" (click)="openModalUnBuy()">Cancel buy</button>
+      <button mat-raised-button color="primary" *ngIf="!isPurchased" (click)="openModalBuy()">Buy</button>
+      <button mat-raised-button color="primary" *ngIf="isPurchased" (click)="openModalUnBuy()">Cancel buy</button>
 
       <div class="commentaires">
         <h2>Liste des commentaires</h2>
@@ -62,7 +65,7 @@
           <button mat-icon-button color="primary" (click)="editCommentaire(commentaire,jeu)">
             <mat-icon>edit</mat-icon>
           </button>
-          <button mat-icon-button color="primary" (click)="deleteCommentaire(commentaire.id)">
+          <button mat-icon-button color="primary" (click)="deleteCommentaire(jeu.id, commentaire.id)">
             <mat-icon>delete</mat-icon>
           </button>
         </div>
