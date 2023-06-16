@@ -57,25 +57,25 @@ Sébastien a développé ce composant sans difficultés particulières.
 
 ...
 
-### PJ04 : Filtrage dans la liste des jeux
+### PJ04 : Filtrage dans la liste des jeux Sontag Thomas
 
-...
+J'ai juste rencontrer une difficulté car les filtres n'étaient pas adapter du coté back end ducoup j'ai du les changer.
 
-### PJ05 : Composant d’affichage des détails d’un jeu
+### PJ05 : Composant d’affichage des détails d’un jeu Sontag Thomas
 
-...
+Aucune réel difficulté rencontrer
 
-### PJ05-1 : Composant d’affichage des détails d’un jeu - modification du like
+### PJ05-1 : Composant d’affichage des détails d’un jeu - modification du likeSontag Thomas
 
-...
+Aucune réel difficulté rencontrer
 
-### PJ05-2 : Composant d’affichage des détails d’un jeu - gestion des commentaires
+### PJ05-2 : Composant d’affichage des détails d’un jeu - gestion des commentaires Sontag Thomas
 
-...
+Je n'ais pas eu de mal à mettre en place la modal mais j'ai du effectuer pas mal de changement coté back end qui empêcher l'ajout de commentaire de fonctionner. C'est ce qui m'a pris le plus de temps dans cette SAE Angular
 
-### PJ05-3 : Composant d’affichage des détails d’un jeu - tri de la liste des commentaires
+### PJ05-3 : Composant d’affichage des détails d’un jeu - tri de la liste des commentaires Sontag Thomas
 
-...
+Aucune réel difficulté rencontrer
 
 ### PJ05-4 Composant d’affichage des détails d’un jeu - gestion des achats
 
@@ -109,12 +109,12 @@ Sebastien s'est occupé de faire cette tâche sans difficultés particulières.
 
 Sebastien s'est occupé de faire cette tâche sans difficultés particulières.
 
-### A03 : Composant de modification de l’avatar de l’adhérent
+### A03 : Composant de modification de l’avatar de l’adhérent 
 
 Sebastien s'est occupé de faire cette tâche sans difficultés particulières.
 
 ## Gestion des commentaires
 
-### S03 : Service de gestion des commentaires
+### S03 : Service de gestion des commentaires Sontag Thomas
 
-...
+Aucune réel difficulté rencontrer
