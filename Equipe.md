@@ -2,23 +2,23 @@
 
 ## Authentification
 
-### Auth01 : Création d’un service d’authentification
+### Auth01 : Création d’un service d’authentification - Maxence DEWADDER
 
 ...
 
-### Auth02 : Création d’un composant de connexion
+### Auth02 : Création d’un composant de connexion - Maxence DEWADDER
 
 ...
 
-### Auth03 : Création d’un composant d’enregistrement
+### Auth03 : Création d’un composant d’enregistrement - Maxence DEWADDER
 
 ...
 
-### Auth04 : Création d’un intercepteur de transmission de requêtes
+### Auth04 : Création d’un intercepteur de transmission de requêtes - Maxence DEWADDER
 
 ...
 
-### Auth05 : Gestion de la déconnexion
+### Auth05 : Gestion de la déconnexion - Maxence DEWADDER
 
 ...
 
@@ -26,13 +26,16 @@
 
 ### PA01 : Le bandeau de navigation - Sébastien COZE
 
-J'ai d'abord créé le header sans prendre en compte si l'utilisateur était connecté car le service d'authentification n'est pas encore développé.
+Sébastien a d'abord créé le header sans prendre en compte si l'utilisateur est connecté car le service d'authentification n'est pas encore développé.
+Un fois ce service conçu, il a géré le fait que l'on n'affiche pas les mêmes boutons si l'utisiteur est connecté ou non.
 
-### PA02 : Le pied de page
+### PA02 : Le pied de page - Thomas SONTAG
 
 ...
 
-### PA03 : Le composant accueil
+### PA03 : Le composant accueil - Sébastien COZE
+
+Sébastien a développé ce composant sans difficultés particulières.
 
 ...
 
@@ -95,19 +98,20 @@ J'ai d'abord créé le header sans prendre en compte si l'utilisateur était con
 
 ### S02 : Service de gestion des adhérents - Sébastien COZE
 
-J'ai dû modifier la requête pour obtenir profil sur l'API pour que, par défaut, on retourne le profil de l'utilisateur.
+Sebastien s'est occupé de faire cette tâche.
+Il a dû modifier la requête sur l'API pour que, par défaut, la requête retourne le profil de l'utilisateur connecté.
 
 ### A01 : Composant Profil adhérent
 
-...
+Sebastien s'est occupé de faire cette tâche sans difficultés particulières.
 
 ### A02 : Composant de modification du profil
 
-...
+Sebastien s'est occupé de faire cette tâche sans difficultés particulières.
 
 ### A03 : Composant de modification de l’avatar de l’adhérent
 
-...
+Sebastien s'est occupé de faire cette tâche sans difficultés particulières.
 
 ## Gestion des commentaires
 

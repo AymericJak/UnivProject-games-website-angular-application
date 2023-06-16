@@ -1,61 +1,63 @@
 <mat-card>
   <mat-card-content>
     <div class="container">
-      <h2>Création d'un jeu</h2>
+      <h2>Modification d'un jeu</h2>
       <form [formGroup]="jeuForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-          <mat-form-field class="full-width">
+          <mat-form-field>
             <mat-label>Nom du jeu:</mat-label>
-            <input matInput type="text" formControlName="nom" required>
+            <input matInput type="text" formControlName="nom" required [value]="currentJeu?.nom">
           </mat-form-field>
         </div>
 
         <div class="form-group">
-          <mat-form-field class="full-width">
+          <mat-form-field>
             <mat-label>Description du jeu:</mat-label>
-            <textarea matInput formControlName="description" required></textarea>
+            <textarea matInput formControlName="description" required>{{ currentJeu?.description }}</textarea>
           </mat-form-field>
         </div>
 
         <div class="form-group">
-          <mat-form-field class="full-width">
+          <mat-form-field>
             <mat-label>Langue du jeu:</mat-label>
-            <input matInput type="text" formControlName="langue" required>
+            <input matInput type="text" formControlName="langue" required [value]="currentJeu?.langue">
           </mat-form-field>
         </div>
 
         <div class="form-group">
-          <mat-form-field class="full-width">
+          <mat-form-field>
             <mat-label>Âge minimum:</mat-label>
-            <input matInput type="number" formControlName="age_min" required>
+            <input matInput type="number" formControlName="age_min" required [value]="currentJeu?.age_min">
           </mat-form-field>
         </div>
 
         <div class="form-group">
-          <mat-form-field class="full-width">
+          <mat-form-field>
             <mat-label>Nombre de joueurs minimum:</mat-label>
-            <input matInput type="number" formControlName="nombre_joueurs_min" required>
+            <input matInput type="number" formControlName="nombre_joueurs_min" required
+                   [value]="currentJeu?.nombre_joueurs_min">
           </mat-form-field>
         </div>
 
         <div class="form-group">
-          <mat-form-field class="full-width">
+          <mat-form-field>
             <mat-label>Nombre de joueurs maximum:</mat-label>
-            <input matInput type="number" formControlName="nombre_joueurs_max" required>
+            <input matInput type="number" formControlName="nombre_joueurs_max" required
+                   [value]="currentJeu?.nombre_joueurs_max">
           </mat-form-field>
         </div>
 
         <div class="form-group">
-          <mat-form-field class="full-width">
+          <mat-form-field>
             <mat-label>Durée d'une partie:</mat-label>
-            <input matInput type="number" formControlName="duree_partie" required>
+            <input matInput type="number" formControlName="duree_partie" required [value]="currentJeu?.duree_partie">
           </mat-form-field>
         </div>
 
         <div class="form-group">
-          <mat-form-field class="full-width">
+          <mat-form-field>
             <mat-label>Catégorie:</mat-label>
-            <mat-select formControlName="categorie" required>
+            <mat-select formControlName="categorie" required [value]="currentJeu?.categorie?.nom">
               <mat-option value="" disabled selected>Choisir une catégorie</mat-option>
               <mat-option *ngFor="let categorie of categories" [value]="categorie">
                 {{ categorie }}
@@ -65,9 +67,9 @@
         </div>
 
         <div class="form-group">
-          <mat-form-field class="full-width">
+          <mat-form-field>
             <mat-label>Thème:</mat-label>
-            <mat-select formControlName="theme" required>
+            <mat-select formControlName="theme" required [value]="currentJeu?.theme?.nom">
               <mat-option value="" disabled selected>Choisir un thème</mat-option>
               <mat-option *ngFor="let theme of themes" [value]="theme">
                 {{ theme }}
@@ -77,9 +79,9 @@
         </div>
 
         <div class="form-group">
-          <mat-form-field class="full-width">
+          <mat-form-field>
             <mat-label>Éditeur:</mat-label>
-            <mat-select formControlName="editeur" required>
+            <mat-select formControlName="editeur" required [value]="currentJeu?.editeur?.nom">
               <mat-option value="" disabled selected>Choisir un éditeur</mat-option>
               <mat-option *ngFor="let editeur of editeurs" [value]="editeur">
                 {{ editeur }}
@@ -88,8 +90,10 @@
           </mat-form-field>
         </div>
 
-        <button mat-raised-button type="submit" color="primary" [disabled]="!jeuForm.valid">Créer le jeu</button>
+        <button mat-raised-button type="submit" color="primary" [disabled]="!jeuForm.valid">Mettre à jour le jeu
+        </button>
       </form>
     </div>
+
   </mat-card-content>
 </mat-card>

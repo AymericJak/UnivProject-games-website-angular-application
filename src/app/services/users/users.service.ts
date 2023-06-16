@@ -6,6 +6,8 @@ import {UserRequest} from "../../models/UserRequest";
 import {environment} from "../../environment";
 import {UpdateProfileResponse} from "../../responses/UpdateProfileResponse";
 import {UpdateProfileRequest} from "../../requests/UpdateProfileRequest";
+import {UpdateAvatarProfileRequest} from "../../requests/UpdateAvatarProfileRequest";
+import {UpdateAvatarProfileResponse} from "../../responses/UpdateAvatarProfileResponse";
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +34,7 @@ export class UsersService {
 
   constructor(private http: HttpClient, private tokenStorageService: TokenStorageService) { }
 
-  public getUser(id: number = 0): Observable<UserRequest> {
+  public getUser(id: number = -1): Observable<UserRequest> {
     const token: string = this.tokenStorageService.getToken();
     const httpOptions: {} = {
       headers: new HttpHeaders(
@@ -43,7 +45,7 @@ export class UsersService {
         }
       ),
     };
-    if (id === 0)
+    if (id === -1)
       return this.http.get<any>(`${UsersService.API_URL_DICT['profile']}`, httpOptions).pipe(
         catchError(err => {
           console.error('HTTP ERROR:', err);
@@ -71,6 +73,25 @@ export class UsersService {
       ),
     };
     return this.http.put<UpdateProfileResponse>(`${UsersService.API_URL_DICT['update']}/${id}`, data, httpOptions).pipe(
+      catchError(err => {
+        console.log('HTTP ERROR : ', err);
+        throw err;
+      })
+    );
+  }
+
+  public updateAvatarUser(id: number, data: UpdateAvatarProfileRequest): Observable<UpdateAvatarProfileResponse> {
+    const token: string = this.tokenStorageService.getToken();
+    const httpOptions: {} = {
+      headers: new HttpHeaders(
+        {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'bearer ' + token,
+        },
+      ),
+    };
+    return this.http.put<UpdateAvatarProfileResponse>(`${UsersService.API_URL_DICT['update-profile']}/${id}`, data, httpOptions).pipe(
       catchError(err => {
         console.log('HTTP ERROR : ', err);
         throw err;
