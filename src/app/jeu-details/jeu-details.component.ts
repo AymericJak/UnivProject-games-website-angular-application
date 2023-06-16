@@ -36,6 +36,7 @@ export class JeuDetailsComponent {
   user_id: number = -1;
   achats: AchatRequest[] = [];
   isBuy: Observable<boolean> = of(false)
+  image: any;
 
   constructor(public gameService: GameService, private route: ActivatedRoute, private http: HttpClient, public userService: UsersService, public dialog: MatDialog) {
     this.profilCourant = this.userService.getUser();
@@ -47,12 +48,17 @@ export class JeuDetailsComponent {
     this.profilCourant = this.userService.getUser();
     this.gameService.getJeu(this.id_jeu).subscribe({
       next: (jeuResponse) => {
+        console.log(jeuResponse)
         this.jeu = jeuResponse.jeu;
         this.nbLike = jeuResponse.nb_likes;
         this.noteMoyenne = jeuResponse.note_moyenne;
         this.commentaires = jeuResponse.commentaires;
         this.prixMoyen = jeuResponse.prix_moyen;
         this.achats = jeuResponse.achats;
+        this.image = new Image();
+        this.image.src = "data:image/png;base64," + jeuResponse.image_enc;
+        console.log(this.jeu.url_media)
+
         this.sortCommentaires();
       },
       error: (err) => {
@@ -84,7 +90,6 @@ export class JeuDetailsComponent {
         console.log('Erreur lors de la vérification du like : ', err);
       }
     })
-
   }
 
   toggleLike(): void {
