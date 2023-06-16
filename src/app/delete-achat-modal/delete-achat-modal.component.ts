@@ -26,17 +26,14 @@ export class DeleteAchatModalComponent {
   }
 
   onSave(): void {
-      let achatData: Achat
+      console.log('Achat jeu id :', this.data.id);
 
-      achatData = this.data.id;
-      console.log('Achat data:', achatData);
-
-      this.jeuService.updateAchat(achatData).subscribe(
+      this.jeuService.deleteAchat(this.data.id).subscribe(
         (createdAchat: AchatRequest) => {
-          console.log('Achat réalisé avec succès', createdAchat);
+          console.log('Update achat :',createdAchat);
         },
         (error) => {
-          console.error('Erreur lors de la création de l\'achat', error);
+          console.error('Erreur lors de l\'update de l\'achat', error);
         }
       );
 

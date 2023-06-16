@@ -1,9 +1,3 @@
-/**
- * User model.
- */
-/**
- * User model.
- */
 export interface UserRequest {
 
   status: string;
@@ -16,6 +10,7 @@ export interface UserRequest {
     pseudo: string;
     login: string;
     avatar: string;
+    email: string;
   };
 
   commentaires: Commentaire[];
@@ -41,7 +36,7 @@ interface Achat {
 }
 
 interface Like {
-  user_id: number;
   jeu_id: number;
+  jeu_nom: string;
 }
 

@@ -1,0 +1,39 @@
+<mat-card *ngIf="jeu">
+  <mat-card-header>
+
+    <mat-card-title>
+      <ng-container *ngIf="authenticated; else loginLink">
+        <a mat-button [routerLink]="['/jeux', jeu.id]">
+          {{ jeu.nom }}
+        </a>
+      </ng-container>
+      <ng-template #loginLink>
+        <a mat-button routerLink="/login">
+          {{ jeu.nom }}
+        </a>
+      </ng-template>
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{ jeu.categorie.nom }} - {{ jeu.theme.nom }} - {{ jeu.langue }}
+    </mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="/assets/images/{{ jeu.url_media }}" alt="{{ jeu.nom }}">
+
+  <mat-card-content>
+    <p>{{ jeu.description }}</p>
+
+    <div *ngIf="authenticated" class="more-informations">
+      <app-carte-jeu-note [rating]="jeuRequest.note_moyenne"></app-carte-jeu-note>
+      <p>Nombre de likes : {{ jeuRequest.nb_likes }}</p>
+    </div>
+
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <ng-container *ngIf="authenticated; else loginLink">
+      <a mat-button [routerLink]="['/jeux', jeu.id]">VOIR</a>
+    </ng-container>
+    <ng-template #loginLink>
+      <a mat-button routerLink="/login">VOIR</a>
+    </ng-template>
+  </mat-card-actions>
+</mat-card>

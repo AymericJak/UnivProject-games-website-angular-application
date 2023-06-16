@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {JeuRequest} from "../models/api/jeuRequest";
 import {GameService} from "../services/game.service";
-import {map, Observable, take} from "rxjs";
+import {map, Observable, of, take} from "rxjs";
 import {CommentaireRequest} from "../models/api/commentaireRequest";
 import {HttpClient} from "@angular/common/http";
 import {Jeu} from "../models/jeu";
@@ -13,6 +13,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {Achat} from "../models/achat";
 import {AchatRequest} from "../models/api/achat-request";
 import {DeleteAchatModalComponent} from "../delete-achat-modal/delete-achat-modal.component";
+import {CommentModalComponent} from "../comment-modal/comment-modal.component";
 
 @Component({
   selector: 'app-game-details',
@@ -26,47 +27,31 @@ export class JeuDetailsComponent {
   jeu: Jeu | undefined;
   noteMoyenne: number = 0;
   nbLike: number = 0;
+  prixMoyen: number = 0;
   commentaires: CommentaireRequest[] = []
   profilCourant: Observable<UserRequest>;
   showOldestFirst: boolean = false;
   showNewestFirst: boolean = false;
+  id_jeu: number | undefined;
+  user_id: number = -1;
   achats: AchatRequest[] = [];
-  user_id!: number;
+  isBuy: Observable<boolean> = of(false)
 
-  constructor(public gameService: GameService,
-              private route: ActivatedRoute,
-              private http: HttpClient,
-              public userService: UsersService,
-              private dialog: MatDialog,) {
+  constructor(public gameService: GameService, private route: ActivatedRoute, private http: HttpClient, public userService: UsersService,public dialog: MatDialog) {
     this.profilCourant = this.userService.getUser();
   }
 
   ngOnInit(): void {
-    const id: number = +(this.route.snapshot.paramMap.get('id') || 0);
-
+    this.id_jeu = +(this.route.snapshot.paramMap.get('id') || 0);
     const userObservable: Observable<UserRequest> = this.userService.getUser();
-
-    userObservable.subscribe((user) => {
-      this.user_id = user?.adherent?.id || 0; // Set a default value if user is undefined
-      this.commentaires.sort((a, b) => {
-        if (a.user_id === this.user_id && b.user_id !== this.user_id) {
-          return -1;
-        } else if (a.user_id !== this.user_id && b.user_id === this.user_id) {
-          return 1;
-        } else {
-          return 0;
-        }
-      });
-    });
-
-    this.profilCourant = userObservable;
-
-    this.gameService.getJeu(id).subscribe({
+    this.profilCourant = this.userService.getUser();
+    this.gameService.getJeu(this.id_jeu).subscribe({
       next: (jeuResponse) => {
         this.jeu = jeuResponse.jeu;
         this.nbLike = jeuResponse.nb_likes;
         this.noteMoyenne = jeuResponse.note_moyenne;
         this.commentaires = jeuResponse.commentaires;
+        this.prixMoyen = jeuResponse.prix_moyen;
         this.achats = jeuResponse.achats;
         this.sortCommentaires();
       },
@@ -74,6 +59,23 @@ export class JeuDetailsComponent {
         console.log('Erreur lors de la récupération des informations du jeu : ', err);
       }
     });
+    userObservable.subscribe((user) => {
+      if (user && user.adherent && user.adherent.id) {
+        const user_id: number = user.adherent.id;
+        this.user_id = user.adherent.id;
+        console.log("user id:" + this.user_id);
+        this.commentaires.sort((a, b) => {
+          if (a.user_id === user_id && b.user_id !== user_id) {
+            return -1;
+          } else if (a.user_id !== user_id && b.user_id === user_id) {
+            return 1;
+          } else {
+            return 0;
+          }
+        });
+      }
+    });
+
   }
 
   toggleLike(): void {
@@ -149,19 +151,14 @@ export class JeuDetailsComponent {
     });
   }
 
-  isUserBuy() {
-    const userObservable: Observable<UserRequest> = this.userService.getUser();
-
-    return userObservable.pipe(
-      map((user) => {
-        this.user_id = user?.adherent?.id || 0; // Set a default value if user is undefined
-        if (this.jeu) {
-          return this.achats.some(achatRequest => achatRequest.achat.user_id === this.user_id);
-        }
-        return false;
-      }),
-      take(1) // Ensure the observable completes after emitting the value
-    );
+  openCommentModal(jeu:Jeu): void {
+    const dialogRef = this.dialog.open(CommentModalComponent, {
+      width: '400px',
+      data: {jeu} // Passer le jeu en tant que donnée à la fenêtre modale
+    });
   }
 
+  openEditModal(id: number) {
+
+  }
 }

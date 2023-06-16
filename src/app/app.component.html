@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span>{{ title }}</span>
+    <span class="pointer" routerLink="/home">{{ title }}</span>
     <span class="header-spacer"></span>
     <div class="example-button-row">
       <!-- TODO Check if the user is connected or not. -->
@@ -23,6 +23,8 @@
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
-<router-outlet></router-outlet>
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
 <app-footer></app-footer>
 

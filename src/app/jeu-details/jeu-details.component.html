@@ -1,61 +1,62 @@
-<mat-card *ngIf="jeu">
-  <div class="container">
-  <mat-card-title>Jeu : {{ jeu.nom }}</mat-card-title>
+<div *ngIf="jeu">
+  <mat-card>
+    <mat-card-header>
+      <h1>{{ jeu.nom }}</h1>
 
-  <mat-card-subtitle>{{ jeu.description }}</mat-card-subtitle>
+      <mat-chip class="langue">
+        Langue : {{ jeu.langue }}
+      </mat-chip>
 
-  <div class="info">
-    <span class="label">Langue:</span>
-    <span class="value">{{ jeu.langue }}</span>
-  </div>
+      <mat-chip class="categorie">
+        Catégorie : {{ jeu.categorie.nom }}
+      </mat-chip>
 
-  <div class="info">
-    <span class="label">Catégorie:</span>
-    <span class="value">{{ jeu.categorie.nom }}</span>
-  </div>
+      <mat-chip class="theme">
+        Thème : {{ jeu.theme.nom }}
+      </mat-chip>
 
-  <div class="info">
-    <span class="label">Thème:</span>
-    <span class="value">{{ jeu.theme.nom }}</span>
-  </div>
+    </mat-card-header>
 
-  <div class="info">
-    <span class="label">Moyenne note:</span>
-    <span class="value">{{ noteMoyenne }}</span>
-  </div>
+    <mat-card-content>
+      <p class="description">{{ jeu.description }}</p>
 
-  <div class="info">
-    <span class="label">Nombre de likes:</span>
-    <span class="value">{{ nbLike }}</span>
-  </div>
+      <app-carte-jeu-note [rating]="noteMoyenne"></app-carte-jeu-note>
 
-  <button mat-raised-button color="primary" (click)="toggleLike()">{{ isLiked ? 'Unlike' : 'Like' }}</button>
+      <div class="info">
+        <span class="label">Nombre like: </span>
+        <span class="value">{{ nbLike }}</span>
+        <button mat-flat-button color="warn" (click)="toggleLike()">{{ isLiked ? 'Unlike' : 'Like' }}</button>
+      </div>
 
-  <div class="info">
-    <span class="label">Prix moyen:</span>
-    <span class="value"></span>
-  </div>
 
-  <button mat-raised-button (click)="toggleSortOldestFirst()" [ngClass]="{ 'active': showOldestFirst }">
-    Tri du plus ancien au plus récent
-  </button>
+      <div class="info">
+        <span class="label">Prix moyen: </span>
+        <span class="value">{{ prixMoyen }}</span>
+      </div>
 
-  <button mat-raised-button (click)="toggleSortNewestFirst()" [ngClass]="{ 'active': showNewestFirst }">
-    Tri du plus récent au plus ancien
-  </button>
+      <button mat-stroked-button (click)="toggleSortOldestFirst()" [class.active]="showOldestFirst">Tri du plus ancien
+        au plus récent
+      </button>
+      <button mat-stroked-button (click)="toggleSortNewestFirst()" [class.active]="showNewestFirst">Tri du plus récent
+        au plus ancien
+      </button>
 
-  <div class="commentaires">
-    <h2>Liste des commentaires</h2>
-    <div *ngFor="let commentaire of commentaires" class="comment-{{commentaire.id}}">
-      <p>{{ commentaire.commentaire }}</p>
-    </div>
-  </div>
-    <div *ngIf="user_id">
-    <button mat-raised-button color="primary" *ngIf="!isUserBuy()" (click)="openModalBuy()">Buy</button>
-    <button mat-raised-button color="primary" *ngIf="isUserBuy()" (click)="openModalUnBuy()">Cancel buy</button>
-    </div>
-  </div>
+      <hr>
 
-<!--  <button mat-raised-button color="primary" (click)="openModalUnike()">Unlike</button>-->
+      <button mat-raised-button color="primary" (click)="openModalBuy()">Buy</button>
+      <button mat-raised-button color="primary" (click)="openModalUnBuy()">Cancel buy</button>
 
-</mat-card>
+      <div class="commentaires">
+        <h2>Liste des commentaires</h2>
+        <button mat-raised-button color="primary" (click)="openCommentModal(jeu)">Ajouter un commentaire</button>
+        <div *ngFor="let commentaire of commentaires" class="comment-{{commentaire.id}}">
+          <p>{{ commentaire.commentaire }}</p>
+          <button mat-icon-button color="primary" (click)="openEditModal(commentaire.id)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+</div>

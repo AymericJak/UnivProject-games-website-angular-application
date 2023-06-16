@@ -36,9 +36,9 @@ export class CreateAchatModalComponent {
       achatData.jeu_id = this.data.id;
       console.log('Achat data:', achatData);
 
-      this.jeuService.updateAchat(achatData).subscribe(
+      this.jeuService.createAchat(achatData).subscribe(
         (createdAchat: AchatRequest) => {
-          console.log('Achat réalisé avec succès', createdAchat);
+          console.log(createdAchat.message, createdAchat);
         },
         (error) => {
           console.error('Erreur lors de la création de l\'achat', error);

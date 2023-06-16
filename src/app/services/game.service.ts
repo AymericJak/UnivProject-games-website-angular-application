@@ -71,8 +71,8 @@ export class GameService {
     );
   }
 
-  updateAchat(achat: Achat): Observable<AchatRequest> {
-    const url: string = 'http://localhost:8000/api/jeu/' + achat.jeu_id + '/like';
+  createAchat(achat: Achat): Observable<AchatRequest> {
+    const url: string = 'http://localhost:8000/api/jeu/' + achat.jeu_id + '/achat';
 
     return this.http.post<AchatRequest>(url, achat).pipe(
       catchError(err => {
@@ -81,7 +81,16 @@ export class GameService {
       })
     );
   }
+  deleteAchat(id: number): Observable<any> {
+    const url: string = 'http://localhost:8000/api/jeu/' + id + '/achat';
 
+    return this.http.delete<any>(url).pipe(
+      catchError(err => {
+        console.log('Erreur http : ', err);
+        throw err;
+      })
+    );
+  }
   updateJeu(jeu: Jeu): Observable<Jeu> {
     const url: string = `http://localhost:8000/api/jeu/${jeu.id}/edit`;
     const httpOptions = {
