@@ -148,4 +148,64 @@ export class GameService {
     return this.http.get<GameIsLikedRequest>(url);
   }
 
+  filtrerParAgeMin(): Observable<JeuxRequest> {
+    const url: string = 'http://localhost:8000/api/jeu/FiltrageAgeMin';
+    return this.http.get<JeuxRequest>(url).pipe(
+      catchError(err => {
+        console.log('Erreur http : ', err);
+        return of({ status: "Error", jeux: [] });
+      })
+    );
+  }
+
+  filtrerParDuree(): Observable<JeuxRequest> {
+    const url: string = 'http://localhost:8000/api/jeu/FiltrageDuree';
+    return this.http.get<JeuxRequest>(url).pipe(
+      catchError(err => {
+        console.log('Erreur http : ', err);
+        return of({ status: "Error", jeux: [] });
+      })
+    );
+  }
+
+  filtrerParJoueursMin(): Observable<JeuxRequest> {
+    const url: string = 'http://localhost:8000/api/jeu/FiltrageJoueursMin';
+    return this.http.get<JeuxRequest>(url).pipe(
+      catchError(err => {
+        console.log('Erreur http : ', err);
+        return of({ status: "Error", jeux: [] });
+      })
+    );
+  }
+
+  filtrerParJoueursMax(): Observable<JeuxRequest> {
+    const url: string = 'http://localhost:8000/api/jeu/FiltrageJoueursMax';
+    return this.http.get<JeuxRequest>(url).pipe(
+      catchError(err => {
+        console.log('Erreur http : ', err);
+        return of({ status: "Error", jeux: [] });
+      })
+    );
+  }
+
+  filtrerParMostLiked(): Observable<JeuxRequest> {
+    const url: string = 'http://localhost:8000/api/jeu/FiltrageMostLiked';
+    return this.http.get<JeuxRequest>(url).pipe(
+      catchError(err => {
+        console.log('Erreur http : ', err);
+        return of({ status: "Error", jeux: [] });
+      })
+    );
+  }
+
+  filtrerParBestRated(): Observable<JeuxRequest> {
+    const url: string = 'http://localhost:8000/api/jeu/FiltrageBestRated';
+    return this.http.get<JeuxRequest>(url).pipe(
+      catchError(err => {
+        console.log('Erreur http : ', err);
+        return of({ status: "Error", jeux: [] });
+      })
+    );
+  }
+
 }

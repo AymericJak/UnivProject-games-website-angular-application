@@ -27,4 +27,70 @@ export class JeuxListeComponent {
       }
     });
   }
+
+  filtrerParAgeMin(): void {
+    this.gameService.filtrerParAgeMin().subscribe({
+      next: (jeuxResponse) => {
+        this.dataSource = jeuxResponse;
+      },
+      error: () => {
+        console.log('Erreur lors du filtrage par âge minimum : ');
+      }
+    });
+  }
+
+  filtrerParDuree(): void {
+    this.gameService.filtrerParDuree().subscribe({
+      next: (jeuxResponse) => {
+        this.dataSource = jeuxResponse;
+      },
+      error: () => {
+        console.log('Erreur lors du filtrage par durée de partie : ');
+      }
+    });
+  }
+
+  filtrerParJoueursMin(): void {
+    this.gameService.filtrerParJoueursMin().subscribe({
+      next: (jeuxResponse) => {
+        this.dataSource = jeuxResponse;
+      },
+      error: () => {
+        console.log('Erreur lors du filtrage par nombre de joueurs minimum : ');
+      }
+    });
+  }
+
+  filtrerParJoueursMax(): void {
+    this.gameService.filtrerParJoueursMax().subscribe({
+      next: (jeuxResponse) => {
+        this.dataSource = jeuxResponse;
+      },
+      error: () => {
+        console.log('Erreur lors du filtrage par nombre de joueurs maximum : ');
+      }
+    });
+  }
+
+  filtrerParMostLiked(): void {
+    this.gameService.filtrerParMostLiked().subscribe({
+      next: (jeuxResponse) => {
+        this.dataSource = jeuxResponse;
+      },
+      error: () => {
+        console.log('Erreur lors du filtrage par les plus aimés : ');
+      }
+    });
+  }
+
+  filtrerParBestRated(): void {
+    this.gameService.filtrerParBestRated().subscribe({
+      next: (jeuxResponse) => {
+        this.dataSource = jeuxResponse;
+      },
+      error: () => {
+        console.log('Erreur lors du filtrage par les mieux notés : ');
+      }
+    });
+  }
 }
