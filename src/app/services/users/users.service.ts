@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable} from "rxjs";
 import {TokenStorageService} from "../../token-storage.service";
-import {UserRequest} from "../../models/UserRequest";
+import {UserRequest} from "../../requests/UserRequest";
 import {environment} from "../../environment";
 import {UpdateProfileResponse} from "../../responses/UpdateProfileResponse";
 import {UpdateProfileRequest} from "../../requests/UpdateProfileRequest";

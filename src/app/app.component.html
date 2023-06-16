@@ -5,7 +5,7 @@
     <div class="example-button-row">
       <!-- TODO Check if the user is connected or not. -->
       <!-- TODO For connected users -->
-      <div>
+      <div *ngIf="userIsConnected()">
         <span *ngIf="currentProfile$ | async as profile">
           <img class="header-avatar" src="data:image/png;base64,{{ profile.adherent.avatar }}" height="30" alt="Avatar de l'utilisateur">
 
@@ -19,7 +19,7 @@
         <a mat-stroked-button class="header-button" (click)="logout()">Se déconnecter</a>
       </div>
       <!-- TODO For unconnected users -->
-      <div>
+      <div *ngIf="!userIsConnected()">
         <a mat-stroked-button class="header-button" routerLink="/login">Se connecter</a>
         <a mat-stroked-button class="header-button" routerLink="/register">S'enregistrer</a>
       </div>

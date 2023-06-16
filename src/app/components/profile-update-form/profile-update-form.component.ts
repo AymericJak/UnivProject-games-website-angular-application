@@ -3,7 +3,7 @@ import {FormControl, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {UsersService} from "../../services/users/users.service";
 import {Observable} from "rxjs";
-import {UserRequest} from "../../models/UserRequest";
+import {UserRequest} from "../../requests/UserRequest";
 import {UpdateProfileRequest} from "../../requests/UpdateProfileRequest";
 
 @Component({
