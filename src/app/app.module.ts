@@ -36,6 +36,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatIconModule} from "@angular/material/icon";
 import { ProfileUpdateFormComponent } from './components/profile-update-form/profile-update-form.component';
 import {MatChipsModule} from "@angular/material/chips";
+import {JeuModificationComponent} from "./components/jeu-modification/jeu-modification.component";
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import {MatChipsModule} from "@angular/material/chips";
     CarteJeuComponent,
     CarteJeuNoteComponent,
     JeuCreationComponent,
+    JeuModificationComponent,
     ProfileUpdateFormComponent,
     CommentModalComponent,
   ],
@@ -74,13 +76,14 @@ import {MatChipsModule} from "@angular/material/chips";
     MatTableModule,
     MatListModule,
     MatTableModule,
-    NgOptimizedImage,
     MatGridListModule,
     MatIconModule,
     MatChipsModule,
     FormsModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
+    MatGridListModule,
+    MatIconModule,
   ],
   providers: [
     GameService,
