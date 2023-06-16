@@ -9,6 +9,7 @@ import {ThemeRequest} from "../models/api/themeRequest";
 import {EditeurRequest} from "../models/api/editeurRequest";
 import {Achat} from "../models/achat";
 import {AchatRequest} from "../models/api/achat-request";
+import {GameIsLikedRequest} from "../models/api/game-is-liked-request";
 
 @Injectable({
   providedIn: 'root'
@@ -91,6 +92,7 @@ export class GameService {
       })
     );
   }
+
   updateJeu(jeu: Jeu): Observable<Jeu> {
     const url: string = `http://localhost:8000/api/jeu/${jeu.id}/edit`;
     const httpOptions = {
@@ -140,4 +142,10 @@ export class GameService {
         })
       );
   }
+
+  checkUserLike(jeuId: number): Observable<GameIsLikedRequest> {
+    const url: string = `http://localhost:8000/api/jeu/${jeuId}/like/check`;
+    return this.http.get<GameIsLikedRequest>(url);
+  }
+
 }

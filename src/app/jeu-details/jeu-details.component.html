@@ -3,18 +3,19 @@
     <mat-card-header>
       <h1>{{ jeu.nom }}</h1>
 
-      <mat-chip class="langue">
-        Langue : {{ jeu.langue }}
-      </mat-chip>
+      <mat-card-title-group>
+        <mat-chip class="langue">
+          Langue : {{ jeu.langue }}
+        </mat-chip>
 
-      <mat-chip class="categorie">
-        Catégorie : {{ jeu.categorie.nom }}
-      </mat-chip>
+        <mat-chip class="categorie">
+          Catégorie : {{ jeu.categorie.nom }}
+        </mat-chip>
 
-      <mat-chip class="theme">
-        Thème : {{ jeu.theme.nom }}
-      </mat-chip>
-
+        <mat-chip class="theme">
+          Thème : {{ jeu.theme.nom }}
+        </mat-chip>
+      </mat-card-title-group>
     </mat-card-header>
 
     <mat-card-content>
@@ -25,7 +26,8 @@
       <div class="info">
         <span class="label">Nombre like: </span>
         <span class="value">{{ nbLike }}</span>
-        <button mat-flat-button color="warn" (click)="toggleLike()">{{ isLiked ? 'Unlike' : 'Like' }}</button>
+        <button *ngIf="isLiked" mat-flat-button color="warn" (click)="toggleLike()">Unlike</button>
+        <button *ngIf="!isLiked" mat-stroked-button color="warn" (click)="toggleLike()">Like</button>
       </div>
 
 
