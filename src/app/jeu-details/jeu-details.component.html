@@ -3,18 +3,19 @@
     <mat-card-header>
       <h1>{{ jeu.nom }}</h1>
 
-      <mat-chip class="langue">
-        Langue : {{ jeu.langue }}
-      </mat-chip>
+      <mat-card-title-group>
+        <mat-chip class="langue">
+          Langue : {{ jeu.langue }}
+        </mat-chip>
 
-      <mat-chip class="categorie">
-        Catégorie : {{ jeu.categorie.nom }}
-      </mat-chip>
+        <mat-chip class="categorie">
+          Catégorie : {{ jeu.categorie.nom }}
+        </mat-chip>
 
-      <mat-chip class="theme">
-        Thème : {{ jeu.theme.nom }}
-      </mat-chip>
-
+        <mat-chip class="theme">
+          Thème : {{ jeu.theme.nom }}
+        </mat-chip>
+      </mat-card-title-group>
     </mat-card-header>
 
     <mat-card-content>

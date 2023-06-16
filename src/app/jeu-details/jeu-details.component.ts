@@ -72,7 +72,7 @@ export class JeuDetailsComponent {
   }
 
   toggleLike(): void {
-    this.isLiked = !this.isLiked;
+
 
     const id: number = +(this.route.snapshot.paramMap.get('id') || 0);
 
@@ -85,6 +85,7 @@ export class JeuDetailsComponent {
             .post(url, {})
             .subscribe(
               (response) => {
+                this.isLiked = !this.isLiked;
                 console.log('Ajout du like effectuée avec succès !');
               },
               (error) => {
