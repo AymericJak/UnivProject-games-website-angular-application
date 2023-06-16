@@ -76,7 +76,6 @@ import {JeuModificationComponent} from "./components/jeu-modification/jeu-modifi
     MatTableModule,
     MatListModule,
     MatTableModule,
-    NgOptimizedImage,
     MatGridListModule,
     MatIconModule,
     MatChipsModule,
