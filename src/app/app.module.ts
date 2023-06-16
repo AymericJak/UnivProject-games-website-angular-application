@@ -37,6 +37,7 @@ import {MatIconModule} from "@angular/material/icon";
 import { ProfileUpdateFormComponent } from './components/profile-update-form/profile-update-form.component';
 import {MatChipsModule} from "@angular/material/chips";
 import {JeuModificationComponent} from "./components/jeu-modification/jeu-modification.component";
+import { ProfileAvatarUpdateFormComponent } from './components/profile-avatar-update-form/profile-avatar-update-form.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import {JeuModificationComponent} from "./components/jeu-modification/jeu-modifi
     JeuModificationComponent,
     ProfileUpdateFormComponent,
     CommentModalComponent,
+    ProfileAvatarUpdateFormComponent,
   ],
   imports: [
     BrowserModule,

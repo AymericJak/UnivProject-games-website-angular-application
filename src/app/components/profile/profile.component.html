@@ -11,13 +11,13 @@
         <button mat-button [routerLink]="['/update-profile', profile.adherent.id, personalProfile]" class="profile-link">
           MODIFIER MON PROFIL
         </button>
-        <button mat-button>MODIFIER MON AVATAR</button>
+        <button mat-button [routerLink]="['/update-avatar', profile.adherent.id, personalProfile]" class="profile-link">MODIFIER MON AVATAR</button>
       </mat-card-actions>
       <mat-card-actions *ngIf="!personalProfile">
         <button mat-button [routerLink]="['/update-profile', profile.adherent.id, personalProfile]" class="profile-link">
           MODIFIER SON PROFIL
         </button>
-        <button mat-button>MODIFIER SON AVATAR</button>
+        <button mat-button [routerLink]="['/update-avatar', profile.adherent.id, personalProfile]" class="profile-link">MODIFIER SON AVATAR</button>
       </mat-card-actions>
     </div>
 
