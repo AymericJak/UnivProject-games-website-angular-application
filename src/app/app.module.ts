@@ -34,6 +34,7 @@ import {MatSelectModule} from "@angular/material/select";
 import { CommentModalComponent } from './comment-modal/comment-modal.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatIconModule} from "@angular/material/icon";
+import { ProfileUpdateFormComponent } from './components/profile-update-form/profile-update-form.component';
 import {MatChipsModule} from "@angular/material/chips";
 
 @NgModule({
@@ -52,6 +53,7 @@ import {MatChipsModule} from "@angular/material/chips";
     CarteJeuComponent,
     CarteJeuNoteComponent,
     JeuCreationComponent,
+    ProfileUpdateFormComponent,
     CommentModalComponent,
   ],
   imports: [
