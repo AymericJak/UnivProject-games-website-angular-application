@@ -32,12 +32,17 @@ export class ProfileUpdateFormComponent implements OnInit {
 
   public hide: boolean = true;
 
+  public personalProfile: boolean = true;
+
   constructor(public route: ActivatedRoute, private profilService: UsersService, private router: Router) {
     this.currentProfil$ = this.profilService.getUser();
   }
 
   ngOnInit(): void {
     this.id = +(this.route.snapshot.paramMap.get('id') || 0);
+    const personalProfileString: string|null = this.route.snapshot.paramMap.get('personal-profile' || 'false');
+    if (personalProfileString == 'false' || personalProfileString == null) this.personalProfile = false;
+    console.log(this.personalProfile);
     this.currentProfil$ = this.profilService.getUser(parseInt(String(this.id)));
     this.currentProfil$.subscribe((userResponse: UserRequest) => {
       this.login.setValue(userResponse.adherent.login);
