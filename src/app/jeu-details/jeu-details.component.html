@@ -48,7 +48,7 @@
         <button mat-raised-button color="primary" (click)="openCommentModal(jeu)">Ajouter un commentaire</button>
         <div *ngFor="let commentaire of commentaires" class="comment-{{commentaire.id}}">
           <p>{{ commentaire.commentaire }}</p>
-          <button mat-icon-button color="primary" (click)="openEditModal(commentaire.id)">
+          <button mat-icon-button color="primary" (click)="editCommentaire(commentaire,jeu)">
             <mat-icon>edit</mat-icon>
           </button>
         </div>
@@ -56,5 +56,4 @@
 
     </mat-card-content>
   </mat-card>
->>>>>>> 7e3f98725d78150883463ec10ce0aeb3b2f7265a
 </div>

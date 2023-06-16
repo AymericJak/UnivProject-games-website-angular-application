@@ -52,7 +52,6 @@ export class CommentModalComponent {
   }
 
   fetchJeu(): void {
-    console.log(this.jeu?.id);
     if(this.jeu?.id) {
       this.gameService.getJeu(this.jeu?.id).subscribe({
         next: (jeuResponse) => {

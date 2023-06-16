@@ -10,8 +10,7 @@ import {UsersService} from "../services/users/users.service";
 import {UserRequest} from "../models/UserRequest";
 import {MatDialog} from "@angular/material/dialog";
 import {CommentModalComponent} from "../comment-modal/comment-modal.component";
-// import {CommentaireEditModalComponent} from "../commentaire-edit/commentaire-edit.component";
-// import {Commentaire} from "../models/commentaire"
+import {CommentaireEditComponent} from "../commentaire-edit/commentaire-edit.component";
 
 @Component({
   selector: 'app-game-details',
@@ -136,9 +135,9 @@ export class JeuDetailsComponent {
     });
   }
 
-  // editCommentaire(commentaire: Commentaire): void {
-  //   const dialogRef = this.dialog.open(CommentaireEditModalComponent, {
-  //     data: {commentaire}
-  //   });
-  // }
+  editCommentaire(commentaire: CommentaireRequest,jeu:Jeu): void {
+    const dialogRef = this.dialog.open(CommentaireEditComponent, {
+      data: {commentaire,jeu}
+    });
+  }
 }
