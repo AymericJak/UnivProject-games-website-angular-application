@@ -10,6 +10,8 @@ import {UsersService} from "../services/users/users.service";
 import {UserRequest} from "../models/UserRequest";
 import {MatDialog} from "@angular/material/dialog";
 import {CommentModalComponent} from "../comment-modal/comment-modal.component";
+// import {CommentaireEditModalComponent} from "../commentaire-edit/commentaire-edit.component";
+// import {Commentaire} from "../models/commentaire"
 
 @Component({
   selector: 'app-game-details',
@@ -128,11 +130,13 @@ export class JeuDetailsComponent {
   openCommentModal(jeu:Jeu): void {
     const dialogRef = this.dialog.open(CommentModalComponent, {
       width: '400px',
-      data: {jeu} // Passer le jeu en tant que donnée à la fenêtre modale
+      data: {jeu}
     });
   }
 
-  openEditModal(id: number) {
-
-  }
+  // editCommentaire(commentaire: Commentaire): void {
+  //   const dialogRef = this.dialog.open(CommentaireEditModalComponent, {
+  //     data: {commentaire}
+  //   });
+  // }
 }

@@ -34,6 +34,7 @@ import {MatSelectModule} from "@angular/material/select";
 import { CommentModalComponent } from './comment-modal/comment-modal.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatIconModule} from "@angular/material/icon";
+import { CommentaireEditComponent } from './commentaire-edit/commentaire-edit.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import {MatIconModule} from "@angular/material/icon";
     CarteJeuNoteComponent,
     JeuCreationComponent,
     CommentModalComponent,
+    CommentaireEditComponent,
   ],
   imports: [
     BrowserModule,
