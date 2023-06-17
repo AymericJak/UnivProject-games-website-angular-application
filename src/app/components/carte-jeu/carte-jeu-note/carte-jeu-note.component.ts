@@ -7,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class CarteJeuNoteComponent implements OnInit {
   @Input() rating = 0;
-
+  @Input() single = false;
   totalStar = 5;
   ratingArray: number[] = [];
 

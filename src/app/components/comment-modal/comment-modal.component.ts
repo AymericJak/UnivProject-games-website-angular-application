@@ -80,7 +80,7 @@ export class CommentModalComponent implements OnInit {
       .subscribe(
         () => {
           console.log('Commentaire ajouté avec succès !');
-          this.dialogRef.close();
+          this.dialogRef.close("success");
         },
         (error) => {
           console.error("Une erreur s'est produite lors de l'ajout du commentaire :", error);

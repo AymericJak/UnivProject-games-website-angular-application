@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {catchError, Observable} from "rxjs";
+import {BehaviorSubject, catchError, Observable} from "rxjs";
 import {TokenStorageService} from "../../token-storage.service";
 import {UserRequest} from "../../requests/UserRequest";
 import {environment} from "../../environment";
@@ -32,11 +32,15 @@ export class UsersService {
     'update-profile': UsersService.API_URL + 'updateAvatar',
   };
 
+  currentProfile = Observable<UserRequest>;
+
   constructor(private http: HttpClient, private tokenStorageService: TokenStorageService) {
   }
 
   public getUser(id = -1): Observable<UserRequest> {
+
     const token: string = this.tokenStorageService.getToken();
+
     const httpOptions = {
       headers: new HttpHeaders(
         {
@@ -55,6 +59,7 @@ export class UsersService {
       );
     else
       return this.http.get<any>(`${UsersService.API_URL_DICT['profile']}/${id}`, httpOptions).pipe(
+
         catchError(err => {
           console.error('HTTP ERROR:', err);
           throw err;

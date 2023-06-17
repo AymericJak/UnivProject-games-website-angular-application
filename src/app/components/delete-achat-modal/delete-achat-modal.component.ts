@@ -22,14 +22,15 @@ export class DeleteAchatModalComponent {
 
     this.jeuService.deleteAchat(this.data.id).subscribe(
       (createdAchat: AchatRequest) => {
-        console.log('Update achat :', createdAchat);
+        console.log('Cancel achat :', createdAchat);
+        this.dialogRef.close("success");
+
       },
       (error) => {
-        console.error('Erreur lors de l\'update de l\'achat', error);
+        console.error('Erreur lors du cancel de l\'achat', error);
+        this.dialogRef.close();
       }
     );
-
-    this.dialogRef.close();
   }
 
   onCancel(): void {

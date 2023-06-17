@@ -14,6 +14,7 @@ import {DeleteAchatModalComponent} from "../delete-achat-modal/delete-achat-moda
 import {CommentModalComponent} from "../comment-modal/comment-modal.component";
 import {CommentaireEditComponent} from "../commentaire-edit/commentaire-edit.component";
 import {DeleteCommentaireComponent} from "../delete-commentaire/delete-commentaire.component";
+import {Achat} from "../../models/achat";
 
 @Component({
   selector: 'app-game-details',
@@ -21,19 +22,19 @@ import {DeleteCommentaireComponent} from "../delete-commentaire/delete-commentai
   styleUrls: ['./jeu-details.component.css']
 })
 export class JeuDetailsComponent implements OnInit {
-  isLiked = false;
+  profilCourant: Observable<UserRequest>;
+  user_id = -1;
+  id_jeu: number | undefined;
   jeu: Jeu | undefined;
   noteMoyenne = 0;
   nbLike = 0;
   prixMoyen = 0;
+  isLiked = false;
   commentaires: CommentaireRequest[] = []
-  profilCourant: Observable<UserRequest>;
+  achats: Achat[] = [];
   showOldestFirst = false;
   showNewestFirst = false;
-  id_jeu: number | undefined;
-  user_id = -1;
-  achats: AchatRequest[] = [];
-  image: any;
+  isPurchased = false;
 
   constructor(public gameService: GameService, private route: ActivatedRoute, private http: HttpClient, public userService: UsersService, public dialog: MatDialog) {
     this.profilCourant = this.userService.getUser();
@@ -43,20 +44,24 @@ export class JeuDetailsComponent implements OnInit {
     this.id_jeu = +(this.route.snapshot.paramMap.get('id') || 0);
     const userObservable: Observable<UserRequest> = this.userService.getUser();
     this.profilCourant = this.userService.getUser();
+
     this.gameService.getJeu(this.id_jeu).subscribe({
       next: (jeuResponse) => {
-        console.log(jeuResponse)
-        this.jeu = jeuResponse.jeu;
-        this.nbLike = jeuResponse.nb_likes;
-        this.noteMoyenne = jeuResponse.note_moyenne;
-        this.commentaires = jeuResponse.commentaires;
-        this.prixMoyen = jeuResponse.prix_moyen;
-        this.achats = jeuResponse.achats;
-        this.image = new Image();
-        this.image.src = "data:image/png;base64," + jeuResponse.image_enc;
-        console.log(this.jeu.url_media)
+        console.log('jeuResponse:', jeuResponse); // Debugging statement
 
-        this.sortCommentaires();
+        if (jeuResponse && jeuResponse.jeu && jeuResponse.jeu.id) {
+          this.jeu = jeuResponse.jeu;
+          this.nbLike = jeuResponse.nb_likes;
+          this.noteMoyenne = jeuResponse.note_moyenne;
+          this.commentaires = jeuResponse.commentaires;
+          this.prixMoyen = jeuResponse.prix_moyen;
+          this.achats = jeuResponse.achats;
+          this.isPurchased = false
+          this.isPurchased = this.achats.some((achat:Achat) => achat.jeu_id === this.jeu?.id);
+          this.sortCommentaires();
+        } else {
+          console.log('Invalid jeuResponse:', jeuResponse); // Debugging statement
+        }
       },
       error: (err) => {
         console.log('Erreur lors de la récupération des informations du jeu : ', err);
@@ -66,7 +71,6 @@ export class JeuDetailsComponent implements OnInit {
       if (user && user.adherent && user.adherent.id) {
         const user_id: number = user.adherent.id;
         this.user_id = user.adherent.id;
-        console.log("user id:" + this.user_id);
         this.commentaires.sort((a, b) => {
           if (a.user_id === user_id && b.user_id !== user_id) {
             return -1;
@@ -147,38 +151,90 @@ export class JeuDetailsComponent implements OnInit {
   }
 
   openModalBuy(): void {
-    this.dialog.open(CreateAchatModalComponent, {
-      width: '400px',
-      height: '260px',
+    const dialogRef  = this.dialog.open(CreateAchatModalComponent, {
+      width: '300px',
+      height: '320px',
       disableClose: true,
       data: this.jeu
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log("Resultat ici")
+      console.log(result)
+      // if (result == 'success'){
+        this.isPurchased = true
+      // }
+
     });
   }
 
   openModalUnBuy(): void {
-    this.dialog.open(DeleteAchatModalComponent, {
+    const dialogRef = this.dialog.open(DeleteAchatModalComponent, {
       width: '400px',
+      height: '200px',
       disableClose: true,
       data: this.jeu
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log("Resultat ici")
+      console.log(result)
+      if (result == 'success'){
+        this.isPurchased = false
+      }
     });
   }
 
   openCommentModal(jeu: Jeu): void {
-    this.dialog.open(CommentModalComponent, {
+    const dialogRef = this.dialog.open(CommentModalComponent, {
       width: '400px',
       data: {jeu}
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log("Resultat ici")
+      console.log(result)
+      this.fetchCommentaires(jeu.id);
+    });
+  }
+
+  private fetchCommentaires(id: number) {
+    this.gameService.getJeu(id).subscribe({
+      next: (jeuResponse) => {
+        console.log('jeuResponse:', jeuResponse); // Debugging statement
+        if (jeuResponse && jeuResponse.jeu && jeuResponse.jeu.id) {
+          this.noteMoyenne = jeuResponse.note_moyenne;
+          this.commentaires = jeuResponse.commentaires;
+          this.sortCommentaires();
+        } else {
+          console.log('Invalid jeuResponse:', jeuResponse); // Debugging statement
+        }
+      },
+      error: (err) => {
+        console.log('Erreur lors de la récupération des informations du jeu : ', err);
+      }
     });
   }
 
   editCommentaire(commentaire: CommentaireRequest, jeu: Jeu): void {
-    this.dialog.open(CommentaireEditComponent, {
+    const dialogRef = this.dialog.open(CommentaireEditComponent, {
       data: {commentaire, jeu}
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log("Resultat ici")
+      console.log(result)
+      this.fetchCommentaires(jeu.id);
     });
   }
 
-  deleteCommentaire(id: number) {
-    this.dialog.open(DeleteCommentaireComponent, {
-      data: {id}
+  deleteCommentaire(id_jeu:number, id_com: number) {
+    console.log("idcom", id_com)
+    const dialogRef = this.dialog.open(DeleteCommentaireComponent, {
+      data: id_com
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log("Resultat ici")
+      console.log(result)
+      this.fetchCommentaires(id_jeu);
     });
   }
 }

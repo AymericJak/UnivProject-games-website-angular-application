@@ -28,7 +28,7 @@ import {AuthInterceptor} from "./auth.interceptor";
 import { CarteJeuComponent } from './components/carte-jeu/carte-jeu.component';
 import { CarteJeuNoteComponent } from './components/carte-jeu/carte-jeu-note/carte-jeu-note.component';
 import { JeuCreationComponent } from './components/jeu-creation/jeu-creation.component';
-import {MatOptionModule} from "@angular/material/core";
+import {MatNativeDateModule, MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import { CommentModalComponent } from './components/comment-modal/comment-modal.component';
 import {MatIconModule} from "@angular/material/icon";
@@ -42,6 +42,8 @@ import { CreateAchatModalComponent } from './components/create-achat-modal/creat
 import { DeleteAchatModalComponent } from './components/delete-achat-modal/delete-achat-modal.component';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/material/dialog";
 import { UploadJeuImageComponent } from './components/upload-jeu-image/upload-jeu-image.component';
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {MatDatepickerModule} from "@angular/material/datepicker";
 
 @NgModule({
   declarations: [
@@ -69,33 +71,36 @@ import { UploadJeuImageComponent } from './components/upload-jeu-image/upload-je
     DeleteAchatModalComponent,
     UploadJeuImageComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatCardModule,
-    HttpClientModule,
-    MatTableModule,
-    MatFormFieldModule,
-    MatOptionModule,
-    MatSelectModule,
-    MatInputModule,
-    MatTableModule,
-    MatListModule,
-    MatTableModule,
-    MatGridListModule,
-    MatIconModule,
-    MatChipsModule,
-    FormsModule,
-    MatDialogModule,
-    MatIconModule,
-    MatGridListModule,
-    MatIconModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatCardModule,
+        HttpClientModule,
+        MatTableModule,
+        MatFormFieldModule,
+        MatOptionModule,
+        MatSelectModule,
+        MatInputModule,
+        MatTableModule,
+        MatListModule,
+        MatTableModule,
+        MatGridListModule,
+        MatIconModule,
+        MatChipsModule,
+        FormsModule,
+        MatDialogModule,
+        MatIconModule,
+        MatGridListModule,
+        MatIconModule,
+        MatButtonToggleModule,
+        MatDatepickerModule,
+        MatNativeDateModule
+    ],
   providers: [
     GameService,
     MatGridListModule,

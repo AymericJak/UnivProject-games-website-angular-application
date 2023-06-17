@@ -18,13 +18,13 @@ export class DeleteCommentaireComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<DeleteCommentaireComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { id: number },
+    @Inject(MAT_DIALOG_DATA) public data: number,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private http: HttpClient,
     public userService: UsersService
   ) {
-    this.id = data.id;
+    this.id = data;
   }
 
   ngOnInit(): void {
@@ -45,7 +45,7 @@ export class DeleteCommentaireComponent implements OnInit {
       .subscribe(
         () => {
           console.log('Commentaire delete avec succès !');
-          this.dialogRef.close();
+          this.dialogRef.close("success");
         },
         (error) => {
           console.error("Une erreur s'est produite lors de l'ajout du commentaire :", error);
